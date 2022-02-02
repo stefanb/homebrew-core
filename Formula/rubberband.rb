@@ -1,8 +1,8 @@
 class Rubberband < Formula
   desc "Audio time stretcher tool and library"
   homepage "https://breakfastquay.com/rubberband/"
-  url "https://breakfastquay.com/files/releases/rubberband-2.0.0.tar.bz2"
-  sha256 "eccbf0545496ce3386a2433ceec31e6576a76ed6884310e4b465003bfe260286"
+  url "https://breakfastquay.com/files/releases/rubberband-2.0.2.tar.bz2"
+  sha256 "b9eac027e797789ae99611c9eaeaf1c3a44cc804f9c8a0441a0d1d26f3d6bdf9"
   license "GPL-2.0-or-later"
   head "https://hg.sr.ht/~breakfastquay/rubberband", using: :hg
 
@@ -12,12 +12,12 @@ class Rubberband < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "c6b5dcb4e7c5fac379c889c84d143f7ce4bd4c49c0375537bd6577b131d7cbed"
-    sha256 cellar: :any, arm64_big_sur:  "25b12c52bafa177daf7a6a3749fe08f4f583af48b534507c7efb723c3a7c1e60"
-    sha256 cellar: :any, monterey:       "3c2944cd07b0ba324b18451fcd399b2c34784695f04cfde35b2b1a7711561608"
-    sha256 cellar: :any, big_sur:        "b2095039d438fd4b4d8aea05b12c0c71fb1e9ddb4d22c5f3f188bbe69de48c9e"
-    sha256 cellar: :any, catalina:       "3acb8683266402608cadf5e2f97ac0b5fd234be2528f1b2ed8c870cb47d56faa"
-    sha256               x86_64_linux:   "4b404f33017d438c41afa12b2fccaaecde3e2b96d5644682adc6950e0dd314e4"
+    sha256 cellar: :any, arm64_monterey: "a70400b4694acfba6d59576c6854b083b1e1f7c80f9e849eb0266245ad1ff4cf"
+    sha256 cellar: :any, arm64_big_sur:  "91d25871f4588a70dc145fbbf92fa8fdb874e43d350001a66f235d537660ec4a"
+    sha256 cellar: :any, monterey:       "7b8eaf28f8ce6179e77651b04eba3e578d763e1ba1740381d5032f9f112ebee6"
+    sha256 cellar: :any, big_sur:        "ed69e5ffec5c5f5ebbe1557f020b57f188bb320d0c0ca1595f4eaead0f7cbf43"
+    sha256 cellar: :any, catalina:       "4f1fd0c9f7fd9870c502b8389f660819197a8b036570d70b16b06db0affd4443"
+    sha256               x86_64_linux:   "ab4a2484f146fb67825f2b37ce90c27829d754f854886dc7cf210425c5db9a5e"
   end
 
   depends_on "meson" => :build

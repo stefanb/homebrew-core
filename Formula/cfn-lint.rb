@@ -3,17 +3,17 @@ class CfnLint < Formula
 
   desc "Validate CloudFormation templates against the CloudFormation spec"
   homepage "https://github.com/aws-cloudformation/cfn-python-lint/"
-  url "https://files.pythonhosted.org/packages/6d/09/1e425b9d9de524ebc3b0e2ea450ddd792235bd8d46cd6fe117fe9ede4392/cfn-lint-0.56.4.tar.gz"
-  sha256 "a1d47c15e9ba1bb288d93acd05cabea4825a52a4076a148f3aaa23c241a53aa8"
+  url "https://files.pythonhosted.org/packages/ff/50/521af493dc1ea855eebfd88a6b4fc23eb9e7dddf7f5210bcb9e853aa7333/cfn-lint-0.58.0.tar.gz"
+  sha256 "404b95a89c598c46c553b9ba3640e20695cb910735f44c4397be408568001914"
   license "MIT-0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "a111b730ae7b1bd828dbac33b2fbcebfc93f99c8f2f84d23762ca00479bd0dca"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c0cef237cdb85337e8f1da030a3ff051a71c18fc31a8b813838a72a153fef326"
-    sha256 cellar: :any_skip_relocation, monterey:       "63bff1dfaacab92a5525fc9fc5c14c6c4c6aa2fe36f245ac91d8848850c9c970"
-    sha256 cellar: :any_skip_relocation, big_sur:        "a77d8b2389b6380f85a6f8ab53d2a13a605b180ab98e263236cab88034833aa0"
-    sha256 cellar: :any_skip_relocation, catalina:       "a910f943e1a0b92b3063b6639e1733a447e737152ebd2eb64b610bb5b5869b5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "db7b906f6a6d4b3f065e3ffe3bb1b17829451ecd43df8d6f4677d913eb0d62f8"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "0e52fc1ec7184767fd62c914f6ceb52e988fa0ee24cc233feb64b4a85f4c6a32"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "cbe29d15f830da3e72314153ad14e0f436c97ef784d1a70a39f86db067608fae"
+    sha256 cellar: :any_skip_relocation, monterey:       "f05aba8f76e120e6de85a741dd27861c11678b5e90929bc70819a78deff36f69"
+    sha256 cellar: :any_skip_relocation, big_sur:        "fd7f5bc419968c820c78b9a0ceec5c722e2d30907b8fa1114548484b457eba29"
+    sha256 cellar: :any_skip_relocation, catalina:       "7c328185125162d15cb722f33fc0a852e141417a4145cf04a4209243f56de984"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "24ea44e4d9148ce21d30a662573163167cb583d13fa7c7fe67c5170619303a46"
   end
 
   depends_on "python@3.10"
@@ -30,13 +30,13 @@ class CfnLint < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/bc/22/482fa53b69115a967034cd492033e5a063c61ce66d3e6e78011e6cf5bd69/boto3-1.20.32.tar.gz"
-    sha256 "2c7eacd3edd38ec89456841edecd9c29382372180b675e43e22d16df6a582a4a"
+    url "https://files.pythonhosted.org/packages/f6/b0/e42a79e8dc51ff9d9817c12d911893049cfddefbe3e2c062401306102fb9/boto3-1.20.46.tar.gz"
+    sha256 "d7effba509d7298ef49316ba2da7a2ea115f2a7ff691f875f6354666663cf386"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/ee/c0/f8502a201ac73f1cceaa0d72324deed6f01d59404082d65775446e6ecbdc/botocore-1.23.32.tar.gz"
-    sha256 "49c39a4e0ece6e486aefa23d7c96c5f9a4c41a6ceab3cc41b157e8b5bea749e3"
+    url "https://files.pythonhosted.org/packages/97/b9/f55bf7f44377c1093f16f789979b39d9bed51ad1f2069d17d1ca55d2d4c2/botocore-1.23.46.tar.gz"
+    sha256 "38dd4564839f531725b667db360ba7df2125ceb3752b0ba12759c3e918015b95"
   end
 
   resource "jmespath" do
@@ -55,8 +55,8 @@ class CfnLint < Formula
   end
 
   resource "jsonpickle" do
-    url "https://files.pythonhosted.org/packages/62/8a/84864798c5ef120e3a5b5cf08d8c231fa4499b53d465488563c4cb901f2f/jsonpickle-2.0.0.tar.gz"
-    sha256 "0be49cba80ea6f87a168aa8168d717d00c6ca07ba83df3cec32d3b30bfe6fb9a"
+    url "https://files.pythonhosted.org/packages/35/0e/fe3ce0869add0213a1b45eef746cafb79ca45255a60ec918630c159e3490/jsonpickle-2.1.0.tar.gz"
+    sha256 "84684cfc5338a534173c8dd69809e40f2865d0be1f8a2b7af8465e5b968dcfa9"
   end
 
   resource "jsonpointer" do
@@ -86,8 +86,8 @@ class CfnLint < Formula
   end
 
   resource "pyrsistent" do
-    url "https://files.pythonhosted.org/packages/f4/d7/0fa558c4fb00f15aabc6d42d365fcca7a15fcc1091cd0f5784a14f390b7f/pyrsistent-0.18.0.tar.gz"
-    sha256 "773c781216f8c2900b42a7b638d5b517bb134ae1acbebe4d1e8f1f41ea60eb4b"
+    url "https://files.pythonhosted.org/packages/42/ac/455fdc7294acc4d4154b904e80d964cc9aae75b087bbf486be04df9f2abd/pyrsistent-0.18.1.tar.gz"
+    sha256 "d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
   end
 
   resource "python-dateutil" do

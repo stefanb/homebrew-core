@@ -2,23 +2,15 @@ class Strongswan < Formula
   desc "VPN based on IPsec"
   homepage "https://www.strongswan.org"
   license "GPL-2.0-or-later"
-  revision 1
 
   stable do
-    url "https://download.strongswan.org/strongswan-5.9.4.tar.bz2"
-    sha256 "45fdf1a4c2af086d8ff5b76fd7b21d3b6f0890f365f83bf4c9a75dda26887518"
+    url "https://download.strongswan.org/strongswan-5.9.5.tar.bz2"
+    sha256 "983e4ef4a4c6c9d69f5fe6707c7fe0b2b9a9291943bbf4e008faab6bf91c0bdd"
 
     # Fix -flat_namespace being used on Big Sur and later.
     patch do
       url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-big_sur.diff"
       sha256 "35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c"
-    end
-
-    # Fix Installation of virtual IPs in strongSwan failing on macOS Monterey
-    # Remove from `not_a_binary_url_prefix_allowlist.json` when this patch is removed.
-    patch do
-      url "https://github.com/Homebrew/homebrew-core/files/7503555/macos-12-tun-fix.txt"
-      sha256 "733a6868f18d7e28ad90d41fde4dfedd2b975ccaf9bb98ede31eac00685a697a"
     end
   end
 
@@ -28,11 +20,11 @@ class Strongswan < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "5c263f7bdc0f889d3ab6ab9390e55e82116afbed1d498cbc99e54ea40ba28990"
-    sha256 arm64_big_sur:  "6e319f2ec766a4095d53f98d9c8e7974c7e13c5ad1d629884c34abc96fa5f4f0"
-    sha256 monterey:       "c149f692c40982c2ae6fab672bbd378a16b3747d82edc12c7783ff32301537be"
-    sha256 big_sur:        "3686b4aecc7b5a1ce8d085dfe2572b15ec5f1585b64be464411b7e1379ee875f"
-    sha256 catalina:       "19214f5451b8e000f74761a1fc55f72b9c1793a145fb168b2d889de0931d9893"
+    sha256 arm64_monterey: "a42f39198601606792a416884541d1b1e5798a8a097d17c8e5998a08600f8b69"
+    sha256 arm64_big_sur:  "36819a834b78145ee0e2de275dc3d5c2bb673b8a2cfb3ac613add75bcbaf60f4"
+    sha256 monterey:       "b6476514304afe6d3c38324b69d3374a011793cfb039de1d933c4ae444db85e0"
+    sha256 big_sur:        "e8d2f516a99abe3420bd26e7208bf947c196bca478c8995765af2c49024c0a5f"
+    sha256 catalina:       "a7967624cccfc7dde159851d6328d3bb79b95c172d861310872684cf96590f48"
   end
 
   head do

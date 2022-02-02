@@ -3,17 +3,17 @@ class Glib < Formula
 
   desc "Core application library for C"
   homepage "https://developer.gnome.org/glib/"
-  url "https://download.gnome.org/sources/glib/2.70/glib-2.70.2.tar.xz"
-  sha256 "0551459c85cd3da3d58ddc9016fd28be5af503f5e1615a71ba5b512ac945806f"
+  url "https://download.gnome.org/sources/glib/2.70/glib-2.70.3.tar.xz"
+  sha256 "233fa4841c1e19e396db7607d58f6b75ba3313c50bf0fce07b2e3532d5eb7d46"
   license "LGPL-2.1-or-later"
 
   bottle do
-    sha256 arm64_monterey: "bdcd1badbace8ba7d6ffbaec6cfdb300fe96f90f8279a9071b0bbea59890d09b"
-    sha256 arm64_big_sur:  "1bed3e54e8b85fe99a3e88e06ad1da63af0c6fd92cc4081947e385de5b3707d4"
-    sha256 monterey:       "0b628022094b74510047acda21574ca7fad9c667881856f8fb6b4d69f5684b3f"
-    sha256 big_sur:        "85ea450b1a990c33a988c12cea63c25ba3a483465eb9ddc762002dbff588642c"
-    sha256 catalina:       "9bb57ef98e408fe27b70fbaa609ab72845d8e86e6b75e5618eb5a0c467fe2fa6"
-    sha256 x86_64_linux:   "6ebba4d716df96faff8a847a703eb172b8b1001af0b6138d70449bc093d684d2"
+    sha256 arm64_monterey: "2b4d9f0366e234076bd740aeb41030976f89bec8f56d1e5d3d1915d0af661697"
+    sha256 arm64_big_sur:  "d999fa7d090c46a693d6d82a5354ea132856f4defcc7877cf69c00160cb20103"
+    sha256 monterey:       "0d78a7acc480b9137ff13428f9dbc3494dd7bf9af3c5366ad9f65fb27e4521f0"
+    sha256 big_sur:        "eea457e167092c7c6bbab2a4c701625733e7ee3239468962032a4d425d391aa1"
+    sha256 catalina:       "674f149bb1fb4d6d13d133f6fc4ae95156a5d72092f9d9c35ea87aaae0d91a33"
+    sha256 x86_64_linux:   "dd79e0cbdce020e4ec5525562a241f1428ed62a92f02177ba3d83a6707d2e012"
   end
 
   depends_on "meson" => :build

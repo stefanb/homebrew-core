@@ -2,9 +2,10 @@ class Asymptote < Formula
   desc "Powerful descriptive vector graphics language"
   homepage "https://asymptote.sourceforge.io"
   # Keep version in sync with manual below
-  url "https://downloads.sourceforge.net/project/asymptote/2.75/asymptote-2.75.src.tgz"
-  sha256 "9c8b3fe89df45e6e799ef422fe7231fe87ba681908364eb0cd08b51910476c77"
+  url "https://downloads.sourceforge.net/project/asymptote/2.77/asymptote-2.77.src.tgz"
+  sha256 "ae3ddc8e37ae666c75cbd23cd8b42df9c5e95ef6c311b5a2ee4db8b3c643b96c"
   license "LGPL-3.0-only"
+  revision 1
 
   livecheck do
     url :stable
@@ -12,12 +13,12 @@ class Asymptote < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "bc36b73452d0d9986d676b44f6cfe1fe66a90765ea2e776a978a47d3ccea35fe"
-    sha256 arm64_big_sur:  "2527026c063bf26d17c27b70d4832dc8224e1162df48f351c5c9c8cd8c8c9f4c"
-    sha256 monterey:       "e1fbc082c18d809f85d657ad3206fe6b184c5215d1b786b23d5a9fb6a5536406"
-    sha256 big_sur:        "334094e612c41a0072bc3027a6e85463b44ad156f0c6ac9250bd531798aff539"
-    sha256 catalina:       "f62ae59ffce773212dc8a2dd01f91304ac72be5eb339ebe7db7938593ed8fb3f"
-    sha256 x86_64_linux:   "21ce391dc447e2f165622459a0fee6ef7b823ec2e833ddfa9154b8784656bcb9"
+    sha256 arm64_monterey: "1fa6523b4285ee7000365f625883edcc4f24ad98446bada442332379abed7177"
+    sha256 arm64_big_sur:  "d597787d34ddcf37435190d335ac2d5aec7f6789ad1b7ec49a84406640f92f47"
+    sha256 monterey:       "3f691854914dc8ab1a13d2886879a149e530af8de55d87d61037dce4fb587944"
+    sha256 big_sur:        "320a493a9321b9321f2cb4a2eec3d092dbd4a743d36fbe3582a1563d904e0045"
+    sha256 catalina:       "5634fad0e28688bc688f2ddac14ee4101155966baa826616789d30fc87c22b00"
+    sha256 x86_64_linux:   "6e63c22cae23ea6692b171f6c0422201d66649eee4be3fb8537608316f1977aa"
   end
 
   depends_on "glm" => :build
@@ -33,8 +34,8 @@ class Asymptote < Formula
   end
 
   resource "manual" do
-    url "https://downloads.sourceforge.net/project/asymptote/2.75/asymptote.pdf"
-    sha256 "090fb10f9a2cb58781af38974cedd64ea1d7a9f4b0a379660b1a0fc9688654ca"
+    url "https://downloads.sourceforge.net/project/asymptote/2.77/asymptote.pdf"
+    sha256 "21e23e4721434e9168a88185a58d84e565da7ea09748d85d2c19786ba229542b"
   end
 
   def install

@@ -1,8 +1,8 @@
 class Vice < Formula
   desc "Versatile Commodore Emulator"
   homepage "https://sourceforge.net/projects/vice-emu/"
-  url "https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.6.tar.gz"
-  sha256 "65bfe55cce627db9b5a0ac7876a90c087e9fe86e9f5517e809446c4064a2d3fd"
+  url "https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.6.1.tar.gz"
+  sha256 "20df84c851aaf2f5000510927f6d31b32f269916d351465c366dc0afc9dc150c"
   license "GPL-2.0-or-later"
   head "https://svn.code.sf.net/p/vice-emu/code/trunk/vice"
 
@@ -12,10 +12,11 @@ class Vice < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "b3190a3e8af7cb52ab23bbf21e6334cf4860d4ae9e4d9e7791ad8d8d70e352a7"
-    sha256 monterey:      "42529cf031920441b336400a3ecfec27aa5d4033a32b8e504f68c00285f8505a"
-    sha256 big_sur:       "9c2f5fbcab4a5a0eb3f0a8d25451b806473efdaf3acf4b7ca005d646f5690574"
-    sha256 catalina:      "9fd0dd3efa4d7e8848c48d4c554d7854d52746e3d45c5473b0e8ce98002dd3dc"
+    sha256 arm64_monterey: "33fb1aad075c3b196121b6fc2cc204e28fc926b72481858e47e104e812f3ee50"
+    sha256 arm64_big_sur:  "44378ed1786c48a0ce150e9c246829a59166ff8c2548a924f27d5ff2f4957500"
+    sha256 monterey:       "642e255aa5c7e4cb48e8773196dd94925e81d11bc5b538f02946af1c70397298"
+    sha256 big_sur:        "270cba1e6c87ed97b7cafc142f4610661610a874b2ddb7ba1b805472b004242a"
+    sha256 catalina:       "05c3fbd9b2972453bf7d2688ef666efbbd7b9bd5b4fb37b294d3b6c0e45432cb"
   end
 
   depends_on "autoconf" => :build
@@ -64,6 +65,6 @@ class Vice < Formula
   end
 
   test do
-    assert_match "cycle limit reached", shell_output("#{bin}/x64sc -console -limitcycles 1000000 -logfile -", 1)
+    assert_match "Initializing.", shell_output("#{bin}/x64sc -console -limitcycles 1000000 -logfile -", 1)
   end
 end

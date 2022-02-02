@@ -1,8 +1,8 @@
 class Vgrep < Formula
   desc "User-friendly pager for grep"
   homepage "https://github.com/vrothberg/vgrep"
-  url "https://github.com/vrothberg/vgrep/archive/v2.5.5.tar.gz"
-  sha256 "6272ca460549813231bc046e6fde7e94baec03f66c4b8f88b197af7d70556013"
+  url "https://github.com/vrothberg/vgrep/archive/v2.6.0.tar.gz"
+  sha256 "4cbd912189397b08897fcc1709787ec60ed42275059f900463055211e1f6d689"
   license "GPL-3.0-only"
   version_scheme 1
   head "https://github.com/vrothberg/vgrep.git", branch: "main"
@@ -13,11 +13,11 @@ class Vgrep < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "525f86fea0bdf137d5047f88a6040d629161135d960e51a710d5dc43feb8e78e"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "f9cd68586cd3c4c8caff6123707a90caa752ede23051fec06f7f94345ce4b674"
-    sha256 cellar: :any_skip_relocation, monterey:       "203bd584c29a7ac3d4eab481c01f53961cb921df433bf019aad075bd57c9e136"
-    sha256 cellar: :any_skip_relocation, big_sur:        "cc3ba7496ba5e93aa1ec4587fdf8d672602ebd4d0014a93f161b60218ec3c460"
-    sha256 cellar: :any_skip_relocation, catalina:       "d53ef92d20ae9f34376be8a78f0dd19f9a570d1c7b823a67b3a2cff502445969"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "3ba320fea76d46597b5cb1d750ad03e56d1e8481264f12f906ca33092d7f3fb0"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "1d0d068dfb51958e4327d4b453e9effda29915a8902e8c2aefef2324751b25af"
+    sha256 cellar: :any_skip_relocation, monterey:       "c59e5f9cdc3b7f49631f85ed5e24f4ac6e6e9aa31b950a572d33081a84415ece"
+    sha256 cellar: :any_skip_relocation, big_sur:        "2ee5a3d20e1d70cf4e0de278b8fa4149ca8195a3fd1afb0eb39f463c7a6f9868"
+    sha256 cellar: :any_skip_relocation, catalina:       "199a9605dfc3964c6ccdd94bd4c2f1b7e4b4fba2850a935a7aa31c87879f5ed3"
   end
 
   depends_on "go" => :build

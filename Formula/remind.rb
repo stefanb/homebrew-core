@@ -1,8 +1,8 @@
 class Remind < Formula
   desc "Sophisticated calendar and alarm"
   homepage "https://dianne.skoll.ca/projects/remind/"
-  url "https://dianne.skoll.ca/projects/remind/download/remind-03.03.11.tar.gz"
-  sha256 "08267b08435e23cccd520b4161eb0659ba9fe77382afd8414cdd626de801e25a"
+  url "https://dianne.skoll.ca/projects/remind/download/remind-03.03.12.tar.gz"
+  sha256 "d4aa4cda5a1b53e2acc631e935e031c00c77982ad4f0867286f7d8270954409e"
   license "GPL-2.0-only"
   head "https://git.skoll.ca/Skollsoft-Public/Remind.git", branch: "master"
 
@@ -12,22 +12,17 @@ class Remind < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "02724b3f2076efdd868bea95169b6312b4ea63a63f8f55f26506eca78e0c0862"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ebe9a6e292d2a734f424efd070d95e96b839bf403fa7aa3661de5bd8b41021db"
-    sha256 cellar: :any_skip_relocation, monterey:       "fb3de5a6284795af94d6e93a3433571970b13b036c97ec92cdb3a882a53a3f94"
-    sha256 cellar: :any_skip_relocation, big_sur:        "63c64b92dbcb163827f92093b1f90621ae4f767454a12f94f83a307392d3207c"
-    sha256 cellar: :any_skip_relocation, catalina:       "4334ea14d8923b7387fb04a05ff0b74ec6b0d0468a37fa0bda8d83d59b0e0157"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "e6bc38a9340f48278b1a8753566f338379f3889b1ba45f632fc5dc80bd5c0e3e"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "1d30e36523053c01dce20c8090ffd04774d93cdc912fa963c3f73fe228f81e9e"
+    sha256 cellar: :any_skip_relocation, monterey:       "5cdbb26b9750ad704d8224c17a3387f03fd711aa80b75563792bdcee29a68b42"
+    sha256 cellar: :any_skip_relocation, big_sur:        "016e021500b05d5ad420f54564125be50807d3ca9764c7a02260f5ca05a0baee"
+    sha256 cellar: :any_skip_relocation, catalina:       "5ed2f039bc0730edf9de3b416b4df24ab4c5ce0e919c8b5c2c8cb9a019340733"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6ee7764c920542b2d990f5d8eb44dd0cc3a3bb042ef6aba084d826d9f1ae503d"
   end
 
   conflicts_with "rem", because: "both install `rem` binaries"
 
   def install
-    # Remove unnecessary sleeps when running on Apple
-    inreplace "configure", "sleep 1", "true"
-    inreplace "src/init.c" do |s|
-      s.gsub! "sleep(5);", ""
-      s.gsub!(/rkrphgvba\(.\);/, "")
-    end
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
   end

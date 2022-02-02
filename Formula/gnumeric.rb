@@ -1,16 +1,17 @@
 class Gnumeric < Formula
   desc "GNOME Spreadsheet Application"
   homepage "https://projects.gnome.org/gnumeric/"
-  url "https://download.gnome.org/sources/gnumeric/1.12/gnumeric-1.12.50.tar.xz"
-  sha256 "758819ba1bd6983829f9e7c6d71a7fa20cd75a3652a271e5bb003d5d8bcc14b8"
+  url "https://download.gnome.org/sources/gnumeric/1.12/gnumeric-1.12.51.tar.xz"
+  sha256 "a00e6c6e4ecddadabd9b0ae18013d7b05937fdcb8f9aad5a73b95923c7aeb1dd"
   license any_of: ["GPL-3.0-only", "GPL-2.0-only"]
 
   bottle do
-    sha256 arm64_big_sur: "e35e87954fd36d10ba7d5eb67eb55cda22480501b0244d11d73227efac32eb84"
-    sha256 big_sur:       "308986adac6fc8ee0439f78fc88b3800dec488f3c19059e188d7b89703976517"
-    sha256 catalina:      "c6629015a88979e534383df04b19b371e4f579670538abd057159371d769d9f6"
-    sha256 mojave:        "783045a4b518267f8dad893ba2768701065af8d3f170d37cb2ae1658d96d5474"
-    sha256 x86_64_linux:  "8028a3a6bdad2a160df06aad38c2476a61a448879764cc8311e896d888c7e20f"
+    sha256 arm64_monterey: "a7aa880fff06e3155e9c98d5e1f86af47ce0943d7473b55f6b5d3cfae913322e"
+    sha256 arm64_big_sur:  "bc9ad2a9bff41478d87c19db3b4914e9b4726fb9c2673ef5aedb6d18b285f150"
+    sha256 monterey:       "3b43538df7a0fa49452115d616b137dfe1a6632c5966e7884300214c4640d19d"
+    sha256 big_sur:        "7d844f97799311e86ba0925d15284f25226daa7fe13df2492ee54cd5cfda6030"
+    sha256 catalina:       "9b996c26bd8539c594d0bb2ce9df92d47f44200dec0e4a6ce8b922f3c59b19f9"
+    sha256 x86_64_linux:   "ae8b64be5c288adcad39186a2795728637f5c703ff886805f441add41902c7dc"
   end
 
   depends_on "intltool" => :build
@@ -31,6 +32,12 @@ class Gnumeric < Formula
       url "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz"
       sha256 "1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216"
     end
+  end
+
+  # Fix -flat_namespace being used on Big Sur and later.
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-big_sur.diff"
+    sha256 "35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c"
   end
 
   def install

@@ -8,9 +8,10 @@ class Bind < Formula
   # "version_scheme" because someone upgraded to 9.15.0, and required a
   # downgrade.
 
-  url "https://downloads.isc.org/isc/bind9/9.16.24/bind-9.16.24.tar.xz"
-  sha256 "5582f3734bd6232284f93f14206b8a46d1f819dea4797ae157066f6963b08507"
+  url "https://downloads.isc.org/isc/bind9/9.18.0/bind-9.18.0.tar.xz"
+  sha256 "56525bf5caf01fd8fd9d90910880cc0f8a90a27a97d169187d651d4ecf0c411c"
   license "MPL-2.0"
+  revision 1
   version_scheme 1
   head "https://gitlab.isc.org/isc-projects/bind9.git", branch: "main"
 
@@ -22,36 +23,22 @@ class Bind < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "d9dd87a93fff7bd8229b787d780be94358813134178db54936327ce9ac83c8d2"
-    sha256 arm64_big_sur:  "782ffdb50a3aaadc74878946e8f13ec34ae89952f3efde82b1975796a90d5a04"
-    sha256 monterey:       "246747ece51e8ce3d28bd42de523fbd765564a61e0eca67888ff0a095676c363"
-    sha256 big_sur:        "1e29492477d188716613872d85b695ad70cda6faac50f4a57c07d085e1725cbd"
-    sha256 catalina:       "e3c75d8cfb95fad70596103cbf3a0a6aee686739e11fbcb91f3835ae03e1a3b2"
-    sha256 x86_64_linux:   "a6a49ad2ba7466c0f2e454c437ae005a05bff67483e4e066799ab750a87ae1aa"
+    sha256 arm64_monterey: "fcf31d918b5942a4be406b59d10a57f7c81bbeee17f8ee4931ddad747ab69c25"
+    sha256 arm64_big_sur:  "d8fbc5c20da3da1d3c8cda33f7b988fa703714104cbd9288c96b786d5c6384b5"
+    sha256 monterey:       "219596d158d6bd69de2be6f42cd9f6e06c4f13bbe69c23c2db9a7f53d6497e7b"
+    sha256 big_sur:        "4b7c6b05b7707c84e8b4e83bd47a618635ae8a2d60b99b7ff188cf8185d0e075"
+    sha256 catalina:       "77c121c141793af106ddd3903fe208f31610b1aefc1e34bc37c66dd0922c7697"
+    sha256 x86_64_linux:   "3395d0c08ba996a1e47b6e7473d002daa630ef0ce42dfb867c692f327044ebb2"
   end
 
   depends_on "pkg-config" => :build
   depends_on "json-c"
   depends_on "libidn2"
+  depends_on "libnghttp2"
   depends_on "libuv"
   depends_on "openssl@1.1"
-  depends_on "python@3.10"
-
-  resource "ply" do
-    url "https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz"
-    sha256 "00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3"
-  end
 
   def install
-    xy = Language::Python.major_minor_version Formula["python@3.10"].opt_bin/"python3"
-    vendor_site_packages = libexec/"vendor/lib/python#{xy}/site-packages"
-    ENV.prepend_create_path "PYTHONPATH", vendor_site_packages
-    resources.each do |r|
-      r.stage do
-        system Formula["python@3.10"].opt_bin/"python3", *Language::Python.setup_install_args(libexec/"vendor")
-      end
-    end
-
     # Fix "configure: error: xml2-config returns badness"
     ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
 
@@ -61,8 +48,6 @@ class Bind < Formula
       "--with-json-c",
       "--with-openssl=#{Formula["openssl@1.1"].opt_prefix}",
       "--with-libjson=#{Formula["json-c"].opt_prefix}",
-      "--with-python-install-dir=#{vendor_site_packages}",
-      "--with-python=#{Formula["python@3.10"].opt_bin}/python3",
       "--without-lmdb",
       "--with-libidn2=#{Formula["libidn2"].opt_prefix}",
     ]

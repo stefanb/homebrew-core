@@ -1,8 +1,8 @@
 class Micronaut < Formula
   desc "Modern JVM-based framework for building modular microservices"
   homepage "https://micronaut.io/"
-  url "https://github.com/micronaut-projects/micronaut-starter/archive/v3.2.6.tar.gz"
-  sha256 "82440ccbe1047f0cbe01078c4123723f5a688f5901ac381644010b8fe1f3bf44"
+  url "https://github.com/micronaut-projects/micronaut-starter/archive/v3.3.0.tar.gz"
+  sha256 "d3a8ef78beb90880a56d2b00a480cf0d86fb14d7957b430395eaedf75ed59c51"
   license "Apache-2.0"
 
   livecheck do
@@ -11,10 +11,10 @@ class Micronaut < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "40d813cbaceaca4a7299c379a3da7642c853fea0df6a6df9f78f5df0e20719a7"
-    sha256 cellar: :any_skip_relocation, big_sur:       "3c9728ed95c4176801161256320e938299a070a8ef73d37fcdab40e3a0c34c7c"
-    sha256 cellar: :any_skip_relocation, catalina:      "cc39c1517d778081b93fa0078419ba87bba8ae8471194ee927799c2b8a101f06"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "52fede89148207fd15cf55c7d783bd0204643ee4b81a36a0523733965756fe60"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "864d38d8ef1fa74ca9b3d5dfa02b50963e9854eb7516e907969d193c3b462011"
+    sha256 cellar: :any_skip_relocation, big_sur:       "702615d85f05601c0b7f70e8947016c56a223f9d6852d73f6e00d53fd42844d1"
+    sha256 cellar: :any_skip_relocation, catalina:      "dc5864d8456f636f956d3b4cad2e12bf4f873793a66c4eba4505e4a1662da19c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d86e69c580736b5120e582b08281b1dbdf20e8895b55166748081879ec9309d1"
   end
 
   # Uses a hardcoded list of supported JDKs. Try switching to `openjdk` on update.

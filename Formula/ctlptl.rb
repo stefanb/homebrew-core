@@ -1,17 +1,17 @@
 class Ctlptl < Formula
   desc "Making local Kubernetes clusters fun and easy to set up"
   homepage "https://github.com/tilt-dev/ctlptl"
-  url "https://github.com/tilt-dev/ctlptl/archive/v0.7.2.tar.gz"
-  sha256 "b89e4e585dc44936b921e04650b20832d25ac456242f763d812bdacac5a6a0ca"
+  url "https://github.com/tilt-dev/ctlptl/archive/v0.7.4.tar.gz"
+  sha256 "8919ca954534590b3d2119bad6fddf35aac981b080640bbb5de9a53536974779"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "aeec10e7cfbd2aff1101c75a4950e140c0fabfa46f4f05e89f9b5e4cc55d99fa"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c23da27d4a7e8c6a8d57e802e6e54953f06d798d93a1a58ce275340b5ab67862"
-    sha256 cellar: :any_skip_relocation, monterey:       "6e4b0af8bb7cc5cbbf74e05d55b89bfc36f875aa72dc40f7b6669e695500a918"
-    sha256 cellar: :any_skip_relocation, big_sur:        "d9b7d61ffee2523c577cf8e576846084680b01521e6afbb936eb58a3d110df8b"
-    sha256 cellar: :any_skip_relocation, catalina:       "fce9aa48804cabec6712b00573d6b867e4701f4add9b0cbb3ee7508136efaf90"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7a6bdfd2f519435f2151b1c24d88238e48b9ff4db568111ece4f9ea9eed0d423"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "d8995b3574f92335d381e7fb12feb9e758ce5fc7c58b49c97e8354e6b1dc6ac1"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "34a39890d867618ee53878b7869ab92e8e638adeca8c6748128e5e487388d846"
+    sha256 cellar: :any_skip_relocation, monterey:       "23b36e99a1b1571243cf597a82b9640cb765b3149b5cdb8475a0614df97b8c0a"
+    sha256 cellar: :any_skip_relocation, big_sur:        "acf4c813d510a8105ab3fa33cf6255e02576182da58dc81c63ddabefcc2990a7"
+    sha256 cellar: :any_skip_relocation, catalina:       "2cb26277edaf8578709df52b6655b8bce62d297028577f500734f0034a1f43e5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "292d8ab533dde011338c758f102bcaa4c2be2c7586030ff17ae2ff28b0f5f9a2"
   end
 
   depends_on "go" => :build

@@ -2,18 +2,18 @@ class Minikube < Formula
   desc "Run a Kubernetes cluster locally"
   homepage "https://minikube.sigs.k8s.io/"
   url "https://github.com/kubernetes/minikube.git",
-      tag:      "v1.24.0",
-      revision: "76b94fb3c4e8ac5062daf70d60cf03ddcc0a741b"
+      tag:      "v1.25.1",
+      revision: "3e64b11ed75e56e4898ea85f96b2e4af0301f43d"
   license "Apache-2.0"
   head "https://github.com/kubernetes/minikube.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3672e4faa44598b7a4015607c05861969461a9831f3ddfd894b4731896c69e01"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e61a9f3d86b74b4d1248fed2b9a2f3901dda0feccab714567e93f0f29717a843"
-    sha256 cellar: :any_skip_relocation, monterey:       "0385fcb25a2009995119471d968d4c04925ffb29413ad07e87d94bc99af1d620"
-    sha256 cellar: :any_skip_relocation, big_sur:        "e6c111d5a6a004c5580b729dfe9daa342f3f04e4cf3831b5d65d29d4fb74a10e"
-    sha256 cellar: :any_skip_relocation, catalina:       "da0ac07ef5f0d4770e1af0ead7e0ebc0b5e23c249ec86c407475a22c93b87ad7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0fe6ec45fbae6dae4ce39fbba988673c72bc5bb5bfaa8933ad666ee209e08be9"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4c20abe357ff2726082b8eacbc3a4e286a7e030bd1460f5a7ded5e559ce2e330"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9758947d5f4424b19865dd3260ffd041175d8318eaace49fef67f15b745bd0c9"
+    sha256 cellar: :any_skip_relocation, monterey:       "55bb120a3c56de1237e827772e22b63332b846694affdaca249306643a9da7f1"
+    sha256 cellar: :any_skip_relocation, big_sur:        "a617029b4a94477847087fa368e8725a74dd3a6a188e607307f3ab8c533db339"
+    sha256 cellar: :any_skip_relocation, catalina:       "5d119f190435d45fc83b264e6377e92318ccad9303996ee8e82baad083a04dce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8d33f239e285820de9e51773078b1a9cfc100214382af36dfbe7437e005c80df"
   end
 
   depends_on "go" => :build
@@ -24,13 +24,13 @@ class Minikube < Formula
     system "make"
     bin.install "out/minikube"
 
-    output = Utils.safe_popen_read("#{bin}/minikube", "completion", "bash")
+    output = Utils.safe_popen_read(bin/"minikube", "completion", "bash")
     (bash_completion/"minikube").write output
 
-    output = Utils.safe_popen_read("#{bin}/minikube", "completion", "zsh")
+    output = Utils.safe_popen_read(bin/"minikube", "completion", "zsh")
     (zsh_completion/"_minikube").write output
 
-    output = Utils.safe_popen_read("#{bin}/minikube", "completion", "fish")
+    output = Utils.safe_popen_read(bin/"minikube", "completion", "fish")
     (fish_completion/"minikube.fish").write output
   end
 

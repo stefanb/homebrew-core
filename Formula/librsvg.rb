@@ -1,17 +1,17 @@
 class Librsvg < Formula
   desc "Library to render SVG files using Cairo"
   homepage "https://wiki.gnome.org/Projects/LibRsvg"
-  url "https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.7.tar.xz"
-  sha256 "fffb61b08cd5282aaae147a02b305166a7426fad22a8b9427708f0f2fc426ebc"
+  url "https://download.gnome.org/sources/librsvg/2.52/librsvg-2.52.5.tar.xz"
+  sha256 "407cbbab518137ea18a3f3220bea180fbee75f3e5bd6ba10a7a862c1a6f74d82"
   license "LGPL-2.1-or-later"
 
   bottle do
-    sha256                               arm64_big_sur: "373e91782be11de752c5d738a19c4b0b7631319612982fa9366e5477d4f444b2"
-    sha256                               monterey:      "3753625c61c6f0753a816bed581b6acb54be4dd8d17049dcecf52c2ed9e825bb"
-    sha256                               big_sur:       "7849cab410dfd63c3f8f635e0a0152cf34425524f728c2f01a36d7631f34688b"
-    sha256                               catalina:      "454d94e2c72567744613b69a9d879dde0a0bd9593c32929d520266b04f6b51b8"
-    sha256                               mojave:        "312d0f2fade5525cfe58f0c0e16cccc1e9c73925bb2fc8f1c320d3a0f8a3f4fc"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "48c4693a1f62fc8c870f3831867d9f082d0f9f42cb3151f0be77733b4c3e7ac4"
+    sha256                               arm64_monterey: "83e2f0abdc61c62986ce60cb243c9996ddc14321fab83b64af9beb0483e0e72f"
+    sha256                               arm64_big_sur:  "9b7b6b18890cdee1a4f227774556995eb6a6e84ac3b9dcdd62d7938300f9b113"
+    sha256                               monterey:       "25e4b29b4599cbb0dfac01c03aa55d35ef331c0d05c5bbfdad8d24008b0532cf"
+    sha256                               big_sur:        "7d56a8e320e894e04cb9e78a8923cb483f02fc5a3ba1eb8bc473c7affe38d74e"
+    sha256                               catalina:       "9c6702f2d5a0031e8b13f176cfedb3dfbfee5767190cc263a2fe36a3946ae799"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "809043724ce46d0d12d642b94c3c91a36b175566db853b716eb663c5af684c39"
   end
 
   depends_on "gobject-introspection" => :build

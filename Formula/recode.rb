@@ -1,18 +1,17 @@
 class Recode < Formula
   desc "Convert character set (charsets)"
   homepage "https://github.com/rrthomas/recode"
-  url "https://github.com/rrthomas/recode/releases/download/v3.7.9/recode-3.7.9.tar.gz"
-  sha256 "e4320a6b0f5cd837cdb454fb5854018ddfa970911608e1f01cc2c65f633672c4"
+  url "https://github.com/rrthomas/recode/releases/download/v3.7.11/recode-3.7.11.tar.gz"
+  sha256 "97267a0e6ee3d859b7f4d1593282900dbc798151b70a6d1f73718880563b485e"
   license "GPL-3.0-or-later"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_monterey: "f90377777dde4ec023ca2fc58eb27f329476a3374eae278e68c4d9055f171ed2"
-    sha256 cellar: :any,                 arm64_big_sur:  "9de0576464a54b86cc1dbef266840a0191c9ff6f49f9f2d2f241d7e718fdc650"
-    sha256 cellar: :any,                 monterey:       "0b81e5415b4b9a2192a3ca53fcb7c92ccdd5ad51643b1f50e4104ed562d8f27d"
-    sha256 cellar: :any,                 big_sur:        "9976f338086c7a83eb7b03f08545bb0107604c91bd4d645a8e5952824dca9d38"
-    sha256 cellar: :any,                 catalina:       "72f6932b70d83f40ea622fce34345fdc074a00389ca7be144c52159afd488fc5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c07c0d30ff0c8d420a552f8288241eee5ac3f50d0348ddc633a171e8712c22d0"
+    sha256 cellar: :any,                 arm64_monterey: "946547cc6a852689c9aec88304c31cc4ccefccc445e8c354f02a3d3f307e1848"
+    sha256 cellar: :any,                 arm64_big_sur:  "cfe0d3f306397fcb30ef57b6a10e9efaad602353d63015641c70543f9760e353"
+    sha256 cellar: :any,                 monterey:       "ad198e3f6095736d136841e530a7b447e5539668999f683f2b9f5ae0f6d11914"
+    sha256 cellar: :any,                 big_sur:        "29a770e70ea05708f39e3fd296eb30305d79b81352967f18f199f2cc6ea7dab5"
+    sha256 cellar: :any,                 catalina:       "26d4cbd59af48f7da47aee5a910f3ec9f7a090a3f01a3338df60ac267472042c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f6ab05069d3a56be1bc774bc82795c1f47acb7feba6489bfdee240dcd1bb5fb6"
   end
 
   depends_on "libtool" => :build

@@ -3,17 +3,17 @@ class Moto < Formula
 
   desc "Mock AWS services"
   homepage "http://getmoto.org/"
-  url "https://files.pythonhosted.org/packages/8a/74/8f30d77db2ac9e103fdb931d84a53677830c146eedbc1f44d4a32f407bce/moto-2.3.1.tar.gz"
-  sha256 "477e6a94c5e940c649c1276276afe6e041a068943a6969009dcca69aa1e7463a"
+  url "https://files.pythonhosted.org/packages/4e/45/87dc25dbda197896974630e027d4e804d725a9b2f4354191db6742d4f566/moto-3.0.2.tar.gz"
+  sha256 "bd9d68a1f3985241444c314ac129a27efbe7f9b0a2ffa350031bbde743589399"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "7c11b4a006fba36fc85f535d710dd69d40f0b27fdd51cc1f016c1ef71fd50e1f"
-    sha256 cellar: :any,                 arm64_big_sur:  "76151fc9ecef9b57f8b0f39bb6516f5181e542ef070e9db515696afaf433f439"
-    sha256 cellar: :any,                 monterey:       "29f17eb8bc38aa6bfaa98d10ebca9e53a0a90a9b8ba7fcb8d3697c13716b1693"
-    sha256 cellar: :any,                 big_sur:        "c7f4430969d1fb17340e1b9c534b5205163531e775e917256736cb070c3dc12f"
-    sha256 cellar: :any,                 catalina:       "21c187aa9e5bdfb3d0aac76f72c1f230b95d8511775a91211f0e5c0da9fba858"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "81665026c5a084995da2ca52cd5ee826a97b1838149e7e2fda82179e7db3b47d"
+    sha256 cellar: :any,                 arm64_monterey: "30a8b208cc1af082b93a09f06afaf722902ffad9417862e14597a0a7632796c3"
+    sha256 cellar: :any,                 arm64_big_sur:  "81c72684d9773ec5f52c0cb5210b828b0bc92b93c6bde78d367beed1424fce5d"
+    sha256 cellar: :any,                 monterey:       "dfb71f7895e373452f17a59600f4e3ebabbde4c4ff1ab0b3cddaa8168d0d1df5"
+    sha256 cellar: :any,                 big_sur:        "9d368fbfa47117abb9b606b82f93a557238312839ae3a9399609963480e701e9"
+    sha256 cellar: :any,                 catalina:       "5ff590317320c5c020ea05198d1578521a185c6a5b39488f05cc01369216c9ba"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "72ec0580d4dbbe72453bc0cd71c1e18e30928a8847624e079f1ac0a98747e1de"
   end
 
   depends_on "rust" => :build # for cryptography
@@ -36,13 +36,13 @@ class Moto < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/ef/9c/8ad10de7177dec675a25397ffe922be9d9f42d35483ed1b983b8af4c810a/boto3-1.20.31.tar.gz"
-    sha256 "3003d64ebef678b89a9909d2df3836160c7cbad5cbfe6c995a61de0875b36237"
+    url "https://files.pythonhosted.org/packages/f6/b0/e42a79e8dc51ff9d9817c12d911893049cfddefbe3e2c062401306102fb9/boto3-1.20.46.tar.gz"
+    sha256 "d7effba509d7298ef49316ba2da7a2ea115f2a7ff691f875f6354666663cf386"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/4b/81/e94b2fce65006f17b46e9f87ae09dd5a69578b4b807d0d2f862958b962d5/botocore-1.23.31.tar.gz"
-    sha256 "bb34fa60ab894f9a4a1f7de36e32a68ce17f302108f83732c3ca99c7da2bf68c"
+    url "https://files.pythonhosted.org/packages/97/b9/f55bf7f44377c1093f16f789979b39d9bed51ad1f2069d17d1ca55d2d4c2/botocore-1.23.46.tar.gz"
+    sha256 "38dd4564839f531725b667db360ba7df2125ceb3752b0ba12759c3e918015b95"
   end
 
   resource "certifi" do
@@ -56,8 +56,8 @@ class Moto < Formula
   end
 
   resource "cfn-lint" do
-    url "https://files.pythonhosted.org/packages/44/d1/a806e32c48caa92d0e18d6da87bd7f4e0ba1f814991844e26482f85b6417/cfn-lint-0.56.3.tar.gz"
-    sha256 "ce056cc54c3141b6da5f20066d14ac576a75ace1349a5994f772e12f2bcbfa57"
+    url "https://files.pythonhosted.org/packages/06/74/18e581a952af2bcea14051f7e847f3dee07217a8e75ed38e421804f97f6b/cfn-lint-0.57.0.tar.gz"
+    sha256 "17c2e3ba693ae259c868e221d159dc4aa9c7e60a970cdc1d1309150c9250faf4"
   end
 
   resource "charset-normalizer" do
@@ -100,6 +100,11 @@ class Moto < Formula
     sha256 "b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"
   end
 
+  resource "graphql-core" do
+    url "https://files.pythonhosted.org/packages/0c/15/0e13d80b86cca5c1bd1d311344f5d1eabe036e5a472a38f0048d68cce40d/graphql-core-3.2.0.tar.gz"
+    sha256 "86e2a0be008bfde19ef78388de8a725a1d942a9190ca431c24a60837973803ce"
+  end
+
   resource "idna" do
     url "https://files.pythonhosted.org/packages/62/08/e3fc7c8161090f742f504f40b1bccbfc544d4a4e09eb774bf40aafce5436/idna-3.3.tar.gz"
     sha256 "9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
@@ -126,8 +131,8 @@ class Moto < Formula
   end
 
   resource "jsondiff" do
-    url "https://files.pythonhosted.org/packages/37/53/df2401ddcdc20289e715d3ab30080a0f286a897b6c9c6511bad869ee1ea1/jsondiff-1.3.0.tar.gz"
-    sha256 "5122bf4708a031b02db029366184a87c5d0ddd5a327a5884ee6cf0193e599d71"
+    url "https://files.pythonhosted.org/packages/21/c6/57158093587de0ab578da6f27467e00b037d63b3538204fc27860d427144/jsondiff-1.3.1.tar.gz"
+    sha256 "04cfaebd4a5e5738948ab615710dc3ee98efbdf851255fd3977c4c2ee59e7312"
   end
 
   resource "jsonpatch" do
@@ -136,8 +141,8 @@ class Moto < Formula
   end
 
   resource "jsonpickle" do
-    url "https://files.pythonhosted.org/packages/62/8a/84864798c5ef120e3a5b5cf08d8c231fa4499b53d465488563c4cb901f2f/jsonpickle-2.0.0.tar.gz"
-    sha256 "0be49cba80ea6f87a168aa8168d717d00c6ca07ba83df3cec32d3b30bfe6fb9a"
+    url "https://files.pythonhosted.org/packages/35/0e/fe3ce0869add0213a1b45eef746cafb79ca45255a60ec918630c159e3490/jsonpickle-2.1.0.tar.gz"
+    sha256 "84684cfc5338a534173c8dd69809e40f2865d0be1f8a2b7af8465e5b968dcfa9"
   end
 
   resource "jsonpointer" do
@@ -181,8 +186,8 @@ class Moto < Formula
   end
 
   resource "pyrsistent" do
-    url "https://files.pythonhosted.org/packages/f4/d7/0fa558c4fb00f15aabc6d42d365fcca7a15fcc1091cd0f5784a14f390b7f/pyrsistent-0.18.0.tar.gz"
-    sha256 "773c781216f8c2900b42a7b638d5b517bb134ae1acbebe4d1e8f1f41ea60eb4b"
+    url "https://files.pythonhosted.org/packages/42/ac/455fdc7294acc4d4154b904e80d964cc9aae75b087bbf486be04df9f2abd/pyrsistent-0.18.1.tar.gz"
+    sha256 "d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
   end
 
   resource "python-dateutil" do
@@ -211,8 +216,8 @@ class Moto < Formula
   end
 
   resource "responses" do
-    url "https://files.pythonhosted.org/packages/e7/e5/2c0a007b8be5c09a4bc84af7d95c4c6450bd9467510aa856c7de0132d9eb/responses-0.16.0.tar.gz"
-    sha256 "a2e3aca2a8277e61257cd3b1c154b1dd0d782b1ae3d38b7fa37cbe3feb531791"
+    url "https://files.pythonhosted.org/packages/05/4a/7974039704f4b51a98319f335261adaa23424010b8de500d9c913eee76a2/responses-0.17.0.tar.gz"
+    sha256 "ec675e080d06bf8d1fb5e5a68a1e5cd0df46b09c78230315f650af5e4036bec7"
   end
 
   resource "rsa" do

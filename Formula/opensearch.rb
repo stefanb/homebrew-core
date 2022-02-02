@@ -1,14 +1,14 @@
 class Opensearch < Formula
   desc "Open source distributed and RESTful search engine"
   homepage "https://github.com/opensearch-project/OpenSearch"
-  url "https://github.com/opensearch-project/OpenSearch/archive/1.2.3.tar.gz"
-  sha256 "d2d0133a1eabaa9ab39fcea2cfec3fdcd787330d125daa406acdaf1fd8783bf6"
+  url "https://github.com/opensearch-project/OpenSearch/archive/1.2.4.tar.gz"
+  sha256 "d4d2483bcaa6c0397fc40dcb66ef6ef0f77b17a3f0e318590914a4563c36b076"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, big_sur:      "1eaf5b19401ab7a2bb7e9a5545db2bb62ba54d87123ee6a02e22f07355e63019"
-    sha256 cellar: :any_skip_relocation, catalina:     "9d4ab92bf4587f5f16bc68bf3b83136ae24a5937a01aa4fc2f731d7187bd59a8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "011841a7d700b95af06cbc1aaf34a27df80b5970f1055b586e74098f0fcd6556"
+    sha256 cellar: :any_skip_relocation, big_sur:      "6018dd7491405ca252d1a2ca72a077990d0efb8057d656199c432f5c78b95e49"
+    sha256 cellar: :any_skip_relocation, catalina:     "859c3140be49c6ed70d1e9f39e8459cbecbdd7bb6f92983f47f9abff931996f7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "676d21142a860442b4c5c12f50b22aaa7e34c72df5e59ef437d6bb01a2c35c83"
   end
 
   depends_on "gradle@6" => :build

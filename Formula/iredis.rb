@@ -3,17 +3,17 @@ class Iredis < Formula
 
   desc "Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
   homepage "https://iredis.io"
-  url "https://files.pythonhosted.org/packages/73/b9/9f282c23eaa45a6c468b27a9d9263f7cb86699785d47e2d8b165daf8b928/iredis-1.10.0.tar.gz"
-  sha256 "4f21862dbf3efc92593852bd3dc7231c437b8d99494c10352bdc91d64d64adb4"
+  url "https://files.pythonhosted.org/packages/d1/83/bd1b95706cb7112bebd7396f8ad06a5c15c58b7df632d9882d85652aad83/iredis-1.11.0.tar.gz"
+  sha256 "b4a5d80c321bd267f5dc8f49d0f1d064966bffea69a6a04aa807c057860d3130"
   license "BSD-3-Clause"
   head "https://github.com/laixintao/iredis.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "2bcf5e6425ebf2343801455530e7e95ab2cc4382c4769b5ba955aa5a86068bc5"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "aa5d7ebe907eebb70a4dee6c7a55305e8960fd19beb2f5e03a49dd673e31b0bd"
-    sha256 cellar: :any_skip_relocation, monterey:       "a7bb01765cfc82e35b3d35664a2c86ac2041ccdfdd61639d500fa9b33c8417ad"
-    sha256 cellar: :any_skip_relocation, big_sur:        "826ce7e9c27bbb41f5eb15835a5c2a1c2b36455d9b3c8ba0007b6734631ddd07"
-    sha256 cellar: :any_skip_relocation, catalina:       "91379e3a940cf2212f8eab29e1bf6d29c525d767c941ae5ee583e93fbf2e55f7"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "19c42f54287b3e81f9ef4998b7c4db2ba9f175b48c9489cfb6e8684637654c6b"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "1a7933ff87ef9724fef45ee313273b35c9c544c2fdb2f851e4208b82ed512104"
+    sha256 cellar: :any_skip_relocation, monterey:       "5ac52237e414603ec1cb5c18b5e0ceb7011d09c60c9c5c20f6df586c23030cc1"
+    sha256 cellar: :any_skip_relocation, big_sur:        "235f9d3279eaf00f9ba31ad4e6365df6fb54d03fcb95273220fd916652574a16"
+    sha256 cellar: :any_skip_relocation, catalina:       "3bd5ea74217eb18f9cd9e3f95f0a8228aa6e26e90c26047c506d2a7add92c631"
   end
 
   depends_on "python@3.10"
@@ -35,8 +35,8 @@ class Iredis < Formula
   end
 
   resource "mistune" do
-    url "https://files.pythonhosted.org/packages/2d/a4/509f6e7783ddd35482feda27bc7f72e65b5e7dc910eca4ab2164daf9c577/mistune-0.8.4.tar.gz"
-    sha256 "59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e"
+    url "https://files.pythonhosted.org/packages/33/36/506af4690234e7a84b8b3e0f4aee4dfe5a28b8688a0eec2047af9a078020/mistune-2.0.2.tar.gz"
+    sha256 "6fc88c3cb49dba8b16687b41725e661cf85784c12e8974a29b9d336dd596c3a1"
   end
 
   resource "pendulum" do
@@ -50,8 +50,8 @@ class Iredis < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/b7/b3/5cba26637fe43500d4568d0ee7b7362de1fb29c0e158d50b4b69e9a40422/Pygments-2.10.0.tar.gz"
-    sha256 "f398865f7eb6874156579fdf36bc840a03cab64d1cde9e93d68f46a425ec52c6"
+    url "https://files.pythonhosted.org/packages/94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz"
+    sha256 "4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
   end
 
   resource "python-dateutil" do

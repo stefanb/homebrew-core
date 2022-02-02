@@ -1,25 +1,25 @@
 class Dbmate < Formula
   desc "Lightweight, framework-agnostic database migration tool"
   homepage "https://github.com/amacneil/dbmate"
-  url "https://github.com/amacneil/dbmate/archive/v1.12.1.tar.gz"
-  sha256 "63aaa1ec734e62d52331ee80706b24e9e3abc856a26d8e8289ce9228d38d87c8"
+  url "https://github.com/amacneil/dbmate/archive/v1.13.0.tar.gz"
+  sha256 "acfe2d57fc81bfe7a02f60ba995f10fffbf5e93df62d6f263862eaf2b79c5413"
   license "MIT"
   head "https://github.com/amacneil/dbmate.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "2cd5ad3a25f80d2d2f42baa1b230180f8ff223eb782fd303834e41597427266c"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "a7e44584e98abac0f1ee3724238308cc320de4d80ef8bc161727392c948a1b32"
-    sha256 cellar: :any_skip_relocation, monterey:       "4e2928199d940bfc6d5ce94683df56caab8874ee026bef65ed794dabe224261e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "24765d6c4a62dbe0da38fadece43cd5370496187b1c0cc8f46c385155aad2d27"
-    sha256 cellar: :any_skip_relocation, catalina:       "20c977cf5fd8c4770eed868e1143b2b4faa1897f94628fb325a535b62745912c"
-    sha256 cellar: :any_skip_relocation, mojave:         "daabcc8391777571779235dd6bb86a04b8a8505ca64efd3c8c8c4aa455faa925"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6c9044a1ed9432cd4f370d60a726dbb0282d3f6c3d5014d4eae5d6d7d7ecef2c"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "375f0b71158b5040bd3b82426f82adc6826f5d53f0eb3af44637a8636134f48b"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6bfb652120253c0b4499a4fd2faa7bc902b79d265ff091d39ac7119c5a1c3d20"
+    sha256 cellar: :any_skip_relocation, monterey:       "cb96aeda42c4c853c320901e40e5e97f6635ab17b61ca9b2621fbb171fed03b0"
+    sha256 cellar: :any_skip_relocation, big_sur:        "272c5f9bfa29944c963fa927d5f0977b30b178ea1bb2900427971af01d9cd257"
+    sha256 cellar: :any_skip_relocation, catalina:       "94ebfb34347eb7e9ee62d8c36491f0bcf2eb2d97956ce8f81997b63293612abe"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4fae83bc9e6b821a8f2f1bb220c0014098db5f4a40dbb492313492b47fab59e8"
   end
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", "-ldflags", "-s", "-o", bin/"dbmate", "."
+    system "go", "build", *std_go_args(ldflags: "-s -w"), "-tags", "sqlite_omit_load_extension,sqlite_json"
   end
 
   test do

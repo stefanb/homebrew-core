@@ -1,18 +1,18 @@
 class Wangle < Formula
   desc "Modular, composable client/server abstractions framework"
   homepage "https://github.com/facebook/wangle"
-  url "https://github.com/facebook/wangle/releases/download/v2022.01.10.00/wangle-v2022.01.10.00.tar.gz"
-  sha256 "2ad4bfce7e64f18b49dcb6d496f620aced50cc361243435f4f74f8c35667cf66"
+  url "https://github.com/facebook/wangle/releases/download/v2022.01.31.00/wangle-v2022.01.31.00.tar.gz"
+  sha256 "1002e9c32b6f4837f6a760016e3b3e22f3509880ef3eaad191c80dc92655f23f"
   license "Apache-2.0"
   head "https://github.com/facebook/wangle.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "323f5c062e70bb2846a8e61526a574784a8d3cdcbdd31e73e8878a38a7921dac"
-    sha256 cellar: :any,                 arm64_big_sur:  "906ae08965978df9d910b5def6179fd605fef0ae7e56ed6366ed6d4b20f2ec02"
-    sha256 cellar: :any,                 monterey:       "1af361061099591083f815ffbc7a2779d041d260b76c2e028126607be00470e0"
-    sha256 cellar: :any,                 big_sur:        "4c07f3f96f84fde728b789357c8c860735ee102c850ff369caf006f4dc25ffe1"
-    sha256 cellar: :any,                 catalina:       "db5c10cdfa317ee5d8dddb93c4db54a298dcf6fa093dd5d1ecaa742efb3d3c49"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "63012412b56afb65dbfb14ba44c76112a911d5b2af8cb211cd93eeb0223eb86b"
+    sha256 cellar: :any,                 arm64_monterey: "bdc147c8fe59e76eb8898b660af47ba8b099091082d5f87fea0689e86437056d"
+    sha256 cellar: :any,                 arm64_big_sur:  "341705053bf39e54b3f735a3dd15f7d9aed0f84c64bf06a5b7839f72ba9aa7d8"
+    sha256 cellar: :any,                 monterey:       "a95665250dcda89ebdcf2b879fe07e61cd16bcf48acffcca670ee86db29d4b91"
+    sha256 cellar: :any,                 big_sur:        "6c4b03e8c887b56ec37fd128ac570a01ac75621a4b3dcfe7fecf7408815a4be9"
+    sha256 cellar: :any,                 catalina:       "a5c60e03ff590f673b8b14484a9abde00c3e0f87fbcab54ab35faa45b254df08"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ceff164932168ae048c87abb3bce359337079d106d1abfdc8e5ad6a6699cdab2"
   end
 
   depends_on "cmake" => :build
@@ -81,14 +81,14 @@ class Wangle < Formula
     port = free_port
     ohai "Starting EchoServer on port #{port}"
     fork { exec testpath/"EchoServer", "-port", port.to_s }
-    sleep 3
+    sleep 10
 
     require "pty"
     output = ""
     PTY.spawn(testpath/"EchoClient", "-port", port.to_s) do |r, w, pid|
       ohai "Sending data via EchoClient"
       w.write "Hello from Homebrew!\nAnother test line.\n"
-      sleep 3
+      sleep 20
       Process.kill "TERM", pid
       begin
         ohai "Reading received data"

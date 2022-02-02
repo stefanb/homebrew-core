@@ -1,8 +1,8 @@
 class Watchexec < Formula
   desc "Execute commands when watched files change"
   homepage "https://github.com/watchexec/watchexec"
-  url "https://github.com/watchexec/watchexec/archive/cli-v1.17.1.tar.gz"
-  sha256 "3bc82174729628010d29c85f2d2c61cc45cef5cc729f13153b1422c8f647d33f"
+  url "https://github.com/watchexec/watchexec/archive/cli-v1.18.5.tar.gz"
+  sha256 "ae4b2ab209e342c981ab186e3581b95f7c43856aef037196747b6e4c33f8f3e1"
   license "Apache-2.0"
 
   livecheck do
@@ -11,16 +11,17 @@ class Watchexec < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "11c836187bb6d0fb6569944bd7d2c9a0f815b34fe52bf03195c2b62e4102f913"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "d83500db72a7e0dff3fc8fd8e2526e11e6d25a104ab155dc967fcc519a082b50"
-    sha256 cellar: :any_skip_relocation, monterey:       "a3bfa9e01ed620bb792fdad1a6edfd03c6a1ed428ac3fa2a939e7cc081de89bd"
-    sha256 cellar: :any_skip_relocation, big_sur:        "dd7198eb2dbb92f608a8a8eeb254d2810182f3d647f303831a5bfeeab5ab51c8"
-    sha256 cellar: :any_skip_relocation, catalina:       "52aa742b6924b99190019d0347660734d5c846a8c0e79b5b1e5658f2c1b24659"
-    sha256 cellar: :any_skip_relocation, mojave:         "9d243c2296dc406c164045adbedee423c4b0a3b74f9a8aaad1676f1a96e16d8c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6ca6f89236f83d52799189baa14c733c7532e9245834ed31a07d4d367579a45d"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "6cb8cfd6390c28b51cce6e47e01fe8d0ee302593b35e2e2e795a3a1b369e3e61"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "3c9bd41b036d8d67f01da2a803362be64bb805979b9c1b7e4049a2e042f8a969"
+    sha256 cellar: :any_skip_relocation, monterey:       "c579f14a80a124179bb959405fad4ccbe650f47e7c49d34c8945a19cbed32c0c"
+    sha256 cellar: :any_skip_relocation, big_sur:        "35bc4226cef624986502130f12de18ec6bca7f47562b9a71cbb35bc4f2eef756"
+    sha256 cellar: :any_skip_relocation, catalina:       "9c40a66eed43e5fbed1d638dbbfddd83484c6d1069d5eebac144eb47c9abe956"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3970dec058993d9217f8cd5c63cf410db334e2b0790f8ccfa16849380eb3ce65"
   end
 
   depends_on "rust" => :build
+
+  uses_from_macos "zlib"
 
   def install
     cd "cli" do

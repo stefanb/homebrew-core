@@ -1,18 +1,18 @@
 class Pandoc < Formula
   desc "Swiss-army knife of markup format conversion"
   homepage "https://pandoc.org/"
-  url "https://hackage.haskell.org/package/pandoc-2.17.0.1/pandoc-2.17.0.1.tar.gz"
-  sha256 "276467f08335d495340d2ec439a1734101068f690c8b53f16c3d736e39df05f6"
+  url "https://hackage.haskell.org/package/pandoc-2.17.1.1/pandoc-2.17.1.1.tar.gz"
+  sha256 "649ec528d1413130c5ce304b826ff473b3696269eea8834d908589e775bd1ad1"
   license "GPL-2.0-or-later"
   head "https://github.com/jgm/pandoc.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "2440d38332c41dfe4855c6fe4116aac4e7bb3e65b9bebdff9ec52e6699869e3e"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ab6490ff8c1ac3653cfb9f94c29fb86459064a7205ca7ea48dbf9062cfe3f86d"
-    sha256 cellar: :any_skip_relocation, monterey:       "7583795e55fccd6bd62060a388f6a157290b7e0f882a4e92fa4b6648d779960c"
-    sha256 cellar: :any_skip_relocation, big_sur:        "23574c76bddca7a0d6fb69026264965cfe682e7ccbb8bc73aa3e4e128d379971"
-    sha256 cellar: :any_skip_relocation, catalina:       "925542afc6f1385a2a99c9a58f9298c18aac040ebd729dd9b7cb0a907b0d6557"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "76b135d40890fe5ee4acd1d2c11e599caa1f5ec45aafa4d9248be2120f5be65a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "318fbfce3634193ea4242c73b8d7e4a3e6322b4319df2ac376fa3faa820c91c9"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b4d418739b29403698bc541d78ad0645a515373b60187bd5afeb1179ecaae6a4"
+    sha256 cellar: :any_skip_relocation, monterey:       "d5a3f5bb295acca845f5de240a17733aec4dfd1cd81c4533f9da65137a577b28"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0e6fc53816b145927063c27915df029d0c7be3747c39501dfe26e1af72354f4c"
+    sha256 cellar: :any_skip_relocation, catalina:       "0ade4c9939b5d8f130c7d3c32f5d9dc767fd8dd868f40114c401fc6effa6f34e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2d2dbcffa36a46a301055221f05ad32f7c525352184291c138efacf955af93ac"
   end
 
   depends_on "cabal-install" => :build

@@ -1,16 +1,16 @@
 class Swiftplantuml < Formula
   desc "Generate UML class diagrams from Swift sources"
   homepage "https://github.com/MarcoEidinger/SwiftPlantUML"
-  url "https://github.com/MarcoEidinger/SwiftPlantUML/archive/0.5.1.tar.gz"
-  sha256 "9bdfb08563907d44a45b628f75594768e4ed96d065f145424cb97a99ea0b629c"
+  url "https://github.com/MarcoEidinger/SwiftPlantUML/archive/0.6.0.tar.gz"
+  sha256 "139f9bdf69e11719448508830b59d00e5215b72408f39e5b5e5e7082d75bd646"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "24c96aab6e49f287c653a88512ed420205287898ee6719130210d8c885ef97f9"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e3e756fdbf10e1538d2717d2839394b8bb6f750b5f02d5cf307dfe1de529cbdf"
-    sha256 cellar: :any_skip_relocation, monterey:       "a2a4b4cef3f67034f8d49542da3693583d920ceee3028a1eba6c77eeeab9327f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "c49c3ba9e6b91584a1896b394b2573eb92bca43a5d69e5c861e0e291912764c6"
-    sha256 cellar: :any_skip_relocation, catalina:       "84d025a7d4a121cd9244dc7f237bb4b35888f11bc8881b5dba079ec588b227eb"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "d91ff65fb66365000964a08f29e1cc51e76ca7124d17f677fd803d42d37f23c6"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6018052d90c21a27b3722376a777d949c520bd3353893ac93586cb944cbea70c"
+    sha256 cellar: :any_skip_relocation, monterey:       "c28a5224ffe64f87452d370ffdc89ece794d962fc9f5d2357d734bdc3ee9fa6a"
+    sha256 cellar: :any_skip_relocation, big_sur:        "c1659a42622d0699fa3b98d6252e730b433e0ac7dfff7755599e0b0438d6771e"
+    sha256 cellar: :any_skip_relocation, catalina:       "852ca97b2716669d43da82b64cad721c3c5c1e2f53f77d4fb2b8c2a50e5eb08e"
   end
 
   depends_on xcode: ["12.2", :build]

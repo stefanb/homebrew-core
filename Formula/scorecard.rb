@@ -1,18 +1,18 @@
 class Scorecard < Formula
   desc "Security health metrics for Open Source"
   homepage "https://github.com/ossf/scorecard"
-  url "https://github.com/ossf/scorecard/archive/v3.2.1.tar.gz"
-  sha256 "009183faea28c561f60f2c7bd84e477130d16e55d581bc354879c66e7123cdd2"
+  url "https://github.com/ossf/scorecard/archive/v4.0.1.tar.gz"
+  sha256 "8545d4aacaa2ffafbf545aeee7bccc381d2c00ffa0e4e9cb65190e68ece543d6"
   license "Apache-2.0"
   head "https://github.com/ossf/scorecard.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b8ac60b4d2f69eae9115bd1e0dd561f5b5e9fa07b4097fee73e6ba5b2dfd9e30"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "22278d9d21f6e6841da1041d4222abbbc195adc8ee4c724270045e3d5342c11d"
-    sha256 cellar: :any_skip_relocation, monterey:       "677b8ec965569c07c889af07fbeae19d6b743bf8401638d07146a6cf77cd152f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "94b2977710fc47c004b278c95073868e228b5de7a0640aeadcebeeb1afeacdab"
-    sha256 cellar: :any_skip_relocation, catalina:       "2d3760206b808a78800fa62316cf6eb28b2231efdd7dfcb7117651801e08424a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e19ba844d0201dedfb114df6135a94ee642449a106a9fa2b8c17849f812cc359"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "7b98516e75752ae178b4061068445d2aaad68a4ff2ac390be3eea72d6cfd21d5"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b65bd5ac96dd6d7ead8330f8aa34d92c81aaf35f7ff19ad9be9aa71bdc0ded09"
+    sha256 cellar: :any_skip_relocation, monterey:       "4a7b05b4f0b1b7797a09354c073bf1ccd100dd18a1119f80df48dce934e13af1"
+    sha256 cellar: :any_skip_relocation, big_sur:        "8f2703873320ed11163debe4e6cf4c79b0dae688ef718a5d745559ca52b33a8e"
+    sha256 cellar: :any_skip_relocation, catalina:       "5308bd0ea17f06a639a45dc50e0c0bbe49c008551d68ad0174b5af7149b6a449"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8da94f514cf0b0f834d25d27ae2503e8e69633dcf18637b5b8cf78851bd767ab"
   end
 
   depends_on "go" => :build
@@ -25,7 +25,7 @@ class Scorecard < Formula
 
   test do
     ENV["GITHUB_AUTH_TOKEN"] = "test"
-    output = shell_output("#{bin}/scorecard --repo=github.com/kubernetes/kubernetes --checks=Maintained 2>&1", 1)
+    output = shell_output("#{bin}/scorecard --repo=github.com/kubernetes/kubernetes --checks=Maintained 2>&1", 2)
     expected_output = "InitRepo: repo unreachable: GET https://api.github.com/repos/google/oss-fuzz: 401"
     assert_match expected_output, output
   end

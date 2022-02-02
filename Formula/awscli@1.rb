@@ -4,8 +4,8 @@ class AwscliAT1 < Formula
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
   # awscli should only be updated every 10 releases on multiples of 10
-  url "https://files.pythonhosted.org/packages/e6/c7/2a595b4fb638f9903cc144e00a033475684658397fd37d32a9e9b4bd4b7b/awscli-1.22.30.tar.gz"
-  sha256 "48cacf396ec3cfae82e64844d0bddd156e676679cc41df4934571e87a092de15"
+  url "https://files.pythonhosted.org/packages/4e/ba/a22442878c022ae84ccfbb723d9f3b34906fce4fe444eb54ba7c750b9e6f/awscli-1.22.40.tar.gz"
+  sha256 "e05f3747505fe32f485f97dfb66908396ae0ba9207c48970630ec156f957694e"
   license "Apache-2.0"
 
   livecheck do
@@ -14,12 +14,12 @@ class AwscliAT1 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "2fdf487a2420b3493b3b7fdfef8d0fc3122eb14f38a44200eda5b103d6cb398f"
-    sha256 cellar: :any,                 arm64_big_sur:  "0da48b2815d9bf5bad0605e6b6c1d6e11926aa98f19312dc92e5fd051971d30f"
-    sha256 cellar: :any,                 monterey:       "1918c09e3b5a165aa1f12d0df505f129f69ce421c24f5958029241ba313ed84b"
-    sha256 cellar: :any,                 big_sur:        "290561ef1e310c07c1fd03166e1352f59add82227e846572d9ca9dfac82b54d9"
-    sha256 cellar: :any,                 catalina:       "f2fd8c828e0b1fa204dce3a9fb4aec2a2ddda4043609a38f8da177df823bb281"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "147e778a13588798f7b70183ee383a1c2276db1fe9619c2f482b412aaed943b2"
+    sha256 cellar: :any,                 arm64_monterey: "116c80af6652c177e5f0f59e89c9eedb475a953bc8fe320d277b975ae057c6d1"
+    sha256 cellar: :any,                 arm64_big_sur:  "dc40463c9c75873e1aa4137fa7cfb5bb0f77934fe7cc2cf95a3386154b43746d"
+    sha256 cellar: :any,                 monterey:       "eacdcffee8f4c1c8c5a311a624d74a7b836daca9cb5762cc42d21a028f64fedf"
+    sha256 cellar: :any,                 big_sur:        "25e4e90e3c6514ed082b1f9c7ac8f3cc474036f3eb35a1b149e761bc5a38eece"
+    sha256 cellar: :any,                 catalina:       "d9744db1bbd4c9c010a333f23ad4aa88de0c8150429d30536e28ddc5d01c2780"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1e3156c55f97351181ac1862213df2561aecff0c500835749b43bf59fab6a219"
   end
 
   keg_only :versioned_formula
@@ -32,8 +32,8 @@ class AwscliAT1 < Formula
   uses_from_macos "groff"
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/af/eb/defb1a74e7d3b0a62b5d4688a661d6ac9f1b1593182fa1470a6916730eb0/botocore-1.23.30.tar.gz"
-    sha256 "c6a60cffe095296b78ff03adae0fdf2875210a74531a0d1f68206091203573fe"
+    url "https://files.pythonhosted.org/packages/12/95/974284900c269501df0372c196d9a2a3bb1845475f85125a1b0e0f632bbc/botocore-1.23.40.tar.gz"
+    sha256 "49baa1fca4483b24769f0743fbf72afe4db391f41f1fc12ea34e06036db642a4"
   end
 
   resource "colorama" do
@@ -82,7 +82,12 @@ class AwscliAT1 < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    # setuptools>=60 prefers its own bundled distutils, which is incompatabile with docutils~=0.15
+    # Force the previous behavior of using distutils from the stdlib
+    # Remove when fixed upstream: https://github.com/aws/aws-cli/pull/6011
+    with_env(SETUPTOOLS_USE_DISTUTILS: "stdlib") do
+      virtualenv_install_with_resources
+    end
     pkgshare.install "awscli/examples"
 
     rm Dir["#{bin}/{aws.cmd,aws_bash_completer,aws_zsh_completer.sh}"]

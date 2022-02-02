@@ -2,18 +2,18 @@ class Helm < Formula
   desc "Kubernetes package manager"
   homepage "https://helm.sh/"
   url "https://github.com/helm/helm.git",
-      tag:      "v3.7.2",
-      revision: "663a896f4a815053445eec4153677ddc24a0a361"
+      tag:      "v3.8.0",
+      revision: "d14138609b01886f544b2025f5000351c9eb092e"
   license "Apache-2.0"
   head "https://github.com/helm/helm.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1977cc21ec3c1acdd86e72bdd8ed51b3e11b5011d3ea29f7c3be25c6809a596b"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c496a01e9df3913a1d599390bd1eb799b4e78a0d374709e861c5c78e70c1b3c3"
-    sha256 cellar: :any_skip_relocation, monterey:       "94acdc46d632c74ab43825d9de149632dacc681c12bf1c86db3901d5557cc628"
-    sha256 cellar: :any_skip_relocation, big_sur:        "5ca57081dd1824897ad5cd6ce17dcf1f522f61b712a23ab3fe755358095f6821"
-    sha256 cellar: :any_skip_relocation, catalina:       "8da6ec0361f199fbf0ab9ecfe52b1e4ebc827b4c1baba2aa5ba01de68011968a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "99d9860d8ee80e7d304f8bcf6d219ffc31e103373b92657c9e0a6f71fe266d78"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "5d5e2864787a464e0a1d723cc5cf7b5bd274505da6610e5f05fff8c1de97b62b"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "a265288e1c4708c095e96b7379c46a292d34fd4a9698a63d04e807daeb5566a9"
+    sha256 cellar: :any_skip_relocation, monterey:       "32f1bae52edd37b8c8609c6319194079ed0c180f7beb46edbee8e5eabcf2f03f"
+    sha256 cellar: :any_skip_relocation, big_sur:        "a5f3b5eaf39f5c7484b68b1fa9bac2f475f48ae73ffbf622388a25890a98aa71"
+    sha256 cellar: :any_skip_relocation, catalina:       "69fb22df8c40f82f9828fcfa5f7b1315290e76c0d3e1aeb63d9e326c90388cd2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "008258f793afcc50b8d9c0542bcd4ce716d63197931fdcf456567eee546b81da"
   end
 
   depends_on "go" => :build
@@ -47,7 +47,7 @@ class Helm < Formula
     version_output = shell_output(bin/"helm version 2>&1")
     assert_match "GitTreeState:\"clean\"", version_output
     if build.stable?
-      revision = stable.instance_variable_get(:@resource).instance_variable_get(:@specs)[:revision]
+      revision = stable.specs[:revision]
       assert_match "GitCommit:\"#{revision}\"", version_output
       assert_match "Version:\"v#{version}\"", version_output
     end

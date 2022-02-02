@@ -1,18 +1,18 @@
 class Giza < Formula
   desc "Scientific plotting library for C/Fortran built on cairo"
   homepage "https://danieljprice.github.io/giza/"
-  url "https://github.com/danieljprice/giza/archive/v1.2.1.tar.gz"
-  sha256 "8bf02828dc3e25a51ca1ac9229df41e86ba2a779af49d06c1a3077ecc4721821"
+  url "https://github.com/danieljprice/giza/archive/v1.3.1.tar.gz"
+  sha256 "b6bae5ba44a8fd921c3430e61b1ce5c6b7febfe7fa835a7c8724d19089bba0b9"
   license "GPL-2.0-or-later"
   head "https://github.com/danieljprice/giza.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "6e6c5ef3d58c6fdc7b19d900a6c94ae9f7e961f2e92af33c6b1a082d0f9d18ff"
-    sha256 cellar: :any, arm64_big_sur:  "f90bb6e21ea8fc3919706b4584995623f763b11f1961ea474e10f31b0c3fba72"
-    sha256 cellar: :any, monterey:       "215259692a128badd9e2f5ccecc743bd8f0ae1c727196f35a891cac1837023e1"
-    sha256 cellar: :any, big_sur:        "8ef54fe8593cb6dbae489f634dbe6fddb7fbfa495af95c3cea6f8bc52ac4ae5c"
-    sha256 cellar: :any, catalina:       "81bd1caa8dbc15f4f9865cd9de5956d2371c500febf10289b2fad40a60d333de"
-    sha256 cellar: :any, mojave:         "05008343af562f24851230c306ce451041465726e3d45f20da94fcbd61424e8b"
+    sha256 cellar: :any,                 arm64_monterey: "d975aae84df1d51b437f4609fedb6e2c43d90a607e71a6a00d93ec93e23300dc"
+    sha256 cellar: :any,                 arm64_big_sur:  "399cb433ec96d5ee36c0e17cc5827630648b75f5ca47606b51ce15032f71222f"
+    sha256 cellar: :any,                 monterey:       "7b103ac9d9567889e610823092cac1cab927522a3e9e4b5aa93d2ed811b4ba27"
+    sha256 cellar: :any,                 big_sur:        "ba70ab58bd3ed8ac5491b00547c30b1ec728b4324a1fb01ef6ebdbf5f2cf17e5"
+    sha256 cellar: :any,                 catalina:       "0e60f22c26465fe0971cc4df08d79ac30fe886dde744bf77877af6180d87ca41"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "708726ce009cb5618c3550b211179706ab7dd674f7274d95047ee1874c2e39b0"
   end
 
   depends_on "pkg-config" => :build
@@ -48,7 +48,12 @@ class Giza < Formula
 
     flags = %W[
       -I#{include}
+      -I#{Formula["cairo"].opt_include}/cairo
       -L#{lib}
+      -L#{Formula["libx11"].opt_lib}
+      -L#{Formula["cairo"].opt_lib}
+      -lX11
+      -lcairo
       -lgiza
     ]
 

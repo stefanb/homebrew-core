@@ -1,10 +1,10 @@
 class Openrtsp < Formula
   desc "Command-line RTSP client"
   homepage "http://www.live555.com/openRTSP"
-  url "http://www.live555.com/liveMedia/public/live.2022.01.11.tar.gz"
-  mirror "https://download.videolan.org/pub/videolan/testing/contrib/live555/live.2022.01.11.tar.gz"
+  url "http://www.live555.com/liveMedia/public/live.2022.01.21.tar.gz"
+  mirror "https://download.videolan.org/pub/videolan/testing/contrib/live555/live.2022.01.21.tar.gz"
   # Keep a mirror as upstream tarballs are removed after each version
-  sha256 "3c72cf04ae80655e9d566f18114a01b9a5f12fb4123350286922e03a09af37ec"
+  sha256 "762579c142db3aba8c4430b223d36355a47a2546d897d2961d496f03f8e3a90e"
   license "LGPL-3.0-or-later"
 
   livecheck do
@@ -13,11 +13,11 @@ class Openrtsp < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "352e4842b8692f182488dff823ff611d481ceba25941b0e4af6dacd913e149a2"
-    sha256 cellar: :any, arm64_big_sur:  "d609c87b7b7c05a167282604702698e6df60b87b9545eecdb1d1e252bbaeb5e7"
-    sha256 cellar: :any, monterey:       "cfdbfcad9c88a43ef6c31367d1a6b70b5a5b77e94f6cd063f9791ba51ecf6eb7"
-    sha256 cellar: :any, big_sur:        "46fb4c525109a675409dde205bbc55400966a2b82d6cf13182ed9ed8614f10cb"
-    sha256 cellar: :any, catalina:       "ef870488ee01aa32a61779d6dbd88487291a709c8b8fac26f8fe5e606bc3ace9"
+    sha256 cellar: :any, arm64_monterey: "a2b01c7ff258222875b3797229813eb9eed7deb05ed5e5928e0bf40f378e936f"
+    sha256 cellar: :any, arm64_big_sur:  "abea9373a3aa180755d255f8d237631dda110452e11504a2368413a6fb93984b"
+    sha256 cellar: :any, monterey:       "5b97cae5860fdb01b629c18514101a0bd5fc7005a0ec4c160109218c1f0f9d67"
+    sha256 cellar: :any, big_sur:        "3ccd594a6c25f432b9380c095142e6bcc8ef16822e2065e62f75c951f54e7f8b"
+    sha256 cellar: :any, catalina:       "63230765f8467ec1df9d439a6eaf84795f0461524571a1399a3a5a0102f0b371"
   end
 
   depends_on "openssl@1.1"

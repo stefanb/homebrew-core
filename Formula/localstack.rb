@@ -3,17 +3,17 @@ class Localstack < Formula
 
   desc "Fully functional local AWS cloud stack"
   homepage "https://github.com/localstack/localstack"
-  url "https://files.pythonhosted.org/packages/88/a9/2cf25e15e01450cfc378194dfa3f53988fc937bdc4f78cc925e8a82f4ba5/localstack-0.13.3.1.tar.gz"
-  sha256 "56f90e6dc93bdff263187cb08625c93d5c94d51e274412b3320b31c56bbfecbd"
+  url "https://files.pythonhosted.org/packages/32/4b/104718327cbfa9362d52c96af98ab32d59ce9be7d1bca42ee913d5ba7cb2/localstack-0.13.3.6.tar.gz"
+  sha256 "b52c29ae28a3138ad5ee626a30e7980424dbfa61247561af322e820dbd4c7477"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3cff74210ff92e932ffc04307c1e086324dfb28e2909b02dbd7a97edf0e8c96f"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "37065772708c8c7dc702718fe75f390c09f16b25364b2f1d96ac9f0f3963b74f"
-    sha256 cellar: :any_skip_relocation, monterey:       "84cf7cbc6fc9034f761c70e69a1ce37174cc5f34e9b6c49e9c9bc778db750e32"
-    sha256 cellar: :any_skip_relocation, big_sur:        "380f7fc3700445bfa03fedd559e3c6959a20999beed621ff1a82691e14e8751c"
-    sha256 cellar: :any_skip_relocation, catalina:       "e12f04d01b756f3b57a26fffddb353adf740271941ab326de4e9690926ed0f5a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "42166600f5b76387964f77f0ac8a4ba76810b2839636b1c4aa0beee2ea692595"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "ad4172dc190db0b7793a466b7330dc16d7025690178519862f6a4d459a5758e1"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "49268f21ce10a3227b07d8ac460ece38c65de4734ee11b41edc51db85f418446"
+    sha256 cellar: :any_skip_relocation, monterey:       "e7b38f3b30dba4d5f10adb96a21e8f2c5ab9278199a4c8708c27d5103b8c7b50"
+    sha256 cellar: :any_skip_relocation, big_sur:        "047f7fc4dc8d9e2c089b7dfbd969120280d3de748f5ba52c941029515c65a421"
+    sha256 cellar: :any_skip_relocation, catalina:       "c48c435c68573814de60b4d1db5144c2d11f4dc64e484db8cc1273d44cf86e21"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c7beb1b367c6f916f0814b0c4578a29e6879e3d511308950926a8cdd12c3c9f8"
   end
 
   depends_on "docker" => :test
@@ -26,13 +26,18 @@ class Localstack < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/06/24/319a8cef953b44e40a59b8aade91483342aff6691d10c7a775a7b3452ce3/boto3-1.20.37.tar.gz"
-    sha256 "0e2f8aa8ee71f144d8afbe9ff7d0bb40525b94535e0695bdb200687970c9f452"
+    url "https://files.pythonhosted.org/packages/f6/b0/e42a79e8dc51ff9d9817c12d911893049cfddefbe3e2c062401306102fb9/boto3-1.20.46.tar.gz"
+    sha256 "d7effba509d7298ef49316ba2da7a2ea115f2a7ff691f875f6354666663cf386"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/b2/be/36b3eb5168eb06cfb64be2c20e74dc6802da9aea8b77c39877a6e2885170/botocore-1.23.37.tar.gz"
-    sha256 "f3077f1ca19e6ab6b7a84c61e01e136a97c7732078a8d806908aee44f1042f5f"
+    url "https://files.pythonhosted.org/packages/97/b9/f55bf7f44377c1093f16f789979b39d9bed51ad1f2069d17d1ca55d2d4c2/botocore-1.23.46.tar.gz"
+    sha256 "38dd4564839f531725b667db360ba7df2125ceb3752b0ba12759c3e918015b95"
+  end
+
+  resource "cachetools" do
+    url "https://files.pythonhosted.org/packages/ae/37/7fd45996b19200e0cb2027a0b6bef4636951c4ea111bfad36c71287247f6/cachetools-3.1.1.tar.gz"
+    sha256 "8ea2d3ce97850f31e4a08b0e2b5e6c34997d7216a9d2c98e0f3978630d4da69a"
   end
 
   resource "certifi" do
@@ -71,13 +76,13 @@ class Localstack < Formula
   end
 
   resource "dnslib" do
-    url "https://files.pythonhosted.org/packages/ef/4f/9012c6bcd68a087df8d9438d59a9293c9b271e12c6e3b4c7f3eb9e34ea32/dnslib-0.9.18.tar.gz"
-    sha256 "71a60664e275b411e08d9807aaafd2ee897a872bed003d5c8fdf12f5818503da"
+    url "https://files.pythonhosted.org/packages/e1/96/5889c7fc3b55e727deae20d6a3157423f1355d3dac010c1f1c53dca017bd/dnslib-0.9.19.tar.gz"
+    sha256 "a6e36ca96c289e2cb4ac6aa05c037cbef318401ba8ff04a8676892ca79749c77"
   end
 
   resource "dnspython" do
-    url "https://files.pythonhosted.org/packages/13/27/5277de856f605f3429d752a39af3588e29d10181a3aa2e2ee471d817485a/dnspython-2.1.0.zip"
-    sha256 "e4a87f0b573201a0f3727fa18a516b055fd1107e0e5477cded4a2de497df1dd4"
+    url "https://files.pythonhosted.org/packages/84/f4/84eca79c279640671b8b7086ef1b97268c2b7ba17f7cfe0a19b466a6f95c/dnspython-2.2.0.tar.gz"
+    sha256 "e79351e032d0b606b98d38a4b0e6e2275b31a5b85c873e587cc11b73aca026d6"
   end
 
   resource "docker" do
@@ -86,8 +91,8 @@ class Localstack < Formula
   end
 
   resource "dulwich" do
-    url "https://files.pythonhosted.org/packages/5e/32/c3580a4bb1e767f515c9283c5d15964da3264ced98c7fa6cc649560f9b10/dulwich-0.20.30.tar.gz"
-    sha256 "42c090a96bf617ba198611257b0333b07c37bce6975fb4c090b32e309c534e41"
+    url "https://files.pythonhosted.org/packages/77/42/8a7669dbea5086ed2ee759d75414764a8256070d3c9adcf0e2067ebd9891/dulwich-0.20.32.tar.gz"
+    sha256 "dc5498b072bdc12c1effef4b6202cd2a4542bb1c6dbb4ddcfc8c6d53e08b488c"
   end
 
   resource "idna" do
@@ -106,8 +111,8 @@ class Localstack < Formula
   end
 
   resource "localstack-ext" do
-    url "https://files.pythonhosted.org/packages/b8/c6/e08a2f43cd507109e8f665c4e08a21cc69e793c27e8a23cf3bf3accb9c05/localstack-ext-0.13.3.3.tar.gz"
-    sha256 "ef6efe2496ab43c7ac8986466571a15eb7f2568831b227110433619f84069bf5"
+    url "https://files.pythonhosted.org/packages/e9/00/004decb15e3ded28a4f6c1894d9a576380b43699a04e2100a8ec843817e0/localstack-ext-0.13.3.12.tar.gz"
+    sha256 "ebf6bcab299a858768acd1698a63b618fb7bf99242f9261389f9cc888a64058c"
   end
 
   resource "localstack-plugin-loader" do
@@ -161,8 +166,8 @@ class Localstack < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/eb/be/bd5d6c37f5de55f31cb9432e0d926ceeab1b2ee774bd696557b53bc15012/rich-11.0.0.tar.gz"
-    sha256 "c32a8340b21c75931f157466fefe81ae10b92c36a5ea34524dff3767238774a4"
+    url "https://files.pythonhosted.org/packages/81/d2/64751634e1af18e61454e9946c8c792ab3866c2b309615844fc435036715/rich-11.1.0.tar.gz"
+    sha256 "43e03d8eec12e21beaecc22c828a41c4247356414a12d5879834863d4ad53816"
   end
 
   resource "s3transfer" do

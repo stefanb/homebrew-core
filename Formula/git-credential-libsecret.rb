@@ -1,8 +1,8 @@
 class GitCredentialLibsecret < Formula
   desc "Git helper for accessing credentials via libsecret"
   homepage "https://git-scm.com"
-  url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.34.1.tar.xz"
-  sha256 "3a0755dd1cfab71a24dd96df3498c29cd0acd13b04f3d08bf933e81286db802c"
+  url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.35.1.tar.xz"
+  sha256 "d768528e6443f65a203036266f1ca50f9d127ba89751e32ead37117ed9191080"
   license "GPL-2.0-or-later"
   head "https://github.com/git/git.git", branch: "master"
 
@@ -11,11 +11,12 @@ class GitCredentialLibsecret < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "d2fdc48030701940341dba921066f7e495d04281242140d5fea0bf88aff7eb05"
-    sha256 cellar: :any,                 monterey:      "fd265ae60b58a27c2694a5563b0b41451618c8086dca7cbfa8f17e1b83c38dd6"
-    sha256 cellar: :any,                 big_sur:       "77f0af9cf6828deb26ac6b132ab4a58fbee30235c18d1fdcb7eb1dfc2cf3ce30"
-    sha256 cellar: :any,                 catalina:      "a3f0594d1df252acb8f63bb1f6ebc490a0c876228182f0da3d2a61b16fb5aedd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d106e9cae6cb88159ff31b60d2efa7bf278b417c2fcd1c17879acec7be5bfd55"
+    sha256 cellar: :any,                 arm64_monterey: "acb839b5afbc60a2ff80c9ef1875de1a9e2f3796024a96677111360e686e40e0"
+    sha256 cellar: :any,                 arm64_big_sur:  "b884b34e6cee884df6a3f7d39fffbc63c9e3c12cd86a881116722e2eb696a2ba"
+    sha256 cellar: :any,                 monterey:       "7bddf11f1e6e34af10f45751d91c5b14de29d909bf7eda85ec93d71017b73b9c"
+    sha256 cellar: :any,                 big_sur:        "f6047fea127f586a364cc88a07ded89c7475551917bcb37d9f9dadbbe63def73"
+    sha256 cellar: :any,                 catalina:       "3b8697883d3a76a165599b0200da6ca002b38a1ddab4d2efac1294dcc286af3c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a96317944d29d474ecb49efd43597cb6c3912653fc73a9b48c3590ed688e7894"
   end
 
   depends_on "pkg-config" => :build

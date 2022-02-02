@@ -1,11 +1,10 @@
 class Varnish < Formula
   desc "High-performance HTTP accelerator"
   homepage "https://www.varnish-cache.org/"
-  url "https://varnish-cache.org/_downloads/varnish-7.0.1.tgz"
-  mirror "https://fossies.org/linux/www/varnish-7.0.1.tgz"
-  sha256 "c4e75beff0d461611742361fe8039ee1233ddf755b2b8a1e18a5fcacbe2b4660"
+  url "https://varnish-cache.org/_downloads/varnish-7.0.2.tgz"
+  mirror "https://fossies.org/linux/www/varnish-7.0.2.tgz"
+  sha256 "524a495a6ad2bf5b7e4092b0907ed1d283dd270af426efa82b70714c630c3f61"
   license "BSD-2-Clause"
-  revision 1
 
   livecheck do
     url "https://varnish-cache.org/releases/"
@@ -13,11 +12,12 @@ class Varnish < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "5627a636277bc9d9361b245d521755799c53782b4585d709cff88e3c43fae50a"
-    sha256 monterey:      "7cb4ae49e8618bd05741eeddf5de9f563b1c1c9a541216ad7444cbdd04383810"
-    sha256 big_sur:       "30eabfc78b2a616339e8d931c7ca2d70356b3c9b2bb223ea045195e9d59445bf"
-    sha256 catalina:      "ef8a23c4bd73ffd8431808cad95c0c738fc3a2b5a98a70aa30f9a99dc25918e4"
-    sha256 x86_64_linux:  "f89db7678bc4d3fc29c59c907346b6094a0c4604f144eadb44bd3624b0a1c1f0"
+    sha256 arm64_monterey: "c059ba08e596b84b66524b675d338724ddbeb9d05d91415646e3e6ce0493131f"
+    sha256 arm64_big_sur:  "642303e8955d340044802c6706d19eb5cb9f958cd0362238e4638b6e9f9b02e3"
+    sha256 monterey:       "f2551a4b59adbfad5bfb90738819d2461e344ff8ee136507a96fe375b6eff976"
+    sha256 big_sur:        "ae409b80f09e9be344b52b583568a71bafc0b8f4d49e40d8bfbc674d24b4686f"
+    sha256 catalina:       "e5b2da263487ce4b42193e60ddce6738b36b248d7fd4748c2e9a4cf074f70a3e"
+    sha256 x86_64_linux:   "f12c80427d0ff61dd9c9b10b96fd68d14bd60c373ebf3c2d0ecc6b3783d02849"
   end
 
   depends_on "docutils" => :build
@@ -29,12 +29,6 @@ class Varnish < Formula
 
   uses_from_macos "libedit"
   uses_from_macos "ncurses"
-
-  # Fix -flat_namespace being used on Big Sur and later.
-  patch do
-    url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-big_sur.diff"
-    sha256 "35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c"
-  end
 
   def install
     ENV["PYTHON"] = Formula["python@3.10"].opt_bin/"python3"

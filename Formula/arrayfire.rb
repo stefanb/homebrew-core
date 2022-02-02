@@ -1,14 +1,16 @@
 class Arrayfire < Formula
   desc "General purpose GPU library"
   homepage "https://arrayfire.com"
-  url "https://github.com/arrayfire/arrayfire/releases/download/v3.8.0/arrayfire-full-3.8.0.tar.bz2"
-  sha256 "dfc1ba61c87258f9ac92a86784b3444445fc4ef6cd51484acc58181c6487ed9e"
+  url "https://github.com/arrayfire/arrayfire/releases/download/v3.8.1/arrayfire-full-3.8.1.tar.bz2"
+  sha256 "13edaeb329826e7ca51b5db2d39b8dbdb9edffb6f5b88aef375e115443155668"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any, big_sur:  "9869e0f31434835932fb93a6036b4d0bea62630b4392f076fafedda977ed5f8a"
-    sha256 cellar: :any, catalina: "509d9c63cc8f3300f4cd026bcc09645474d17d0bfe0bc9d9ca7241996f1a6e6d"
-    sha256 cellar: :any, mojave:   "da0132f5c4acb4d8e4b74a8f442175430ffc080a6a4ad8e0c3612a0bf92d1749"
+    sha256 cellar: :any, arm64_monterey: "c91188803bdb170202adc8fcc0b26294057e119e0bdefa1843ab158602ddd0b9"
+    sha256 cellar: :any, arm64_big_sur:  "3b7d5567de48d187d18c4e5a12d7a292d0c4dfebb9e181222ef4030a9b7115fc"
+    sha256 cellar: :any, monterey:       "2e28ca14205729d079b08b01eeb91d6c090d9c50caa7321a2fb7fa55a8bfd376"
+    sha256 cellar: :any, big_sur:        "4b59cd0db04eaf807b459f872b4fe2e6401cc5c9ae3675bdafb7af52f742ca3e"
+    sha256 cellar: :any, catalina:       "81f15373fb946ee09ed96d57731a07c06d85a522db953ed131b2de747f18fe0f"
   end
 
   depends_on "boost" => :build
@@ -19,11 +21,20 @@ class Arrayfire < Formula
   depends_on "openblas"
 
   def install
-    mkdir "build" do
-      system "cmake", "..", *std_cmake_args, "-DAF_BUILD_CUDA=OFF"
-      system "make"
-      system "make", "install"
+    # Fix for: `ArrayFire couldn't locate any backends.`
+    if OS.mac?
+      ENV.append "LDFLAGS", "-Wl,-rpath,@loader_path/#{Formula["fftw"].opt_lib.relative_path_from(lib)}"
+      ENV.append "LDFLAGS", "-Wl,-rpath,@loader_path/#{Formula["openblas"].opt_lib.relative_path_from(lib)}"
+      ENV.append "LDFLAGS", "-Wl,-rpath,@loader_path/#{(HOMEBREW_PREFIX/"lib").relative_path_from(lib)}"
     end
+
+    system "cmake", "-S", ".", "-B", "build",
+                    "-DAF_BUILD_CUDA=OFF",
+                    "-DAF_COMPUTE_LIBRARY=FFTW/LAPACK/BLAS",
+                    *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
+
     pkgshare.install "examples"
   end
 

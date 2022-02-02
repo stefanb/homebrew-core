@@ -1,17 +1,17 @@
 class Libical < Formula
   desc "Implementation of iCalendar protocols and data formats"
   homepage "https://libical.github.io/libical/"
-  url "https://github.com/libical/libical/releases/download/v3.0.12/libical-3.0.12.tar.gz"
-  sha256 "35095a4cc1a061a3de0f332c2dc728226cf127fa0baa818e9f8856cee6d35830"
+  url "https://github.com/libical/libical/releases/download/v3.0.13/libical-3.0.13.tar.gz"
+  sha256 "02543b08897f3b75c76c360a335900ccfb027d2f5120176c777340e67e763ad4"
   license any_of: ["LGPL-2.1-or-later", "MPL-2.0"]
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "012aef3fc5b6cfe0401c9cb5f2002e2df9b91315cf3c51a3e8292ea87042c9f2"
-    sha256 cellar: :any,                 arm64_big_sur:  "22caf6a06a1b690ece4e5390dbfab1da5b05298f4e632bac4b959e3ffc82e09e"
-    sha256 cellar: :any,                 monterey:       "d9f18d5d7e206f1a0980682d5a7db06c3db2e6ce025c6b8219a9681130be9f63"
-    sha256 cellar: :any,                 big_sur:        "b858d7dea00189fe61e10052952dc2724e06f31248d689519356a31357bee057"
-    sha256 cellar: :any,                 catalina:       "2c98d4d35acc4785bb7f9a945b35c43d8b56b0c30c12978bf56d1a8c6723f07e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d8d36f41565cc1847689d3619006f4e2e0a272c9a514e776465b2c3ba1af7066"
+    sha256 cellar: :any,                 arm64_monterey: "cdafb3e229c246ea5e340d313375f4d89102a265d1a4053e0b037b4ddcf32f4f"
+    sha256 cellar: :any,                 arm64_big_sur:  "994d26307e071d46943fe9ee53927ab7b930c3cd6e6691788177aa4215f97c23"
+    sha256 cellar: :any,                 monterey:       "fc197a1dd6a88e2772c921a9193e8792252d80e626bf655d0c0969ae29e2fc59"
+    sha256 cellar: :any,                 big_sur:        "b8681965365ca7cc2c7d0991b7ffc560180fc9ad74530114123fb25ac451882c"
+    sha256 cellar: :any,                 catalina:       "7219b20efc82b1a0bb714b590f362b2619e7b0e83ddc2806f1d4bc8e52381a4b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2421e0fc97384a4005dcdd36753cacda8bd5e388c56eecd8c6ef27caf2bdd543"
   end
 
   depends_on "cmake" => :build

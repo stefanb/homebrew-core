@@ -1,17 +1,17 @@
 class Biber < Formula
   desc "Backend processor for BibLaTeX"
   homepage "https://sourceforge.net/projects/biblatex-biber/"
-  url "https://github.com/plk/biber/archive/refs/tags/v2.16.tar.gz"
-  sha256 "57111ebc6d0d1933e55d3fe1a92f8ef57c602388ae83598a8073c8a77fd811e2"
+  url "https://github.com/plk/biber/archive/refs/tags/v2.17.tar.gz"
+  sha256 "1ee7efdd8343e982046f2301c1b0dcf09e1f9a997ac86ed1018dcb41d04c9e88"
   license "Artistic-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "a5a161e318753ebf4b21ecd228d82338e2fd6a21609da501be32c6dad6cf09e6"
-    sha256 cellar: :any,                 arm64_big_sur:  "7ed7fc1262568e0fd3184610538d8b8fa5670e779f9fe195b7e03274a047ab63"
-    sha256 cellar: :any,                 monterey:       "f1b4fc11d16d5045fbe2f35d7542d221a9e4116003ce02b526be8beae0a038f3"
-    sha256 cellar: :any,                 big_sur:        "3a33c580866d69c6650f76717818948cb4def0df4a6ab6e594b2dd49573ca93e"
-    sha256 cellar: :any,                 catalina:       "2e9fc7a7946103c51e151590d5350710e90f9fd88773a51c0c85bfdac9c15120"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d3952c6340ea72115a694eb5677a749fbf24c41cb9ff43fcfcae96234b927075"
+    sha256 cellar: :any,                 arm64_monterey: "6fc144d7d8a045356ef3fd0fccf5de17f6e3ac63d6b269a0a85f4809a9f00c43"
+    sha256 cellar: :any,                 arm64_big_sur:  "204d7cb929fa459938ec758687ca0525d0fa3061f8586de14fbeed12416a7c21"
+    sha256 cellar: :any,                 monterey:       "362e43be7f9798a76ba0be58e0e5e655d47f394a9cc62110e671f6c4f6059bf0"
+    sha256 cellar: :any,                 big_sur:        "8e83851811d503f7c587a95030a25d3ca1fc80f00ed2bb4306de248d6c68fc73"
+    sha256 cellar: :any,                 catalina:       "82981029f2e3f61ff004ee96715aeecc34073b9854f1368579dffcc0abb0c7cc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bd69f40c992696f6cf3887cf3e7dd71081c10abbaa557a4910f2b7521edd78ab"
   end
 
   depends_on "pkg-config" => :build
@@ -509,9 +509,9 @@ class Biber < Formula
     url "https://cpan.metacpan.org/authors/id/V/VP/VPIT/autovivification-0.18.tar.gz"
     sha256 "2d99975685242980d0a9904f639144c059d6ece15899efde4acb742d3253f105"
   end
-  resource "test.bcf" do
-    url "https://downloads.sourceforge.net/project/biblatex-biber/biblatex-biber/testfiles/test.bcf"
-    sha256 "245abe25c586d2ad87782bc113fdf16510e42199bb21f2b143eb64cbe3e54093"
+  resource "test-dev.bcf" do
+    url "https://downloads.sourceforge.net/project/biblatex-biber/biblatex-biber/testfiles/test-dev.bcf"
+    sha256 "7239ac502a8fc6d90fcaf9e9630d939a21e28456312ee7e041f6627ebb8fed24"
   end
   resource "test.bib" do
     url "https://downloads.sourceforge.net/project/biblatex-biber/biblatex-biber/testfiles/test.bib"
@@ -524,7 +524,7 @@ class Biber < Formula
     ENV["PERL_MM_USE_DEFAULT"] = "1"
     ENV["OPENSSL_PREFIX"] = Formula["openssl@1.1"].opt_prefix
 
-    testresources = %w[test.bcf test.bib]
+    testresources = %w[test-dev.bcf test.bib]
 
     resources.each do |r|
       next if testresources.include?(r.name)
@@ -561,7 +561,7 @@ class Biber < Formula
   test do
     assert_match version.to_s, shell_output("#{bin}/biber --version")
 
-    resource("test.bcf").stage testpath
+    resource("test-dev.bcf").stage { testpath.install Dir["*.bcf"].first => "test.bcf" }
     resource("test.bib").stage testpath
     assert_match "Output to test.bbl", shell_output("#{bin}/biber --validate-control --convert-control test")
     assert_predicate testpath/"test.bcf.html", :exist?

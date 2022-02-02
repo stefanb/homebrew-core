@@ -3,17 +3,17 @@ class Mycli < Formula
 
   desc "CLI for MySQL with auto-completion and syntax highlighting"
   homepage "https://www.mycli.net/"
-  url "https://files.pythonhosted.org/packages/19/dc/1b45fe914e90c11a22abec7f275e14fe696e702e775e4bd628278e64e9e4/mycli-1.24.2.tar.gz"
-  sha256 "5eb3e1a3e6cf8f2ce3d9de96e0a4783f4f53d7f15792b42f8463e8b60a28201e"
+  url "https://files.pythonhosted.org/packages/37/79/9c3f258388e204c6b552b7c82cc4849133bebfbe24a8288b0472ea7103d0/mycli-1.24.3.tar.gz"
+  sha256 "424daa3977c033bc49bf57c3b7f9a76f635915fe52fc4c689d0b4b1389b6d9ae"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "24cc52cb2f697daeae573b683c5439d2a158d75b19b6c8bd521a6e55d9ed2096"
-    sha256 cellar: :any,                 arm64_big_sur:  "642a3f88873ddc9957b30d9f5f1cde2e1a9768b7936aeea3f2757fd9b651f100"
-    sha256 cellar: :any,                 monterey:       "86f06a5b910171dc4246ac694479bead0549f6a939a8c281f916ba9286c8b914"
-    sha256 cellar: :any,                 big_sur:        "5b937e7e3f27b0d84c7df791814d7a38c62ea15c33bc458d80eb6477319d5da9"
-    sha256 cellar: :any,                 catalina:       "8700faea44a9de4bd18575a5a99c74a999a0c49d1295536d34f546abc82da1d0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e42daac96cd6bdd2ec10ca4fa82149542f4dd48fbfdd629cdea56337303905e1"
+    sha256 cellar: :any,                 arm64_monterey: "d851821ec956a230cdee2cce59b9b6488af1c84c66a4478720e5a4e69bf3d3a8"
+    sha256 cellar: :any,                 arm64_big_sur:  "b8f8d50e32f55029f72b9d95329d75218f0a458e278126fd0c49ba550ed8d621"
+    sha256 cellar: :any,                 monterey:       "a019f990c05651a36a0251e9f8e5f9e4cbd5b69c29a4a37dde8ce8bab7c47179"
+    sha256 cellar: :any,                 big_sur:        "69af7077d2b1f00135c36a0a6a2679ec1aed2dc5d67647654e9f9863c78c6ea6"
+    sha256 cellar: :any,                 catalina:       "9ca8d9c6896f92a92635f951c91c2a714bda359a2580fa72a3a7833204af1ff2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4458692e48a84ba01a5d5e537ccbfc4a33e2a6deb52ae0197c07beaf16893e6f"
   end
 
   depends_on "rust" => :build
@@ -32,8 +32,8 @@ class Mycli < Formula
   end
 
   resource "cli-helpers" do
-    url "https://files.pythonhosted.org/packages/86/ed/eb0468849a425a9ef0d15f789e2272bb5fc4081926f0261542927599177b/cli_helpers-2.2.0.tar.gz"
-    sha256 "733f65d8c921e0cffa8f7ae4c8735bd7ecdffec383c5246f647ddd0fddb33448"
+    url "https://files.pythonhosted.org/packages/d9/5d/bd0b08f7f8f9d02f44055cf4b41aafa658c1b0731237f303b9fdb49fc8d7/cli_helpers-2.2.1.tar.gz"
+    sha256 "0ccc1cfcda1ac64dc7ed83d7013055cf19e5979d29e56c21f3b692de01555aae"
   end
 
   resource "click" do
@@ -67,8 +67,8 @@ class Mycli < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/15/53/5345177cafa79a49e02c27102019a01ef1682ab170d2138deca47a4c8924/Pygments-2.11.1.tar.gz"
-    sha256 "59b895e326f0fb0d733fd28c6839bd18ad0687ba20efc26d4277fd1d30b971f4"
+    url "https://files.pythonhosted.org/packages/94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz"
+    sha256 "4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
   end
 
   resource "PyMySQL" do

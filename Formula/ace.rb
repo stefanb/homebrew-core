@@ -1,8 +1,8 @@
 class Ace < Formula
   desc "ADAPTIVE Communication Environment: OO network programming in C++"
   homepage "https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
-  url "https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-7_0_5/ACE-7.0.5.tar.bz2"
-  sha256 "438bf41e184a5262e2b79f95edb6fd8384fb7ea69e249c54e75daf059a8d9757"
+  url "https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-7_0_6/ACE+TAO-7.0.6.tar.bz2"
+  sha256 "27990ce2d17f5811efd589fa3de7c77e25e2dc33b3a6bfbe1b9f439eedd2dc3c"
   license "DOC"
 
   livecheck do
@@ -14,8 +14,9 @@ class Ace < Formula
   end
 
   bottle do
-    sha256 cellar: :any, big_sur:  "a8b07fff8fefb939f8eac8844f818403c865ea25d0d21ed5acdd830491ad07dc"
-    sha256 cellar: :any, catalina: "29e541be09f367e3fbfb9b4828a02664a9aff2b3c2105f09b110c7b278b7673d"
+    sha256 cellar: :any, monterey: "bd09d99803ce5e5671cfd4e369f6bf6b04294e7c72676c23df912ab2f7fce19f"
+    sha256 cellar: :any, big_sur:  "dc143404b04e701aad213768a9b58187e5f1b17feb3941aa2467aa0aa0cad672"
+    sha256 cellar: :any, catalina: "737f43fe9b5a430161f71b80ad1955c6ca9ef39ec93b7542e373e469f124c3e4"
   end
 
   def install

@@ -3,17 +3,17 @@ class Internetarchive < Formula
 
   desc "Python wrapper for the various Internet Archive APIs"
   homepage "https://github.com/jjjake/internetarchive"
-  url "https://files.pythonhosted.org/packages/ec/0f/0f7ad6c290a7768912650d59262084ccc33899e7b443a624ee92793b2282/internetarchive-2.2.0.tar.gz"
-  sha256 "ebd11ecd038c71e75a3aef8d87750b46480169ecaefb23074c4ae48440bf2836"
+  url "https://files.pythonhosted.org/packages/ed/3b/6dac6885ee8a17d7b85c35a46db3271fabce4e77a56c5f696a21d4f74f64/internetarchive-2.3.0.tar.gz"
+  sha256 "fa89dc4be3e0a0aee24810a4a754e24adfd07edf710c645b4f642422c6078b8d"
   license "AGPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "60df33e39fb7e07a8103c0e52805e25ed55055cebe0f310de4a06e027b4830b8"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "323441be8f43e001c768c744179ffe77abd8554d400e0dd125dbe4b71b2d29b2"
-    sha256 cellar: :any_skip_relocation, monterey:       "ab84d6e1c85f799f50d3685089784c42816e289a5c2f3dbb5cad98f99870f2aa"
-    sha256 cellar: :any_skip_relocation, big_sur:        "d85ce174aa02aaa75503c2a60dc9f8c52f589e54cd2f7a8537d1816919cd4b66"
-    sha256 cellar: :any_skip_relocation, catalina:       "3df9cf7129c10878b3603e3ff93463e8bde3c2a4a0428c99908336c3372d04d6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "847259701891e2ade731bdc84383c5dda8c53470836b280574a106fe6def2da1"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "53b3eb1465fcf909ac0e0f423e4f00ddd5f144fe6b88c920974172444433bd90"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ad979567d41eb5090bddcde1c8908da1166f68a6fbc830fcdd7db473ec85a9e8"
+    sha256 cellar: :any_skip_relocation, monterey:       "4407bfbc9c3d116fe3cfeed14459418625d8dca58742864273d0ae032d41e617"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5a1b615077bff9d193cdbe7064f17b4e3560444e35c3065960cc608dc8fa8427"
+    sha256 cellar: :any_skip_relocation, catalina:       "3f6e02e9f9cd028bc9ae2cc0dcbf1722bfe50cab3e20ec2da998c969a9b0ca11"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cdf359afaf2d99e65b2526ba8a597822761740e0999834deb17f1bcdd9ab2114"
   end
 
   depends_on "python@3.10"
@@ -25,8 +25,8 @@ class Internetarchive < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/9f/c5/334c019f92c26e59637bb42bd14a190428874b2b2de75a355da394cf16c1/charset-normalizer-2.0.7.tar.gz"
-    sha256 "e019de665e2bcf9c2b64e2e5aa025fa991da8720daa3c1138cadd2fd1856aed0"
+    url "https://files.pythonhosted.org/packages/48/44/76b179e0d1afe6e6a91fd5661c284f60238987f3b42b676d141d01cd5b97/charset-normalizer-2.0.10.tar.gz"
+    sha256 "876d180e9d7432c5d1dfd4c5d26b72f099d503e8fcc0feb7532c9289be60fcbd"
   end
 
   resource "contextlib2" do
@@ -55,13 +55,13 @@ class Internetarchive < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/e7/01/3569e0b535fb2e4a6c384bdbed00c55b9d78b5084e0fb7f4d0bf523d7670/requests-2.26.0.tar.gz"
-    sha256 "b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7"
+    url "https://files.pythonhosted.org/packages/60/f3/26ff3767f099b73e0efa138a9998da67890793bfa475d8278f84a30fec77/requests-2.27.1.tar.gz"
+    sha256 "68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"
   end
 
   resource "schema" do
-    url "https://files.pythonhosted.org/packages/2b/91/42bc143289fd5f032ab1b01c5da32dc162ae808a585122f27ed5bf67268f/schema-0.7.4.tar.gz"
-    sha256 "fbb6a52eb2d9facf292f233adcc6008cffd94343c63ccac9a1cb1f3e6de1db17"
+    url "https://files.pythonhosted.org/packages/4e/e8/01e1b46d9e04cdaee91c9c736d9117304df53361a191144c8eccda7f0ee9/schema-0.7.5.tar.gz"
+    sha256 "f06717112c61895cabc4707752b88716e8420a8819d71404501e114f91043197"
   end
 
   resource "tqdm" do
@@ -70,8 +70,8 @@ class Internetarchive < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/80/be/3ee43b6c5757cabea19e75b8f46eaf05a2f5144107d7db48c7cf3a864f73/urllib3-1.26.7.tar.gz"
-    sha256 "4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece"
+    url "https://files.pythonhosted.org/packages/b0/b1/7bbf5181f8e3258efae31702f5eab87d8a74a72a0aa78bc8c08c1466e243/urllib3-1.26.8.tar.gz"
+    sha256 "0e7c33d9a63e7ddfcb86780aac87befc2fbddf46c58dbb487e0855f7ceec283c"
   end
 
   def install

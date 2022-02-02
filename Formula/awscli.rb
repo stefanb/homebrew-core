@@ -3,18 +3,18 @@ class Awscli < Formula
 
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
-  url "https://github.com/aws/aws-cli/archive/2.4.11.tar.gz"
-  sha256 "2f6d17068f7c0263af1bee4333aa95164b99a733ba6adc42658b8555f1cd2fdd"
+  url "https://github.com/aws/aws-cli/archive/2.4.15.tar.gz"
+  sha256 "5dec2f8c9c47ed71b7d6b8e873f5eb1b2805e4f5f84f71d5e3a587f64dfb12b9"
   license "Apache-2.0"
   head "https://github.com/aws/aws-cli.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "12c38e09c2fbe9e2d0de3a782617d7a74fcf32ec28c17023c85a8b09ce24328e"
-    sha256 cellar: :any,                 arm64_big_sur:  "4f12e73577dfcbf7dd49ae7bc5b57d5c1f92c1425eba5986b89f629afee02a3e"
-    sha256 cellar: :any,                 monterey:       "02eee6b4296b6bfbb780d4ed1c72b07ea0d26821c2bf578810e65a1f8534f4ac"
-    sha256 cellar: :any,                 big_sur:        "c3ebab8e76ebaf0b4628654b7c414869e16e3b87f5c5c9ce995bac2e4f093105"
-    sha256 cellar: :any,                 catalina:       "82e2c1f5772cb5a4c68e79593175758978b0c4f16784c44d62b229f8e9313151"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "54b8c4e5b3cbd9c104f5d5f82ad65ffdcf3f7972b8e31a703cc4e3e0a3174ce7"
+    sha256 cellar: :any,                 arm64_monterey: "488408a9f74c266b39c26ef733a77a0c1c390119774e2e88e88c56104780de1b"
+    sha256 cellar: :any,                 arm64_big_sur:  "a85af6d79afc944e362b83e5e1ffc6a4de85329446f680a8043128eda749da49"
+    sha256 cellar: :any,                 monterey:       "476037108e064d32aca245b27c91eb23c8af45a8414be5bbc475523c75e8ab8e"
+    sha256 cellar: :any,                 big_sur:        "4e30ae79e6d75cc2dd6c46d55d66ea3910ac2f94b0abeba82ab5e0000f138651"
+    sha256 cellar: :any,                 catalina:       "f0fe88e60a1b747f03d2a453f991c872d19e91dcbcd649f91c0893fd3243e263"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3ef497cc49a3ed39a5eb29969e994dc77da7903bd4b46e1d1798d2077d0f0679"
   end
 
   depends_on "cmake" => :build
@@ -104,7 +104,12 @@ class Awscli < Formula
       ENV.prepend "LDFLAGS", "-L./build/deps/install/lib"
     end
 
-    virtualenv_install_with_resources
+    # setuptools>=60 prefers its own bundled distutils, which is incompatabile with docutils~=0.15
+    # Force the previous behavior of using distutils from the stdlib
+    # Remove when fixed upstream: https://github.com/aws/aws-cli/pull/6011
+    with_env(SETUPTOOLS_USE_DISTUTILS: "stdlib") do
+      virtualenv_install_with_resources
+    end
     pkgshare.install "awscli/examples"
 
     rm Dir[bin/"{aws.cmd,aws_bash_completer,aws_zsh_completer.sh}"]

@@ -1,18 +1,18 @@
 class Traefik < Formula
   desc "Modern reverse proxy"
   homepage "https://traefik.io/"
-  url "https://github.com/traefik/traefik/releases/download/v2.5.6/traefik-v2.5.6.src.tar.gz"
-  sha256 "dfa1eb9772dd5ed7711924dda307f616ddf32acd17d7b46eeb68d63d60de5de3"
+  url "https://github.com/traefik/traefik/releases/download/v2.6.0/traefik-v2.6.0.src.tar.gz"
+  sha256 "d3d68259e9cce06f735fb503caed465294dc167fd117a94489f57d9b00dc3c74"
   license "MIT"
   head "https://github.com/traefik/traefik.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5a28fdfcdcdaacf9d6550a23a934d5c65de258c8bac6a2eb4be363a9c6f73156"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4c3f5942e1e3baec40803d594b01533050bf1ebf70fa5ad67d3a04554b8a8856"
-    sha256 cellar: :any_skip_relocation, monterey:       "20b21b78758d69486db548927a6e22e7cee235ed22c2d0e10ee1832e5c64cba0"
-    sha256 cellar: :any_skip_relocation, big_sur:        "e5043098a1a977987984cd70d9588727ee64a24157e6af93942371841f02d53e"
-    sha256 cellar: :any_skip_relocation, catalina:       "6e64a035ab1bfec3e650d27d489429a229ae68263b72127ee0a598c921a47553"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1b696e8c0f83f823df13c21d8a200e90e3d14e955a35d39b03c41dfe11ec5d1e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4bb89ee32e664f48fad319be5da6f2d0609af52c67c70da66c5d72fa101d7fae"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e4b567bb16bc44a9f875f7505e0ee6bb331eeb06eadbf1d3c4854e5a9eda222e"
+    sha256 cellar: :any_skip_relocation, monterey:       "c0b571a3cc93abb65eeb09a944432670224f698d54078b8509b7785445438478"
+    sha256 cellar: :any_skip_relocation, big_sur:        "24b3573d989f5640fb8871c029e7c4c3a4946eae2c019e9af1ed3d4239931cdf"
+    sha256 cellar: :any_skip_relocation, catalina:       "d67dd67f6a80c925284f740e1f629e5e01bf14518e05a3e506d46803aa4eb9a3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "83b06eab3dbea978997d4ceeb300df7384494d61855fc55c3def7dbf4c4df992"
   end
 
   depends_on "go" => :build

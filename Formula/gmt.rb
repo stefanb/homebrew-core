@@ -5,16 +5,14 @@ class Gmt < Formula
   mirror "https://mirrors.ustc.edu.cn/gmt/gmt-6.3.0-src.tar.xz"
   sha256 "69e29b62ee802a3a64260d6a1e023f1350e3bf4070221aa1307bf8a9e56c1ee5"
   license "LGPL-3.0-or-later"
-  revision 1
+  revision 2
   head "https://github.com/GenericMappingTools/gmt.git", branch: "master"
 
   bottle do
-    sha256 arm64_monterey: "91594c577203f7dba421401488591b7053739b492f145abab147cb6b10a57840"
-    sha256 arm64_big_sur:  "74d0f7f34c5ccc29b5a0a7e7ffe11b36b2263eca2acd57b93aadcf946e5c6351"
-    sha256 monterey:       "9f9e6cc6a4b91c3fe9d3c7a13dafa2c71fd5f60b97a23043854693904036ee19"
-    sha256 big_sur:        "eedd793d5bc1f6c255c2d82527cf1206c00ad6dce3d15feb076ff516421e8278"
-    sha256 catalina:       "5a52daf5a57950618aab8380a75399ebb7b0461b584420d68141c3fc3e919245"
-    sha256 x86_64_linux:   "5235876dcb0272d0ebe31c4d97f7d3cccd3a8742066be69691f632e65b197416"
+    sha256 arm64_big_sur: "d1cfd3579a7a02ef5d963f52249dcd2105a3a537f9ee11f2dfdfa3a02cf80613"
+    sha256 big_sur:       "24ad3042ceaa926a51cbaa507840fd57f24dfb0b39790edc6fd671446cf9bc3a"
+    sha256 catalina:      "e682f09222c89f5b3a99477f51c88bc83d02d6412ffd00db3bc6265c52de008e"
+    sha256 x86_64_linux:  "cb04c9ba825b3a09f869b5ed06a78358561beacf15fbf3ddc54399517c59b0f9"
   end
 
   depends_on "cmake" => :build
@@ -30,9 +28,9 @@ class Gmt < Formula
   end
 
   resource "dcw" do
-    url "https://github.com/GenericMappingTools/dcw-gmt/releases/download/2.0.1/dcw-gmt-2.0.1.tar.gz"
-    mirror "https://mirrors.ustc.edu.cn/gmt/dcw-gmt-2.0.1.tar.gz"
-    sha256 "5c90b2968f4095cf5ea44a354dc9d8f9dd1b8fe5514e0338ff85b48e03547a25"
+    url "https://github.com/GenericMappingTools/dcw-gmt/releases/download/2.1.0/dcw-gmt-2.1.0.tar.gz"
+    mirror "https://mirrors.ustc.edu.cn/gmt/dcw-gmt-2.1.0.tar.gz"
+    sha256 "e810567cd474d5af9d84751938acb447a8612391ed66190d60d789974a1f9e29"
   end
 
   def install

@@ -3,9 +3,10 @@ class AstrometryNet < Formula
 
   desc "Automatic identification of astronomical images"
   homepage "https://github.com/dstndstn/astrometry.net"
-  url "https://github.com/dstndstn/astrometry.net/releases/download/0.88/astrometry.net-0.88.tar.gz"
-  sha256 "f57d129547ad176a4ff04dc86fc7523d2e7437a9a7f9b567989b81db813b92d2"
+  url "https://github.com/dstndstn/astrometry.net/releases/download/0.89/astrometry.net-0.89.tar.gz"
+  sha256 "98e955a6f747cde06904e461df8e09cd58fe14b1ecceb193e3619d0f5fc64acb"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url :stable
@@ -13,12 +14,12 @@ class AstrometryNet < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "bfb737ac295d2e675d7eaa0de2f6a242beaa6d34990e3cc7efe7500eed5ab6d2"
-    sha256 cellar: :any,                 arm64_big_sur:  "8ab43a5e9cca41cc2ffd9ca4e07e951333ffabf88eae8193701559aad0e4d819"
-    sha256 cellar: :any,                 monterey:       "06cb45ac90ba7f1dc94e9c26820c64b4943cbd495472246b4c87185ea38f4c50"
-    sha256 cellar: :any,                 big_sur:        "ec7e2992ffe35315cffcb3251d1935edc070fb2c9db09f486a1a2377b89c3518"
-    sha256 cellar: :any,                 catalina:       "54fd16f544c42e7d5892d26491823a4be1357a02585f2edce630c0391653f526"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a5d8a45900e16084aaf03812d3497c77a7b82b1d0ccee3fa049dfb4c70bd3f4f"
+    sha256 cellar: :any,                 arm64_monterey: "ab82820ca73b7ff92197bfc1fcdd424951ef3e946e4bdb17e780090df2d8cd46"
+    sha256 cellar: :any,                 arm64_big_sur:  "c965cf45db269d7399ddf42dc5899df5e2fb4ef6d371260d15b7408a65604e42"
+    sha256 cellar: :any,                 monterey:       "7a0fe0133ba37138b8ac9b05a603b42598cf512f047f4914cee223a31a79bfd7"
+    sha256 cellar: :any,                 big_sur:        "8620d6be5c82ba6575b4641a6808940eca0eea0751724d3b705aaf6fd0d517be"
+    sha256 cellar: :any,                 catalina:       "a00a127f86ce596651a613480b4bb682b4704e76dbeb325b046faf50753d5505"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7c7ac288fb560fa9327ae3de30e4296e71674aa94066cdeb89666f20a70b1121"
   end
 
   depends_on "pkg-config" => :build

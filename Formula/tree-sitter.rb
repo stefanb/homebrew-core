@@ -3,18 +3,18 @@ require "language/node"
 class TreeSitter < Formula
   desc "Parser generator tool and incremental parsing library"
   homepage "https://tree-sitter.github.io/"
-  url "https://github.com/tree-sitter/tree-sitter/archive/v0.20.2.tar.gz"
-  sha256 "2a0445f8172bbf83db005aedb4e893d394e2b7b33251badd3c94c2c5cc37c403"
+  url "https://github.com/tree-sitter/tree-sitter/archive/v0.20.4.tar.gz"
+  sha256 "979ad0b36eb90975baf0c65d155d106276cac08afb1c2fe0ad54d4b7d498ce39"
   license "MIT"
   head "https://github.com/tree-sitter/tree-sitter.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "62290038fce550e4a6cbc75f33f1925d95ad5bad439ce6cf8fa216c81d0be075"
-    sha256 cellar: :any,                 arm64_big_sur:  "cc4079bdc9f104093d0d6be38401f16dd63a627e7cef19d9f08b538b7cc28edc"
-    sha256 cellar: :any,                 monterey:       "9d19226d411fcec7da5eecadfcd6a656f7ea48c0ad3a2cf2929b5cfd16cad9a0"
-    sha256 cellar: :any,                 big_sur:        "254d85b978cb88de52b5898f812a3142ff0472891dc08178da24234ed2f9781e"
-    sha256 cellar: :any,                 catalina:       "37c323429d67d1cb9171c9c380937a611a16d30a16fa501e5dc85ab0cb14fad3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b74cec2b7fe30ad688384f90a6389aecefdcdfde8a967dd360558bb7b0b99f60"
+    sha256 cellar: :any,                 arm64_monterey: "5dd02d0ee49c9fcc300d1fd5c3eb001acbbeb3ad7aca8c9d9ae7e480f181e31c"
+    sha256 cellar: :any,                 arm64_big_sur:  "07ada407cc0dcbbecc7a74e186a41daf5b6e69a0689b6f49b15e50c47e12ebc2"
+    sha256 cellar: :any,                 monterey:       "c92942aa105c4cace674a429eed93b940fa079536b18d8fcfd722346a257095f"
+    sha256 cellar: :any,                 big_sur:        "a4f79e68a590f163703217d98eebdfe9af4fa3f002e23347a03e34f332b2efd0"
+    sha256 cellar: :any,                 catalina:       "9ad214206cea385d1c2b99239d071d58f1c6e345e44fa63a051b0d9dafffd944"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c4aff3b0e216a90fa1fa82dffe6eb1ba7e8f904407fc605e089ddb99a5e5ff62"
   end
 
   depends_on "emscripten" => [:build, :test]
@@ -55,7 +55,7 @@ class TreeSitter < Formula
         }
       });
     EOS
-    system bin/"tree-sitter", "generate"
+    system bin/"tree-sitter", "generate", "--abi=latest"
 
     # test `tree-sitter parse`
     (testpath/"test/corpus/hello.txt").write <<~EOS

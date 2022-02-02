@@ -3,17 +3,17 @@ class Pgcli < Formula
 
   desc "CLI for Postgres with auto-completion and syntax highlighting"
   homepage "https://pgcli.com/"
-  url "https://files.pythonhosted.org/packages/45/ae/4e11eaba77b0a6e662bbd18e39ecd66b18d95bb45ed1cf862fb7381b2dea/pgcli-3.3.0.tar.gz"
-  sha256 "3d0ed40df691d60254ccb4d5654a52c1c6373f77d2b3cf6a90aea6ee99fea439"
+  url "https://files.pythonhosted.org/packages/54/22/c2d050a14a41d1518491edfe2130382610d096878f6c9bcca04a36de466b/pgcli-3.3.1.tar.gz"
+  sha256 "fccc9e55ca68a4ad0887acfa2991afb3b8af93f3cce9ada249e6ad89879933a1"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "4be456671fefcabc7687db17460cc87a6670e75f1167314e9fcd5184dc719bfc"
-    sha256 cellar: :any,                 arm64_big_sur:  "9e3aa6368894163478b511732d350860ba880b58b3573379555c5953f0b80ac4"
-    sha256 cellar: :any,                 monterey:       "587afa5da3a960273fe64a7d551f38d30e6fdd5e3990164fb3541660e9639c79"
-    sha256 cellar: :any,                 big_sur:        "8f9a13b53478bdcda6a40f02d29c4c16ab7eb20917176d154261c6a03a7d5794"
-    sha256 cellar: :any,                 catalina:       "de665d69971ed6f07d908bdd08fcf712dddd1364f9f441d2a54308b4af14a558"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c21c3678e83915c0d1eba13c4d5740a340beb877909aa6967a5ae9f06dffa66e"
+    sha256 cellar: :any,                 arm64_monterey: "fc689384f9897147cb9a6b0dae2a6e1e7980453f25c564a3b2419e5e81e1158f"
+    sha256 cellar: :any,                 arm64_big_sur:  "0218a07b72ab23deb9bff8a4d2591b1b017dce23967ae5b4367121458375cbbb"
+    sha256 cellar: :any,                 monterey:       "b6c92f68deb301ebfb827cd5507a80ec134c514b4cab8966230e742edd107b84"
+    sha256 cellar: :any,                 big_sur:        "8bb7984c5c7c38496a3e2a8f04dc2cb17fd93c3381bfcbf8a55468714e4172c4"
+    sha256 cellar: :any,                 catalina:       "c436bce9d32d753144d2ad01f9d0e1350b48869d1d6f3f0183c8c68c68a9d5d0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1a6430c13e58ede22cb362eb6454da7d3bc16f6aeb660a1de53adfb1e3c982c6"
   end
 
   depends_on "poetry" => :build
@@ -24,8 +24,8 @@ class Pgcli < Formula
   depends_on "six"
 
   resource "cli-helpers" do
-    url "https://files.pythonhosted.org/packages/86/ed/eb0468849a425a9ef0d15f789e2272bb5fc4081926f0261542927599177b/cli_helpers-2.2.0.tar.gz"
-    sha256 "733f65d8c921e0cffa8f7ae4c8735bd7ecdffec383c5246f647ddd0fddb33448"
+    url "https://files.pythonhosted.org/packages/d9/5d/bd0b08f7f8f9d02f44055cf4b41aafa658c1b0731237f303b9fdb49fc8d7/cli_helpers-2.2.1.tar.gz"
+    sha256 "0ccc1cfcda1ac64dc7ed83d7013055cf19e5979d29e56c21f3b692de01555aae"
   end
 
   resource "click" do
@@ -59,8 +59,8 @@ class Pgcli < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/15/53/5345177cafa79a49e02c27102019a01ef1682ab170d2138deca47a4c8924/Pygments-2.11.1.tar.gz"
-    sha256 "59b895e326f0fb0d733fd28c6839bd18ad0687ba20efc26d4277fd1d30b971f4"
+    url "https://files.pythonhosted.org/packages/94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz"
+    sha256 "4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
   end
 
   resource "python-dateutil" do

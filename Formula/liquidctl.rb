@@ -3,18 +3,18 @@ class Liquidctl < Formula
 
   desc "Cross-platform tool and drivers for liquid coolers and other devices"
   homepage "https://github.com/liquidctl/liquidctl"
-  url "https://files.pythonhosted.org/packages/f1/c3/e1ba3d1d2a5fd77186fa2ad6fd218741524a0a4cc98c733e09080f8f5843/liquidctl-1.8.0.tar.gz"
-  sha256 "99b8ec4da617a01830951a8f1a37d616f50eed6d260220fe5c26d1bf90e1e91e"
+  url "https://files.pythonhosted.org/packages/95/94/8c5a48699eaae4519e538f98ddae2d2c0810554c7b9efb2aac53817ef593/liquidctl-1.8.1.tar.gz"
+  sha256 "0859dfe673babe9af10e4f431e0baa974961f0b2c973a37e64eb6c6c2fddbe73"
   license "GPL-3.0-or-later"
   head "https://github.com/liquidctl/liquidctl.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "c7a8e9766f894b38d18cb2f5572065bf36348386b7ab6349c660c284e2a29ec1"
-    sha256 cellar: :any,                 arm64_big_sur:  "3b3a935795169f58ba835c98af8b19768d7b5860e81619326f26dda82f70eb89"
-    sha256 cellar: :any,                 monterey:       "13c3e1699578d7495f7a1e03a008cb662b656c0854550fa297d7544f63248b25"
-    sha256 cellar: :any,                 big_sur:        "465210c531304f2680d6bd464c296e205b7a347702441292075ece0358e93319"
-    sha256 cellar: :any,                 catalina:       "0e1c47a7695db46f9f55d9faa6e67007ece91dde5a5abd50ee232c91213e1c3b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "77921cc602c8bfb55716c889f20463fbc609e7ce5adf87c35fc67e40b9a73d9d"
+    sha256 cellar: :any,                 arm64_monterey: "9ce7356ec6a382dbd114dedf91772569c0c332526f6ba86c704b1d34941a4166"
+    sha256 cellar: :any,                 arm64_big_sur:  "8695ab4af1bc8486ed693cdc5741ac95f4179e93d1cc61ac6eb64323683046b1"
+    sha256 cellar: :any,                 monterey:       "5adc905e76d808b6d66b08674d83b9208cadf5207a84e978a1fcfb5e1fc014bb"
+    sha256 cellar: :any,                 big_sur:        "bac635e8d1844f4f6ab7ac575dd8178801322128eec9083200153e7301715285"
+    sha256 cellar: :any,                 catalina:       "8271e9134cf6af394ba98427fa0fb315d704e24e7b3a257d28fabe6ec5f5d98c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "353ad933b9d69bc2702a59b796d18f90d60f5f8bcf8da96085bc6a83a2843265"
   end
 
   depends_on "hidapi"

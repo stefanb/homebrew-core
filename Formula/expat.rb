@@ -1,8 +1,8 @@
 class Expat < Formula
   desc "XML 1.0 parser"
   homepage "https://libexpat.github.io/"
-  url "https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.xz"
-  sha256 "cf032d0dba9b928636548e32b327a2d66b1aab63c4f4a13dd132c2d1d2f2fb6a"
+  url "https://github.com/libexpat/libexpat/releases/download/R_2_4_4/expat-2.4.4.tar.xz"
+  sha256 "b5d25d6e373351c2ed19b562b4732d01d2589ac8c8e9e7962d8df1207cc311b8"
   license "MIT"
 
   livecheck do
@@ -12,13 +12,12 @@ class Expat < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "5707bf186fa91f8196316967ad00e629e33b4cb98c0ae27503a57caa3dbc6216"
-    sha256 cellar: :any,                 arm64_big_sur:  "fac282dc87d050030a34ad8b6fdae89dd5ecc1c08d03f0d9efc49c9396daaed8"
-    sha256 cellar: :any,                 monterey:       "3a0842f8aaf57a65a2e9a8d214f984f578d582b2e194982d3064e892bd985141"
-    sha256 cellar: :any,                 big_sur:        "18ebdde1356dd48de8c575eb2479dbb6556f7bef7a2b48a64c0f018dd79af1dc"
-    sha256 cellar: :any,                 catalina:       "b679f0f8807216636b660b01b3b8f5506e245e4f6160450f408f6446d3017e48"
-    sha256 cellar: :any,                 mojave:         "45004cc0adb2a75d9d0f965a0fc3f087059907aeed9c5f8b36bbb3babce4a6df"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6cb9d218fe6fbfb86d5aa69f6ac7087b6a082e9b6739a51a701c1a7f3d7d3642"
+    sha256 cellar: :any,                 arm64_monterey: "b06264f72ef3ae93b728d34bed0b0f76269189175436d1db4ad7932f4d0beb42"
+    sha256 cellar: :any,                 arm64_big_sur:  "be935657a1afb856dff1d62ccef05c23a75457286d59dafd6e7467a6311f0b8d"
+    sha256 cellar: :any,                 monterey:       "855f6ebb10eb903243199614bf884f6f36131fcd9df8c7fddf72d7fdd7e1a701"
+    sha256 cellar: :any,                 big_sur:        "4d8e172f524ece9c4ad134fa24fe5d8c2bf26374384df011ffaf4fbaf52c780a"
+    sha256 cellar: :any,                 catalina:       "dd9b2732bb6f33329abc1d4686bdcacca3fd8b3d8a8e93242df8c838809e6e9e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a8901df5a5f24f348299b1c650d909bc955df828ea838ba4da524ff67bd453c5"
   end
 
   head do

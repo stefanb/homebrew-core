@@ -4,8 +4,8 @@ class Semgrep < Formula
   desc "Easily detect and prevent bugs and anti-patterns in your codebase"
   homepage "https://semgrep.dev"
   url "https://github.com/returntocorp/semgrep.git",
-      tag:      "v0.78.0",
-      revision: "9714b025ceb831573c6ba6c0e5053f98f4e246d6"
+      tag:      "v0.80.0",
+      revision: "bf5fc65f4dd2460baa76c3084d811b49294da75a"
   license "LGPL-2.1-only"
   head "https://github.com/returntocorp/semgrep.git", branch: "develop"
 
@@ -15,12 +15,12 @@ class Semgrep < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "27be4b43988395f74aa2136616095ce2f6f3bb295235c7e3c08fc6d3f1dff9e9"
-    sha256 cellar: :any, arm64_big_sur:  "ba05fc60ece433941e7b27e7b18f1185e950172e7e45c053c001ecc4b914b501"
-    sha256 cellar: :any, monterey:       "cafa0823cffc46c20117ca9466c210769820f670694927ac5f399840c961314f"
-    sha256 cellar: :any, big_sur:        "15eeb51248423f4e906226650daa8391e5a0c3ea940fe49c405ab12d554728f1"
-    sha256 cellar: :any, catalina:       "b151e730cdf558a9cb4f76d511ddb941a5ae92ed344e53af143aaf9bfe588197"
-    sha256               x86_64_linux:   "770120d6313253004c5c3a4ba73e0b3c3ddd666a6a762c90d8228f34c5cbc3ee"
+    sha256 cellar: :any, arm64_monterey: "dee4115a4d361c49c80a0488961c2defcc557c6251deaa0f14de07d5b69c1ee7"
+    sha256 cellar: :any, arm64_big_sur:  "0290335e423b1c0ff499b84098e7908cecee7822e63e12552f85076e0632ee98"
+    sha256 cellar: :any, monterey:       "a20faca82b2e614033e873ab1b093303325de32c6bfa96ef5582514cdf04c17b"
+    sha256 cellar: :any, big_sur:        "3f53abb59fbcc986ca32435f9f91e6a3dba9453c9a60bdf1c0650bc590eaa8e7"
+    sha256 cellar: :any, catalina:       "2bfe29d1a8229b6bfead30d269e15f344ce3d0103267e5ea166d868c3392a116"
+    sha256               x86_64_linux:   "59de8c8f78c5c3aa415ee3544c7024635a65f76dd3eacccb25d25296376d08dd"
   end
 
   depends_on "cmake" => :build
@@ -98,13 +98,13 @@ class Semgrep < Formula
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/ab/61/1a1613e3dcca483a7aa9d446cb4614e6425eb853b90db131c305bd9674cb/pyparsing-3.0.6.tar.gz"
-    sha256 "d9bdec0013ef1eb5a84ab39a3b3868911598afa494f5faa038647101504e2b81"
+    url "https://files.pythonhosted.org/packages/d6/60/9bed18f43275b34198eb9720d4c1238c68b3755620d20df0afd89424d32b/pyparsing-3.0.7.tar.gz"
+    sha256 "18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea"
   end
 
   resource "pyrsistent" do
-    url "https://files.pythonhosted.org/packages/f4/d7/0fa558c4fb00f15aabc6d42d365fcca7a15fcc1091cd0f5784a14f390b7f/pyrsistent-0.18.0.tar.gz"
-    sha256 "773c781216f8c2900b42a7b638d5b517bb134ae1acbebe4d1e8f1f41ea60eb4b"
+    url "https://files.pythonhosted.org/packages/42/ac/455fdc7294acc4d4154b904e80d964cc9aae75b087bbf486be04df9f2abd/pyrsistent-0.18.1.tar.gz"
+    sha256 "d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
   end
 
   resource "requests" do

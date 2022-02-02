@@ -1,10 +1,9 @@
 class Gpsbabel < Formula
   desc "Converts/uploads GPS waypoints, tracks, and routes"
   homepage "https://www.gpsbabel.org/"
-  url "https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_1_7_0.tar.gz"
-  sha256 "30b186631fb43db576b8177385ed5c31a5a15c02a6bc07bae1e0d7af9058a797"
+  url "https://github.com/GPSBabel/gpsbabel/archive/gpsbabel_1_8_0.tar.gz"
+  sha256 "448379f0bf5f5e4514ed9ca8a1069b132f4d0e2ab350e2277e0166bf126b0832"
   license "GPL-2.0-or-later"
-  revision 1
 
   livecheck do
     url :stable
@@ -12,17 +11,17 @@ class Gpsbabel < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "5357d3b45f387798979f3cedc684fbcc67cff808472d08c5c0af62923e96d5ef"
-    sha256 cellar: :any,                 arm64_big_sur:  "c7ee4482d5aec2eb9c2a13012fc9ca66f9ffdd8d81350a2a89594ed99d27175c"
-    sha256                               big_sur:        "6d5c179704f46781438a06f02a6e83c0d9e5bfa3af0f15b738af0029a4cc56af"
-    sha256                               catalina:       "c71c3f2662684e9c03cac17d2f211b58ee07b3dc64ce74121922cca41d6b303c"
-    sha256                               mojave:         "0a8e9cb2650be7396304d7486975e4ef82dce6e1890f8f54cbbaa0e05ab99991"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b9b4de5bfef2c0548e1de3c4b5d82e881b511d7ea2bd496fe645a5373c5ef354"
+    sha256 cellar: :any,                 arm64_monterey: "7b5c28ab75dade273785b1e7f7080a2067e10262462bb4e4a19da5daa0e7e64d"
+    sha256 cellar: :any,                 arm64_big_sur:  "ac807500298ffee8afc0ad6d884db0307d73fb639733ae4c074c91f04ef1ba72"
+    sha256                               monterey:       "8c12af303436297edaf88e0e78583d76c31032ff3477659caaeae64c134428b9"
+    sha256                               big_sur:        "3e47fe71c6074f53f9ca9c25e357e6f8fb3b146bbc829dea38fae76a767e068b"
+    sha256                               catalina:       "3d4f1679c62ccd105a106cd2aba55e091d1312d3b636230721f3c7c4e33f78f2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7e500ef423595a42e5fe19e50221d210201a7a2cd6bd556654f1a8ba66122154"
   end
 
   depends_on "pkg-config" => :build
   depends_on "libusb"
-  depends_on "qt@5"
+  depends_on "qt"
   depends_on "shapelib"
 
   uses_from_macos "zlib"
@@ -32,12 +31,6 @@ class Gpsbabel < Formula
   end
 
   fails_with gcc: "5"
-
-  # upstream https://github.com/gpsbabel/gpsbabel/pull/611 added support for configuration of third party libraries.
-  patch do
-    url "https://raw.githubusercontent.com/Homebrew/formula-patches/8122e505c149fdb42132a18a9749f7b8c9940b77/gpsbabel/1.7.0.patch"
-    sha256 "8f6572aa8dc3a7b4db028bf75d952d97f7b47de278a91c3cc86bebed608be86a"
-  end
 
   def install
     ENV.cxx11

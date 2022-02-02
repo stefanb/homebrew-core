@@ -4,6 +4,7 @@ class Cwb3 < Formula
   url "https://downloads.sourceforge.net/project/cwb/cwb/cwb-3.5-RC/cwb-3.4.33-src.tar.gz"
   sha256 "856b72785522d42f13f4a0528d2b80c2bf422c10411234a8e4b61df111af77dd"
   license "GPL-2.0-or-later"
+  revision 2
   head "svn://svn.code.sf.net/p/cwb/code/cwb/trunk"
 
   livecheck do
@@ -12,12 +13,12 @@ class Cwb3 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "58a4e7511ce2b101990a19f53e9c23056ad6bbd1548ea58b35b0d44c18a263a5"
-    sha256 cellar: :any,                 arm64_big_sur:  "6bf55b83b4a38bb31b6725401ee566b483e2d4f9f9e599d7f93fa002b98193a4"
-    sha256 cellar: :any,                 monterey:       "bcbb0414f2a9a9a4289aee4ab440c8d583de77b69453706943f05d60ac4ba152"
-    sha256 cellar: :any,                 big_sur:        "52d7e82f3d7729b12f4eddd19805bdb9444a6613105ef861610b19240b5cd068"
-    sha256 cellar: :any,                 catalina:       "27f369e784f165896c5004724b1ca9a5bc1be64b3d76fb9a0b007e25eb6557a7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "805ab2c59d1fa16ec0de990e9b6283c04ebb4d5e8a2ba54648eb719fc0d39204"
+    sha256 cellar: :any,                 arm64_monterey: "fce8071b9fe5b2c2bdd9b237ddac22d2df6b4fe2c08d29eb8bea456b7ab814d8"
+    sha256 cellar: :any,                 arm64_big_sur:  "8f4fdd05b181e8f3c819c88d9cb7456b370a148ade914b5336ed7943c2725774"
+    sha256 cellar: :any,                 monterey:       "157899904d915f2bc5dfe1cc7fd6e89899c91bd61c801c6854e831b811fde037"
+    sha256 cellar: :any,                 big_sur:        "b8fec5b9f028d8f3ee3d98938bab86ac083ede05efe740504cd7abdb7ebc509e"
+    sha256 cellar: :any,                 catalina:       "194365652e3e8e6478dfa0cc4c6e8fadf5d2191b253abc02d9e05ff0cbf7b792"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "574689b505bbb71eb7f626203b2d1e611208958ab5a9f320b805def38fe26a63"
   end
 
   depends_on "pkg-config" => :build
@@ -47,6 +48,12 @@ class Cwb3 < Formula
     system "make", "all", *args
     ENV.deparallelize
     system "make", "install", *args
+
+    # Avoid rebuilds when dependencies are bumped.
+    inreplace bin/"cwb-config" do |s|
+      s.gsub! Formula["glib"].prefix.realpath, Formula["glib"].opt_prefix
+      s.gsub! Formula["pcre"].prefix.realpath, Formula["pcre"].opt_prefix
+    end
   end
 
   def default_registry

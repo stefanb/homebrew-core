@@ -28,7 +28,6 @@ env:
   HOMEBREW_GITHUB_ACTIONS: 1
   HOMEBREW_NO_AUTO_UPDATE: 1
   HOMEBREW_CHANGE_ARCH_TO_ARM: 1
-  HOMEBREW_RELOCATE_RPATHS: 1
 
 jobs:
   prepare:
@@ -142,7 +141,7 @@ jobs:
           rm bottles/bottle_output.txt
 
       - name: Upload logs
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@main
         with:
           name: logs
