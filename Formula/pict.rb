@@ -1,20 +1,20 @@
 class Pict < Formula
   desc "Pairwise Independent Combinatorial Tool"
   homepage "https://github.com/Microsoft/pict/"
-  url "https://github.com/Microsoft/pict/archive/v3.7.1.tar.gz"
-  sha256 "4fc7939c708f9c8d6346430b3b90f122f2cc5e341f172f94eb711b1c48f2518a"
+  url "https://github.com/Microsoft/pict/archive/v3.7.3.tar.gz"
+  sha256 "43279d0ea93c2c4576c049a67f13a845aa75ad1d70f1ce65535a89ba09daba33"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "75abd424144f5f1e31cb8584fa03aad4f28eef45b33f42def4813ddc09ce8bdc"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "a6094b78fd5c2e77ad655567d713503dee99c00e8ee4c2ef7ff38ce0bf361337"
-    sha256 cellar: :any_skip_relocation, monterey:       "c640b8925c9eb63db7f5612a7a81ca15ffb8502d036aa6e4ff430fa297abb4f0"
-    sha256 cellar: :any_skip_relocation, big_sur:        "6fd0d56a35c640dc6731062aec132549be6bbcf1cf5fae9b089b22c07df2082a"
-    sha256 cellar: :any_skip_relocation, catalina:       "0310bc54de6de7c0901d59c6177129b4d1b989e839eb7ced09b01f41398b8355"
-    sha256 cellar: :any_skip_relocation, mojave:         "ee531627e5fa6a0e8ba68aeb1e7bc5c420fb307bedccbc5b8aa248b73291a665"
-    sha256 cellar: :any_skip_relocation, high_sierra:    "f6ebf8ee9bb2ff705de0f9975cc96a4284a127b093ece87b44643d83f5b636de"
-    sha256 cellar: :any_skip_relocation, sierra:         "6ba3b37a9a8a0ce77430baddda0f57eebd71ad4adcf412c8f2f6b935073d7548"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "403ec2807ccae261d90907f5b94fd0bf830a4d177b806b8897bc5284f186b83e"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9c3370ed3f5f86086f6babbde9e3a4d5c57a436e3d2f7b6ceef5cad62f5e8610"
+    sha256 cellar: :any_skip_relocation, monterey:       "6c20f971ae5a8ffaaadc73afbde0c76445abc8a05b58a36fd2b00d98ac28e088"
+    sha256 cellar: :any_skip_relocation, big_sur:        "2f08584a5024865fdb0b31eef4e3c21cdfcda79e8fbb9730a1fe8432d1a51cde"
+    sha256 cellar: :any_skip_relocation, catalina:       "680c75c7dcfc952e3553957b58b1f9e132dba1f398cb2b3ed1f91d7df1d2fe82"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fbc58f036d00ae3d485030e8dc8f1d23e756f8982de86404d12a32c264f11e86"
   end
+
+  fails_with gcc: "5"
 
   resource "testfile" do
     url "https://gist.githubusercontent.com/glsorre/9f67891c69c21cbf477c6cedff8ee910/raw/84ec65cf37e0a8df5428c6c607dbf397c2297e06/pict.txt"
@@ -28,8 +28,11 @@ class Pict < Formula
 
   test do
     resource("testfile").stage testpath
-    output = shell_output("#{bin}/pict pict.txt").split("\n")
-    assert_equal output[0], "LANGUAGES\tCURRIENCIES"
-    assert_equal output[4], "en_US\tGBP"
+    output = shell_output("#{bin}/pict pict.txt")
+    assert_equal output.split("\n")[0], "LANGUAGES\tCURRIENCIES"
+    assert_match "en_US\tGBP", output
+    assert_match "en_US\tUSD", output
+    assert_match "en_UK\tGBP", output
+    assert_match "en_UK\tUSD", output
   end
 end

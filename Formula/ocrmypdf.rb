@@ -3,17 +3,17 @@ class Ocrmypdf < Formula
 
   desc "Adds an OCR text layer to scanned PDF files"
   homepage "https://github.com/jbarlow83/OCRmyPDF"
-  url "https://files.pythonhosted.org/packages/61/42/3d09ddbd44aa72bed204a2cca32c79c0521078ba5cf27ac0024058d98e88/ocrmypdf-13.3.0.tar.gz"
-  sha256 "20682c9603e6264dc33e3e4f4cb13bec661f8c670f9f688371b87c5fd2fc95e1"
+  url "https://files.pythonhosted.org/packages/b8/d6/da130fa5982df1e0141c0f9362ac743ec6cc724da2fa9a199661df73b998/ocrmypdf-13.4.0.tar.gz"
+  sha256 "e5a882afe9e1eb5382c916f13649dcab03035546f34d4bf1487d561081cb662c"
   license "MPL-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "49683ec3c25f8c0b7c2aa12a3ad95238be24e48dd2450a65e535415c224b62f2"
-    sha256 cellar: :any,                 arm64_big_sur:  "83f48e7c31f8e23614b90815f44478e74edf8145f79c42c82b02f513eb74832f"
-    sha256 cellar: :any,                 monterey:       "d4ec71a2f573e7b07bf268a5b7848b5a8b47b95939b5525e4bec37b2e455c2cc"
-    sha256 cellar: :any,                 big_sur:        "88dc2750923781647cfc459cabeef265a9694c83763ec5ba0d42762a20d9c2df"
-    sha256 cellar: :any,                 catalina:       "9c248fd7c45e8236357397a07e9520a5414277881b7a7096eed3182029b9e828"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c8eac05cc2d113d55116651a53818464fea134080229592a918d29bb6b6ca3a7"
+    sha256 cellar: :any,                 arm64_monterey: "d09337bd2e19019031dfab9034836192eccfcdd4998703450f02027cf8592a9b"
+    sha256 cellar: :any,                 arm64_big_sur:  "42508104400020c7e2d4445cc42a240105b02bd3900d1442a11956f488ffea78"
+    sha256 cellar: :any,                 monterey:       "0540b307e9057eceec9cc009dfca673cd40d55a51f8a4e6ccb96f4e061897abe"
+    sha256 cellar: :any,                 big_sur:        "eb8cac2bdbd4994cedbfadc93520a4f42d97cda02346bb2b481a062a67f00c73"
+    sha256 cellar: :any,                 catalina:       "f17508fe3814383318888334e77a6a2182972e64cef28a44f1929d45731dbae9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "227f51cf20b5784a099eb8a79a4f0c2f7b37a8ffab5b251ae60cff6afc7fa179"
   end
 
   depends_on "pkg-config" => :build
@@ -70,8 +70,8 @@ class Ocrmypdf < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/84/74/4a97db45381316cd6e7d4b1eb707d7f60d38cb2985b5dfd7251a340404da/lxml-4.7.1.tar.gz"
-    sha256 "a1613838aa6b89af4ba10a0f3a972836128801ed008078f8c1244e65958f1b24"
+    url "https://files.pythonhosted.org/packages/3b/94/e2b1b3bad91d15526c7e38918795883cee18b93f6785ea8ecf13f8ffa01e/lxml-4.8.0.tar.gz"
+    sha256 "f63f62fc60e6228a4ca9abae28228f35e1bd3ce675013d1dfb828688d50c6e23"
   end
 
   resource "packaging" do
@@ -85,8 +85,8 @@ class Ocrmypdf < Formula
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/b4/a5/6487992141abc6133a1c59ca7389d761177f156b00364b79199d1c3307c0/pikepdf-4.4.1.tar.gz"
-    sha256 "c25d4c7673f9588d1f98bca498db98ba675070dc89ffffe50b3b124d4a005df9"
+    url "https://files.pythonhosted.org/packages/2a/12/11349bb3789fa5120691c2c2da11dfe3cc2b9bc4ee538c4745c5477b68ec/pikepdf-5.0.1.tar.gz"
+    sha256 "5fae9eeb7a0120d466fb219aea643a94a1423d68ee9171639a44cf0329ebe7aa"
   end
 
   resource "pluggy" do
@@ -105,8 +105,8 @@ class Ocrmypdf < Formula
   end
 
   resource "reportlab" do
-    url "https://files.pythonhosted.org/packages/d9/18/8215e8c2d16148c2c9b04e7329bdb43ae33819cdd1f73a79cd6e264bad4f/reportlab-3.6.6.tar.gz"
-    sha256 "dd1cdb62dc123f5859ca514eb639f70660bdc818c95fb0ee2370a175a0e20ce4"
+    url "https://files.pythonhosted.org/packages/53/2f/a445108d4386ea996da5d808231a72f7e8ef353a4df7f486aa3d39883130/reportlab-3.6.7.tar.gz"
+    sha256 "d035054724278129aba2a55c3edd6111b07e625ad1ff845e3ba2a5e4e203bbc8"
   end
 
   resource "tqdm" do

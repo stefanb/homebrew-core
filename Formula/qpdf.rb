@@ -1,17 +1,17 @@
 class Qpdf < Formula
   desc "Tools for and transforming and inspecting PDF files"
   homepage "https://github.com/qpdf/qpdf"
-  url "https://github.com/qpdf/qpdf/releases/download/release-qpdf-10.5.0/qpdf-10.5.0.tar.gz"
-  sha256 "88257d36a44fd5c50b2879488324dd9cafc11686ae49d8c4922a4872203ce006"
+  url "https://github.com/qpdf/qpdf/releases/download/release-qpdf-10.6.2/qpdf-10.6.2.tar.gz"
+  sha256 "4b8c966300fcef32352f6576b7ef40167e080e43fe8954b12ef80b49a7e5307f"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "dda3030998f65cf20552bdb3b9eef7f7c68b35979d8f6b36c3c3b98d9b5a07e5"
-    sha256 cellar: :any,                 arm64_big_sur:  "92df84a90a4b8b5450aef8de1d61f53786cfb7ea6a3d33f8c73234921324720a"
-    sha256 cellar: :any,                 monterey:       "fa34dc0ec4a59333dd1af3f1dd95e3d3244e09861682d5a2156708fe03fa4ef7"
-    sha256 cellar: :any,                 big_sur:        "5eadc04ed3c8a58d418f02ce08a19f39e13f6e1a5609832b25352cac01a7f703"
-    sha256 cellar: :any,                 catalina:       "f3a013040c97867ca4a6687670a01947a6f5df2c22159a34aeddc68d4cb61f22"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "57f5aa27bffc33492b40b47fb7b3feb558775a8a82635d4405148b0952f5755b"
+    sha256 cellar: :any,                 arm64_monterey: "b4bc03f5c24a4305261aaf31841f3588d08c4c9317712bcdd948b278a3bf14eb"
+    sha256 cellar: :any,                 arm64_big_sur:  "042f245db23934629bb538746ab287dd1cb4d096f16289f8068d07b98e9aa0c4"
+    sha256 cellar: :any,                 monterey:       "610f410788d9c34ea2c8a8af2f8935627305b2a3fc148969f7f7ca173e1ac6f6"
+    sha256 cellar: :any,                 big_sur:        "c7578fc7da02522ec78ed8df30abb0a3521a7bd9880320ed45750451055681b4"
+    sha256 cellar: :any,                 catalina:       "c206dcde8ac57e2a0c7c7cd1323972cee8cb536467051f600026d315bcaca9f7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9a076d5c24158183d68030ae051991b2fdf348f32896ad1da739d1c79ad98c84"
   end
 
   depends_on "jpeg"

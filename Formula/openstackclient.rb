@@ -6,15 +6,15 @@ class Openstackclient < Formula
   url "https://files.pythonhosted.org/packages/33/fb/1b529a396e56e258bc6bfb49c0d1be3792aea7f6e0570c908bc0641df2ed/python-openstackclient-5.7.0.tar.gz"
   sha256 "c65e3d51018f193cce2daf3d0fd69daa36003bdb2b85df6b07b973e4c39e2f92"
   license "Apache-2.0"
-  revision 1
+  revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "b4a1b116f29fbf22117619e397921b71179dc12889c8debc1e65674596e649c9"
-    sha256 cellar: :any,                 arm64_big_sur:  "9d26a6ebb6956d5dea1302b27ae9a307a4735103b974408de7dd9ac84c0e1360"
-    sha256 cellar: :any,                 monterey:       "016142d51811828fb068cbf2fe942aa44cf1052b00c8d8161c5fb10e79f54e92"
-    sha256 cellar: :any,                 big_sur:        "e0fe2850d35b4bdd70ca4c9cfaa5c41f9778a2b5c8458cab51b595febdf740dc"
-    sha256 cellar: :any,                 catalina:       "449279cd378c83dfe8f1510db342b8c8e938e11f236aabdc7b0fe4aa75041d92"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e871217cd9cfb068937b6c73975185d5dbb5bcd23c0f24a4659084d794e9530e"
+    sha256 cellar: :any,                 arm64_monterey: "3142e6bfb7853ea37d9e6c4d783f86b0272bfc07aaf6272498c378b3cd86b13d"
+    sha256 cellar: :any,                 arm64_big_sur:  "f394c8cb25bd5f7e8a2133070fe0360014a9fca6071fd3f14b549a1c6a0553ef"
+    sha256 cellar: :any,                 monterey:       "3ae3a46761a805244df971336ec88fe8eebdbf43a00304cfb73b3a8751500298"
+    sha256 cellar: :any,                 big_sur:        "8533d8b17f5587d2a5e591272bc886b5465f0725de2fa452ffa924d48559d832"
+    sha256 cellar: :any,                 catalina:       "71a5703de0aed1e9e736ac53f74b39c29e9bc948bd312f281db86a2c01b54815"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "47445586d5359121f807cc7a8778a317a88457586d7ef913dad3c3ade0117c22"
   end
 
   depends_on "rust" => :build
@@ -227,8 +227,8 @@ class Openstackclient < Formula
   end
 
   resource "python-heatclient" do
-    url "https://files.pythonhosted.org/packages/b1/68/3b8e2c058a6484b89eac6930947892789c1e0120f4fe9b8d95f850f59f6f/python-heatclient-2.4.0.tar.gz"
-    sha256 "b53529eb73f08c384181a580efaa42293cc35e0e1ecc4b0bc14a5c7b202019bb"
+    url "https://files.pythonhosted.org/packages/b3/48/a1400b21fe151a4cac4d664cdbf043255e164dbf97600dab79838e6c8815/python-heatclient-2.5.0.tar.gz"
+    sha256 "b610748eb3f18f6bd762e0808accdf872308289a77c3b19ed2d8b9f306393a42"
   end
 
   resource "python-keystoneclient" do

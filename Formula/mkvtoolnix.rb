@@ -1,10 +1,11 @@
 class Mkvtoolnix < Formula
   desc "Matroska media files manipulation tools"
   homepage "https://mkvtoolnix.download/"
-  url "https://mkvtoolnix.download/sources/mkvtoolnix-64.0.0.tar.xz"
-  mirror "https://fossies.org/linux/misc/mkvtoolnix-64.0.0.tar.xz"
-  sha256 "843ea623f21ae2407f8f42839c41a22abf116bdd509e87d875bdc737703ab953"
+  url "https://mkvtoolnix.download/sources/mkvtoolnix-65.0.0.tar.xz"
+  mirror "https://fossies.org/linux/misc/mkvtoolnix-65.0.0.tar.xz"
+  sha256 "0dddc9cc1bae26ceaac3a184482c50e6bb8add2d62e06ef08b55f9f0108bb92e"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url "https://mkvtoolnix.download/sources/"
@@ -12,12 +13,12 @@ class Mkvtoolnix < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "32e3b3b42baea699e66462b0d72b36d1c475ebc05ef5a76c9bf45764e32a2bbf"
-    sha256 cellar: :any, arm64_big_sur:  "87b3f6b9a17c2037cfd998847a2d1d4a82adb8a1d16210e568767ad688c2984a"
-    sha256 cellar: :any, monterey:       "5505b5bdad5074edd514f956bb28aaaf70a4ed6c5df62decb71f4c22a7fca9d5"
-    sha256 cellar: :any, big_sur:        "f4608cbda19b5d0c81a4cdb0e7d2c43665e14408ca27a5057481ec6ce1b3bfce"
-    sha256 cellar: :any, catalina:       "09881f322cebb5259030dc84c48b1a68cf7c247df8801563b8af202b8baf3c95"
-    sha256               x86_64_linux:   "135c2a09f9880d5910822e62f7e58cbde08e55bb91082986832dd9c6300d27d5"
+    sha256 cellar: :any, arm64_monterey: "f04937c8612752449bbdec4f41eafac01dc8346aa1942f0bf131780693456961"
+    sha256 cellar: :any, arm64_big_sur:  "f79a78f57842a866e6a8fd9200905ed5cd8822198680e9e446d95add1a0f6883"
+    sha256 cellar: :any, monterey:       "dc8b3af50ae769fd1cff138c016215c099678f8b28ccc0de5c4f66915329d8b9"
+    sha256 cellar: :any, big_sur:        "1aa6d6fe7d35f8a1b4dbe6c1d3313ab2013719332eca8e7a2c3e012914738f9c"
+    sha256 cellar: :any, catalina:       "36ee4b81254407045f6fbba70292275e4501981315382b31b9c68a157d6d1d5a"
+    sha256               x86_64_linux:   "3b22f46e2c820da1b379127b2b5a1299dd03d76ae137a3b353bfe212cf8ac1d8"
   end
 
   head do

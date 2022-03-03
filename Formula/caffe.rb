@@ -4,7 +4,7 @@ class Caffe < Formula
   url "https://github.com/BVLC/caffe/archive/1.0.tar.gz"
   sha256 "71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f"
   license "BSD-2-Clause"
-  revision 34
+  revision 36
 
   livecheck do
     url :stable
@@ -12,11 +12,10 @@ class Caffe < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "e9a6b7d5319b06b9f804e86ed609663951e113455df8bd57a0f7300f8dab0335"
-    sha256 cellar: :any, arm64_big_sur:  "a2fab68055a79c1312b04b283d6034a206ec254d8daf0917e7ac62432d0c5d91"
-    sha256 cellar: :any, monterey:       "c657f6c2d50f44d7b8cc329a9b0280ceeaa801596247ba38d3cccbdeb2530d72"
-    sha256 cellar: :any, big_sur:        "90ebcb88034a191447fe98ae5990c3c7563141d1122b6b21d4acf5771cbacd92"
-    sha256 cellar: :any, catalina:       "d7381ec7e78e3a2e373715bf5c6627694521c2ad80f8e8dde421ef31d7f9c56f"
+    sha256 cellar: :any, arm64_monterey: "72bb897a2dfc6eb7b651c09a42a2d824e8b633f99adaf26d38870c23618bfa4e"
+    sha256 cellar: :any, arm64_big_sur:  "214e211b5a8094a2ff8af1f68152c58e74aa122870165b62b0f88cadf2ee5d6a"
+    sha256 cellar: :any, big_sur:        "13c8db3b97a7aa2f64f7a24f58778bdb154ee76cdb5da2ae242138a059b4bc2e"
+    sha256 cellar: :any, catalina:       "6722e94afe9d32fd3be71d9bb216fbbeec1ee2537af1acb4aef2de4510a5e6ab"
   end
 
   depends_on "cmake" => :build

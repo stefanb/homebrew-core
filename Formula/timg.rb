@@ -1,22 +1,22 @@
 class Timg < Formula
   desc "Terminal image and video viewer"
   homepage "https://timg.sh/"
-  url "https://github.com/hzeller/timg/archive/refs/tags/v1.4.3.tar.gz"
-  sha256 "46eac8d5434b281afa6d64ced5f46c732c1c4d0699e16a22175b7df179221e2c"
+  url "https://github.com/hzeller/timg/archive/refs/tags/v1.4.4.tar.gz"
+  sha256 "66d2e00b50068fd6638bb8be1859c50ca4f24caef751f9dc95b303f37fb07b1e"
   license "GPL-2.0-only"
   head "https://github.com/hzeller/timg.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "531c30dd7c35e063b3275906ed52852787515e919aa0509061e8f6aa9d104b29"
-    sha256 cellar: :any,                 arm64_big_sur:  "da011715f8a4d17401ae07f6df5785793ce40b3427ab2614aefe37004fa785aa"
-    sha256 cellar: :any,                 monterey:       "a463826c4fefc87b00b263f20089bc19ea9ed9a03e06bc3a6cb54c656ce3da22"
-    sha256 cellar: :any,                 big_sur:        "4b3469d10b9bb86a593d712e336b668bfb7c4182d095394d17ebee6431673f32"
-    sha256 cellar: :any,                 catalina:       "a5e09b3923a28853aabc4538f84891ec9d7b4a80b9996873bfd0bd9cee2ae0a3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9f2282c858059757eecbb0546315b00966f67baf5d48b732be29683350c5bff2"
+    sha256 cellar: :any,                 arm64_monterey: "de4c65235281a2b9c5d62d28fa39053e21f30c4852ae3f6a0cb419a5ef4231d4"
+    sha256 cellar: :any,                 arm64_big_sur:  "da8576af220bdd5052fcd031c0e2b0e1fb206d449c40354f72d10dfb5d9c6d7a"
+    sha256 cellar: :any,                 monterey:       "f9f639aac4e106fb0c3ab2f4776acee6d6423f4f497491f334e43547e734ccea"
+    sha256 cellar: :any,                 big_sur:        "0efbad0c7a082200d97ec158e1934362d82f5db03aa1130f8ea54088b73c478b"
+    sha256 cellar: :any,                 catalina:       "5a2f9661a9e5ad1ada45486c2efb99a16f070f955d373cefdb63a6c9079e8b24"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c173cd55ef26536b606b64e5044777732fcf67b625d17f6c430947325e8f2ec1"
   end
 
   depends_on "cmake" => :build
-  depends_on "ffmpeg"
+  depends_on "ffmpeg@4"
   depends_on "graphicsmagick"
   depends_on "jpeg-turbo"
   depends_on "libexif"

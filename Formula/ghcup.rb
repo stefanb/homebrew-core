@@ -2,10 +2,9 @@ class Ghcup < Formula
   desc "Installer for the general purpose language Haskell"
   homepage "https://www.haskell.org/ghcup/"
   # There is a tarball at Hackage, but that doesn't include the shell completions.
-  url "https://gitlab.haskell.org/haskell/ghcup-hs/-/archive/v0.1.17.4/ghcup-hs-v0.1.17.4.tar.bz2"
-  sha256 "9973a42397bcdecfaf5f5d8251b4513422b80e901b2f2e77b80b0ad28d19f406"
+  url "https://gitlab.haskell.org/haskell/ghcup-hs/-/archive/v0.1.17.5/ghcup-hs-v0.1.17.5.tar.bz2"
+  sha256 "0fd7e17b79cc3ee244a34f5898d0303e9505bed5162ce2b9035f721bea564f1e"
   license "LGPL-3.0-only"
-  revision 1
   head "https://gitlab.haskell.org/haskell/ghcup-hs.git", branch: "master"
 
   livecheck do
@@ -14,26 +13,18 @@ class Ghcup < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "553aee233e4617d6140fe218d772e470c66ef12b527b3cf709a42b809716bf0d"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "66b07f315f6644bdb133b8e19d1a33cc9ce4974eb554259f86b984249d9a7960"
-    sha256 cellar: :any_skip_relocation, monterey:       "8288b59b86ab250e920405bd54f3a6fc025c5c9d6526227b4310e454593dea89"
-    sha256 cellar: :any_skip_relocation, big_sur:        "8157ac923242679a8e4e40edc15afe925c085b94d27d1e6871e18993f2aa96bc"
-    sha256 cellar: :any_skip_relocation, catalina:       "cebe472e27f95cc3789f74d2884ad48cbb488c798d28e30def65429a93cb5627"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "eac2cafcedefbde7e47aa147b81ffa0336b0e397e471ab62d5deee5480d06c87"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "6103e1b78c9340fdc260e4372123ad01476529670084dcec65bef1485ea26502"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6e4e96484c091e49d3bc4057bfd923d052aeeed7dcbea7b82f58e51fbb867f0d"
+    sha256 cellar: :any_skip_relocation, monterey:       "1832948d42d37025906e83753c7a7211d7ddf41d560eaa5c63be83858d2f4a6d"
+    sha256 cellar: :any_skip_relocation, big_sur:        "9e21f60e37bbc76b6044960a881df940d4ae9368cc81429f23a1591e33402669"
+    sha256 cellar: :any_skip_relocation, catalina:       "b29e6f6ebe9045ed9f049b37306f315a96b149f0fb23d1e104221d2520a7954c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b733b6b1467810a314970d8f5da0223e31763181b10833b7d7e83e9a94fcab0b"
   end
 
   depends_on "cabal-install" => :build
   depends_on "ghc" => :build
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
-
-  # Disable self-upgrade functionality. Backported from:
-  # https://gitlab.haskell.org/haskell/ghcup-hs/-/commit/b245c11b1d77236c75c29fb094bbb9cfd70eed48
-  # Remove at next release.
-  patch do
-    url "https://gitlab.haskell.org/haskell/ghcup-hs/-/snippets/3838/raw/main/0001-Allow-to-disable-self-upgrade-functionality-wrt-305.patch"
-    sha256 "a20152dead868cf1f35f9c0a3cb2fca30bb4ef09c4543764c1f1dc71a8ba47f7"
-  end
 
   def install
     system "cabal", "v2-update"

@@ -1,17 +1,17 @@
 class Verilator < Formula
   desc "Verilog simulator"
   homepage "https://www.veripool.org/wiki/verilator"
-  url "https://github.com/verilator/verilator/archive/refs/tags/v4.216.tar.gz"
-  sha256 "64e5093b629a7e96178e3b2494f208955f218dfac6f310a91e4fc07d050c980b"
+  url "https://github.com/verilator/verilator/archive/refs/tags/v4.218.tar.gz"
+  sha256 "ef7b1e6ddb715ddb3cc998fcbefc7150cfa2efc5118cf43ddb594bf41ea41cc7"
   license any_of: ["LGPL-3.0-only", "Artistic-2.0"]
 
   bottle do
-    sha256 arm64_monterey: "64e904c9c83ab057476ed63a80277656df6d554f30d589c82b42333ca2ec9866"
-    sha256 arm64_big_sur:  "7b9d457edce98a8703f88ed0f646c0a1cb33f6a51d9cfc2778e61040ea76cf80"
-    sha256 monterey:       "26efe02e1808eee8ebc6bc480c27bd886f4024a49f4ced13c56655eec2acf4a6"
-    sha256 big_sur:        "40459e084b741bffc67f6e7b72cf0c701428415434ad23ba635cf3fda9840276"
-    sha256 catalina:       "e0158aa800c6028a36f456d7e60a4b1ef102c863e03e8f4b83dd0a6261cf898d"
-    sha256 x86_64_linux:   "f337bdd7247fbb8a3245d28fa4531d69af420047e0058557f601ea8eefad9661"
+    sha256 arm64_monterey: "7de06c545a95536c74dd987d1a77e58e5c6e9f09d8710041e92cc4bef6e9b054"
+    sha256 arm64_big_sur:  "90eecfdacaca3833bd899cfdb2b8f74454f6a6ef783d9b5935fdb65512db48da"
+    sha256 monterey:       "182da3bdf014340bf5ac47f2c77a3eef838961df233e4df18d62907e216a2654"
+    sha256 big_sur:        "af3582a28039e325d1785ee3e72c309336c2e408bae1bc6bf35085173e0d938b"
+    sha256 catalina:       "7045124321f7a7d33d40f4de72820ccf45a0eb0c06e6ebd4f15b198f33aae78f"
+    sha256 x86_64_linux:   "8de13337e7f196addb5ad8d4a1541c38023f932d29c5882c0199c4de1a3962dd"
   end
 
   head do
@@ -21,7 +21,6 @@ class Verilator < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "python@3.10" => :build
-  depends_on "cmake" => :test
 
   uses_from_macos "bison"
   uses_from_macos "flex"
@@ -54,16 +53,9 @@ class Verilator < Formula
           exit(0);
       }
     EOS
-    (testpath/"CMakeLists.txt").write <<~EOS
-      project(test)
-      cmake_minimum_required(VERSION 3.12)
-      find_package(verilator)
-      add_executable(Vtest test.cpp)
-      verilate(Vtest SOURCES test.v)
-    EOS
-    system "cmake", "-B", "build", "."
-    system "cmake", "--build", "build", "--"
-    cd "build" do
+    system "/usr/bin/perl", bin/"verilator", "-Wall", "--cc", "test.v", "--exe", "test.cpp"
+    cd "obj_dir" do
+      system "make", "-j", "-f", "Vtest.mk", "Vtest"
       expected = <<~EOS
         Hello World
         - test.v:2: Verilog $finish

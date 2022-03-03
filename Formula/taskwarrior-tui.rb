@@ -1,8 +1,8 @@
 class TaskwarriorTui < Formula
   desc "Terminal user interface for taskwarrior"
   homepage "https://github.com/kdheepak/taskwarrior-tui"
-  url "https://github.com/kdheepak/taskwarrior-tui/archive/v0.18.5.tar.gz"
-  sha256 "d79aa2c3c6dfe6ee8570077680016e69420b77eea7916b033c34d75c35b61059"
+  url "https://github.com/kdheepak/taskwarrior-tui/archive/v0.20.1.tar.gz"
+  sha256 "a308d44cec4693fa1595b48d938ae7398743b8073de0ffce4ea9214f66c4b1e1"
   license "MIT"
   head "https://github.com/kdheepak/taskwarrior-tui.git", branch: "main"
 
@@ -12,12 +12,12 @@ class TaskwarriorTui < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1c26012933169aa68b4c050b7c05140d71d54f39d7fb939c428fc61eafa422ca"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2d37772564354bd96771cec5686fad6e3a358c96ed1fb5e495f2c9c04e95a551"
-    sha256 cellar: :any_skip_relocation, monterey:       "d91feec3204c2c531a91fa6d0017521f3773766e53483358ac1da84a3b78fef8"
-    sha256 cellar: :any_skip_relocation, big_sur:        "236a5a112d8f9212b773177a72277d49f96bb59c669486343a3b7b1f590207ca"
-    sha256 cellar: :any_skip_relocation, catalina:       "b5c11c01ade6d20c7806cebe961ba6210d60543b50bb3cfda65a58fa474c12b8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "59d74d9250360d16df6081e495fc27ba0f11aa1aa916da7433aacd3c3f993b95"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "469fb0176a363cb4b12c414de6a102ef1f6cc07dd074ae91e03bd438d28b0384"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e8ec24b7ab52c8caf12e31a617ffa2141f60d6b3a52320c16dee31e64f018ce2"
+    sha256 cellar: :any_skip_relocation, monterey:       "0e70c3168140f923e4203d68800675a7db8c8dbdafac731e05870296517ef116"
+    sha256 cellar: :any_skip_relocation, big_sur:        "1b215d9fbf427aa0060c278ad8b90eff32a2ee84be18f049fe3f8afc4bbe9e1d"
+    sha256 cellar: :any_skip_relocation, catalina:       "49e3b67cb9ba53c1b1f77f0c1f73693393cc4c439f98836f0a71b7d2d1257e5e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cb954c8b4a3ac6041351d1bf0c0d2d63ad6a7dd0b97a4614f1fceca19b1e7f2f"
   end
 
   depends_on "rust" => :build

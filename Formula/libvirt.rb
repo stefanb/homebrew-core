@@ -1,10 +1,9 @@
 class Libvirt < Formula
   desc "C virtualization API"
   homepage "https://libvirt.org/"
-  url "https://libvirt.org/sources/libvirt-7.10.0.tar.xz"
-  sha256 "cb318014af097327928c6e3d72922e3be02a3e6401247b2aa52d9ab8e0b480f9"
+  url "https://libvirt.org/sources/libvirt-8.0.0.tar.xz"
+  sha256 "51e6e8ff04bafe96d7e314b213dcd41fb1163d9b4f0f75cdab01e663728f4cf6"
   license all_of: ["LGPL-2.1-or-later", "GPL-2.0-or-later"]
-  revision 1
   head "https://gitlab.com/libvirt/libvirt.git", branch: "master"
 
   livecheck do
@@ -13,12 +12,12 @@ class Libvirt < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "f157ec2148e509becfcfa7d2f093a40f2ddef006687a1a503a984a56c20149a9"
-    sha256 arm64_big_sur:  "ae5b59937198b088873ea400c601ba99b2930e08186b960b0a0a3338e69afc0e"
-    sha256 monterey:       "5f3e532a6f37cc24b9ff38bdfa1ab6deb76a6079af8008504fdc03deae7bb0b4"
-    sha256 big_sur:        "6c475624430a0251278ba2e08b49ad0bc59f0634033a4914b62ef854fcb2ed1a"
-    sha256 catalina:       "f4bf14b1d3e236a5d71de7cf1b8801adc8bd2b05181ad197975c01adbaa28edc"
-    sha256 x86_64_linux:   "6626249198109787d347375c988bf5374677e30ea0bcdd4042de170bae35bb54"
+    sha256 arm64_monterey: "dc408ef9e5679856b0c3a3200cd9c16c5c7ba270018de1472a8650344c6c5479"
+    sha256 arm64_big_sur:  "02359e449d7c2d19ff52ff3258679e1f07c79685fa91f3962104b8267f2c2369"
+    sha256 monterey:       "b80fe11b75c15cd46f5aa39e31e9523ef958734a75420e2b19fb7c8814d030dd"
+    sha256 big_sur:        "96d763827e880a7100e79283e5e16b2aa6d575b63c7707b290d8536f4530ee78"
+    sha256 catalina:       "7f691a6378bef0e100e2b0ae200f2dec72d9d8bffb09595f506a47d1e11f7756"
+    sha256 x86_64_linux:   "0e2b445c7794db793d58fbb651cbce64fd6753ad4cde88b23b5bf4a3ad116bc8"
   end
 
   depends_on "docutils" => :build
@@ -46,6 +45,7 @@ class Libvirt < Formula
 
   on_linux do
     depends_on "libtirpc"
+    depends_on "linux-headers@5.16"
   end
 
   # Don't generate accelerator command line on macOS
@@ -65,6 +65,13 @@ class Libvirt < Formula
   patch do
     url "https://gitlab.com/abologna/libvirt/-/commit/da138afc3609a92d473fddcffa54b2020759f986.diff"
     sha256 "4eb3c9f0ca140a4d8eb5002acde0b6f1234011f82df7d8cc85252be35e8a5cff"
+  end
+
+  # Fix PermissionError: [Errno 1] Operation not permitted: '/usr/local/Cellar/yajl/2.1.0/include/libvirt'
+  # Remove with next release
+  patch do
+    url "https://gitlab.com/libvirt/libvirt/-/commit/9f2d3cb472fd4d86dc4de5d57fcf8acb14e33e00.diff"
+    sha256 "ee14a4922ddc405c6ff6c5f7e9183b83f50cfa448b2ab9e1428f3f1c47e0d34c"
   end
 
   def install

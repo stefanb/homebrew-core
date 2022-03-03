@@ -1,8 +1,8 @@
 class Ruby < Formula
   desc "Powerful, clean, object-oriented scripting language"
   homepage "https://www.ruby-lang.org/"
-  url "https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.3.tar.xz"
-  sha256 "88cc7f0f021f15c4cd62b1f922e3a401697f7943551fe45b1fdf4f2417a17a9c"
+  url "https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.1.tar.gz"
+  sha256 "fe6e4782de97443978ddba8ba4be38d222aa24dc3e3f02a6a8e7701c0eeb619d"
   license "Ruby"
 
   livecheck do
@@ -11,12 +11,12 @@ class Ruby < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "e7961e4a240c1add69542df3034debf095af44864e7ff697683fb62c930f08d8"
-    sha256 arm64_big_sur:  "1c1e11c53a3b9b02f863743a7b6d44e2fb2ba79abde6f914416d762cec30c55e"
-    sha256 monterey:       "792947d46e7226ed8838a64409ebcd4625c21dabe7e7062aff10ffbd37e0487f"
-    sha256 big_sur:        "dbb88009bf28a89e2685a81efb5a43a5b1821dcd0b8d220467f4e9eadb2082b8"
-    sha256 catalina:       "5735adf39a717241df6d68da3bfd113f3108f54d0a85fd23db1608586ad9dd6f"
-    sha256 x86_64_linux:   "14f73f228d65950ac98f319deb46e12b2e92432253f75caf90a671ad308fd11c"
+    sha256 arm64_monterey: "90383af9d5a0a3e01f03ed01b20d52dea665886b4b8fd8c6a5611e78fda3a0f7"
+    sha256 arm64_big_sur:  "3d1b5f14c723530cf4387084d12129077f830057fb6e802882d30c14d7243bf2"
+    sha256 monterey:       "e61f2b8670e42013d92e38da11fc6bff8a4857503aec1e2160efb6fc3e256056"
+    sha256 big_sur:        "625c195be406f1ecbf5058d5fd8c2536496ba6206ce6e903d7278f80e0936ce7"
+    sha256 catalina:       "c38f5c3ee526bc77c5d98e9e8b461b15d7e5056746ef41e42870e37a593a9f1b"
+    sha256 x86_64_linux:   "bfd010ea1f0a058e627e7ac925acd340c56de98f3c193c94ef3439bef5a58f92"
   end
 
   head do
@@ -38,8 +38,8 @@ class Ruby < Formula
   # The exception is Rubygem security fixes, which mandate updating this
   # formula & the versioned equivalents and bumping the revisions.
   resource "rubygems" do
-    url "https://rubygems.org/rubygems/rubygems-3.2.32.tgz"
-    sha256 "1a8223ad81c442badc4735df35d92a642401419fd107942966d4f0468a500b9c"
+    url "https://rubygems.org/rubygems/rubygems-3.3.7.tgz"
+    sha256 "537475b3a75d4989a9f61c552c7249001a617e84e6cdfb533ff19ecfdeeaf183"
   end
 
   def api_version
@@ -53,6 +53,11 @@ class Ruby < Formula
   def install
     # otherwise `gem` command breaks
     ENV.delete("SDKROOT")
+
+    # Prevent `make` from trying to install headers into the SDK
+    # TODO: Remove this workaround when the following PR is merged/resolved:
+    #       https://github.com/Homebrew/brew/pull/12508
+    inreplace "tool/mkconfig.rb", /^(\s+val = )'"\$\(SDKROOT\)"'\+/, "\\1"
 
     system "./autogen.sh" if build.head?
 

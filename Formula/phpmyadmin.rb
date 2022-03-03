@@ -1,8 +1,8 @@
 class Phpmyadmin < Formula
   desc "Web interface for MySQL and MariaDB"
   homepage "https://www.phpmyadmin.net"
-  url "https://files.phpmyadmin.net/phpMyAdmin/5.1.2/phpMyAdmin-5.1.2-all-languages.tar.gz"
-  sha256 "a6edc1c1b79793152c234b1fc2efd0978aaf6d332b98dda9c794252b539640b7"
+  url "https://files.phpmyadmin.net/phpMyAdmin/5.1.3/phpMyAdmin-5.1.3-all-languages.tar.gz"
+  sha256 "7a85454d82d88cc1a6beb09114a67fa40230c4eff2ae1778b434fa74e80dc6d7"
 
   livecheck do
     url "https://www.phpmyadmin.net/files/"
@@ -10,12 +10,12 @@ class Phpmyadmin < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "c76323b81f1045b6a298cf79806530820f6fa280079e6e5c8f63130925920f08"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c76323b81f1045b6a298cf79806530820f6fa280079e6e5c8f63130925920f08"
-    sha256 cellar: :any_skip_relocation, monterey:       "00781d9192496bc829104fa222dfb8cf4238326948020667cba18c83c82d831b"
-    sha256 cellar: :any_skip_relocation, big_sur:        "00781d9192496bc829104fa222dfb8cf4238326948020667cba18c83c82d831b"
-    sha256 cellar: :any_skip_relocation, catalina:       "00781d9192496bc829104fa222dfb8cf4238326948020667cba18c83c82d831b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c76323b81f1045b6a298cf79806530820f6fa280079e6e5c8f63130925920f08"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "6be8d4e8e4bcea35c18f9898345c6158e08cdcada6b39cf876a48969cee1cdbc"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6be8d4e8e4bcea35c18f9898345c6158e08cdcada6b39cf876a48969cee1cdbc"
+    sha256 cellar: :any_skip_relocation, monterey:       "e7f668722047870a70055b32f1a0ceacf7385d6e81f6835ee521e253dbb44a35"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e7f668722047870a70055b32f1a0ceacf7385d6e81f6835ee521e253dbb44a35"
+    sha256 cellar: :any_skip_relocation, catalina:       "e7f668722047870a70055b32f1a0ceacf7385d6e81f6835ee521e253dbb44a35"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6be8d4e8e4bcea35c18f9898345c6158e08cdcada6b39cf876a48969cee1cdbc"
   end
 
   depends_on "php" => :test

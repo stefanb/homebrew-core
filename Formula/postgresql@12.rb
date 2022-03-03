@@ -1,8 +1,8 @@
 class PostgresqlAT12 < Formula
   desc "Object-relational database system"
   homepage "https://www.postgresql.org/"
-  url "https://ftp.postgresql.org/pub/source/v12.9/postgresql-12.9.tar.bz2"
-  sha256 "89fda2de33ed04a98548e43f3ee5f15b882be17505d631fe0dd1a540a2b56dce"
+  url "https://ftp.postgresql.org/pub/source/v12.10/postgresql-12.10.tar.bz2"
+  sha256 "83dd192e6034951192b9a86dc19cf3717a8b82120e2f11a0a36723c820d2b257"
   license "PostgreSQL"
   revision 1
 
@@ -12,12 +12,12 @@ class PostgresqlAT12 < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "0551d24f41d48069220ac4c14d45181ec4b0452b8530b6ae930556a4aa1d9582"
-    sha256 arm64_big_sur:  "ff58c19a08f2e1c5eb85a795e82773d3afe8bec0d5bbed386849c48b8c03441d"
-    sha256 monterey:       "829c7cad52d936f0354eefdd4faf45a2490a7b8f3420fbfb83f7fad781ff6d4a"
-    sha256 big_sur:        "e6c64282624fcdcc95d9ad69292db5815accec40954ec57eaa19ceeeac178cd9"
-    sha256 catalina:       "e9cd7a80195d9bec8abf309364b85ebcaa780b173ff191de33641c4587d286c3"
-    sha256 x86_64_linux:   "2e12688f0def0c77bbbc2a20773233cae923405ee292bd80e77c024ceaea6b47"
+    sha256 arm64_monterey: "fe13a3ce50bb04a5f5e311970e8168d0533f4f6af94cba6cdbfb1f50ec8962ba"
+    sha256 arm64_big_sur:  "9d03fc8e64c52febb674cb4e8a7de1972bfaf10e35dc284eb92a8c8543860f70"
+    sha256 monterey:       "3888856bcd5e43cefa10109bcaa4c9cc9f486d1cd1db2ae46046960a1a6a7db7"
+    sha256 big_sur:        "cd19635256726aeadcdb9e1a56ebf304d985c554ee224e00d69923e8f76a91b8"
+    sha256 catalina:       "b9885e34d64a6dcf52ea3fcdf34d2ce3c1d7ee448f12e2151717725d551dafb9"
+    sha256 x86_64_linux:   "1377749e8b92d89df27804734277bea4118111a4e95ee475e5f39a9f35cd458d"
   end
 
   keg_only :versioned_formula
@@ -46,6 +46,7 @@ class PostgresqlAT12 < Formula
   end
 
   def install
+    ENV.delete "PKG_CONFIG_LIBDIR" if MacOS.version == :catalina
     ENV.prepend "LDFLAGS", "-L#{Formula["openssl@1.1"].opt_lib} -L#{Formula["readline"].opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{Formula["openssl@1.1"].opt_include} -I#{Formula["readline"].opt_include}"
 

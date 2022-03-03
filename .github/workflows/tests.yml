@@ -96,6 +96,7 @@ jobs:
               core.setOutput('test-dependents', 'true')
             }
 
+            const maximum_long_pr_count = 2
             if (label_names.includes('CI-long-timeout')) {
               const labelCountQuery = `query($owner:String!, $name:String!, $label:String!) {
                 repository(owner:$owner, name:$name) {
@@ -119,7 +120,6 @@ jobs:
                 long_pr_count = 0
                 core.warning('CI-long-timeout label count query failed. Assuming no long PRs.')
               }
-              const maximum_long_pr_count = 2
               if (long_pr_count > maximum_long_pr_count) {
                 core.setFailed(`Too many pull requests (${long_pr_count}) with the long-timeout label!`)
                 core.error(`Only ${maximum_long_pr_count} pull requests at a time can use this label.`)
@@ -130,6 +130,13 @@ jobs:
             } else {
               console.log('No CI-long-timeout label found. Setting short GitHub Actions timeout.')
               core.setOutput('timeout-minutes', '60')
+
+              if (label_names.includes('long build')) {
+                core.setFailed('PR requires the CI-long-timeout label but it is not set!')
+                core.error('If the longer timeout is not required, remove the "long build" label.')
+                core.error('Otherwise, add the "CI-long-timeout" label.')
+                core.error(`No more than ${maximum_long_pr_count} PRs at a time may use "CI-long-timeout".`)
+              }
             }
 
             const container = {}
@@ -190,10 +197,11 @@ jobs:
           - runner: ${{needs.setup_tests.outputs.linux-runner}}
             container: ${{fromJson(needs.setup_tests.outputs.container)}}
             workdir: /github/home
+            timeout: 4320
       fail-fast: ${{fromJson(needs.setup_tests.outputs.fail-fast)}}
     runs-on: ${{matrix.runner}}
     container: ${{matrix.container}}
-    timeout-minutes: ${{ (matrix.runner == 'ubuntu-latest' && 360) || fromJson(needs.setup_tests.outputs.timeout-minutes) }}
+    timeout-minutes: ${{ matrix.timeout || fromJson(needs.setup_tests.outputs.timeout-minutes) }}
     defaults:
       run:
         shell: /bin/bash -e {0}
@@ -231,19 +239,6 @@ jobs:
           cat bottles/steps_output.txt
           rm bottles/steps_output.txt
 
-      - name: Run brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
-        if: ${{fromJson(needs.setup_tests.outputs.test-dependents)}}
-        run: |
-          cd bottles
-          brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
-
-      - name: Failures summary for brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
-        if: ${{always() && fromJson(needs.setup_tests.outputs.test-dependents) == true}}
-        run: |
-          touch bottles/steps_output.txt
-          cat bottles/steps_output.txt
-          rm bottles/steps_output.txt
-
       - name: Output brew linkage result
         if: always()
         run: |
@@ -255,6 +250,19 @@ jobs:
         run: |
           cat bottles/bottle_output.txt
           rm bottles/bottle_output.txt
+
+      - name: Run brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
+        if: ${{always() && fromJson(needs.setup_tests.outputs.test-dependents)}}
+        run: |
+          cd bottles
+          brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
+
+      - name: Failures summary for brew test-bot ${{ needs.setup_tests.outputs.test-bot-dependents-args }} --skipped-or-failed-formulae=${{ steps.brew-test-bot-formulae.outputs.skipped_or_failed_formulae }}
+        if: ${{always() && fromJson(needs.setup_tests.outputs.test-dependents) == true}}
+        run: |
+          touch bottles/steps_output.txt
+          cat bottles/steps_output.txt
+          rm bottles/steps_output.txt
 
       - name: Upload logs
         if: always()

@@ -1,27 +1,37 @@
 class Trafficserver < Formula
   desc "HTTP/1.1 compliant caching proxy server"
   homepage "https://trafficserver.apache.org/"
-  url "https://downloads.apache.org/trafficserver/trafficserver-9.1.0.tar.bz2"
-  mirror "https://archive.apache.org/dist/trafficserver/trafficserver-9.1.0.tar.bz2"
-  sha256 "f1cb90bcf4afaba8ad1395c4d5a824b9909a5cac3abda74788540fdb48d8df21"
   license "Apache-2.0"
+  revision 1
+
+  stable do
+    url "https://downloads.apache.org/trafficserver/trafficserver-9.1.1.tar.bz2"
+    mirror "https://archive.apache.org/dist/trafficserver/trafficserver-9.1.1.tar.bz2"
+    sha256 "90cfa975858d50bc1995bee195f13ff45497773c2f90363332516fd3fdafd7e8"
+
+    # Fix macOS ARM build error due to undefined symbols
+    # TODO: remove in the next release
+    patch do
+      url "https://github.com/apache/trafficserver/commit/393e223ab0217645a18c112fe94afee029c90c63.patch?full_index=1"
+      sha256 "f412de78a8fa9cc8d79ebc9994d4530d15cf3993d7d363bdfae64c02114355c5"
+    end
+  end
 
   bottle do
-    sha256 catalina: "8eca27b1c4f7ac994d609270b426eaeb270f11fcedd450c37dcfc47a008a7fc1"
-    sha256 mojave:   "68a187aa4f2895fd19805775f874ed20ac3cfe5f37df74d30c1969429dae0d33"
+    sha256 arm64_monterey: "4efb76b02a88e4375b837459a630089881ea48a17c63d2b2f28419ef78797190"
+    sha256 arm64_big_sur:  "c6872bc513326e322fa8d048ea3e29a44d98762e4dce7d84ef5591fbbba549aa"
+    sha256 monterey:       "79bf087797667d9ab36566368523b05163fe9dbf3c83de2237e9da2918a26c4d"
+    sha256 big_sur:        "59ae7264246bf3d6eb1051b782afefc0e901d5cec4c2d9953dfb587e4918dc1a"
+    sha256 catalina:       "d972e0d8de12c3afb02c1fecd9dba47aaa57c0798206e1478dd21df7abf67f29"
+    sha256 x86_64_linux:   "db111c976bb89b349fdbbe0c87d2f5bbacf972535eed9935a274637be477fcc0"
   end
 
   head do
-    url "https://github.com/apache/trafficserver.git"
+    url "https://github.com/apache/trafficserver.git", branch: "master"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool"  => :build
-
-    fails_with :clang do
-      build 800
-      cause "needs C++17"
-    end
   end
 
   depends_on "pkg-config" => :build
@@ -30,6 +40,25 @@ class Trafficserver < Formula
   depends_on "openssl@1.1"
   depends_on "pcre"
   depends_on "yaml-cpp"
+
+  on_macos do
+    # Need to regenerate configure to fix macOS 11+ build error due to undefined symbols
+    # See https://github.com/apache/trafficserver/pull/8556#issuecomment-995319215
+    depends_on "autoconf" => :build
+    depends_on "automake" => :build
+    depends_on "libtool"  => :build
+  end
+
+  on_linux do
+    depends_on "gcc"
+  end
+
+  fails_with gcc: "5" # needs C++17
+
+  fails_with :clang do
+    build 800
+    cause "needs C++17"
+  end
 
   def install
     # Per https://luajit.org/install.html: If MACOSX_DEPLOYMENT_TARGET
@@ -40,15 +69,16 @@ class Trafficserver < Formula
       --prefix=#{prefix}
       --mandir=#{man}
       --localstatedir=#{var}
-      --sysconfdir=#{etc}/trafficserver
+      --sysconfdir=#{pkgetc}
       --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
       --with-yaml-cpp=#{Formula["yaml-cpp"].opt_prefix}
       --with-group=admin
+      --disable-tests
       --disable-silent-rules
       --enable-experimental-plugins
     ]
 
-    system "autoreconf", "-fvi" if build.head?
+    system "autoreconf", "-fvi" if build.head? || OS.mac?
     system "./configure", *args
 
     # Fix wrong username in the generated startup script for bottles.
@@ -74,7 +104,12 @@ class Trafficserver < Formula
   end
 
   test do
-    output = shell_output("#{bin}/trafficserver status")
-    assert_match "Apache Traffic Server is not running", output
+    if OS.mac?
+      output = shell_output("#{bin}/trafficserver status")
+      assert_match "Apache Traffic Server is not running", output
+    else
+      output = shell_output("#{bin}/trafficserver status 2>&1", 3)
+      assert_match "traffic_manager is not running", output
+    end
   end
 end

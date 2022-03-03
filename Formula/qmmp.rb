@@ -4,6 +4,7 @@ class Qmmp < Formula
   url "https://qmmp.ylsoftware.com/files/qmmp/2.0/qmmp-2.0.3.tar.bz2"
   sha256 "a0c22071bedfcc44deb37428faeeecafb095b7a0ce28ade8907adb300453542e"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url "https://qmmp.ylsoftware.com/downloads.php"
@@ -11,8 +12,8 @@ class Qmmp < Formula
   end
 
   bottle do
-    sha256 big_sur:  "c0bcbb232e8d57f4e19c63a909e338df2e26f496b4321fa43906df7ec7902195"
-    sha256 catalina: "d6ddd71b112e1e83142b172c509f9c63dff093c2cca63e452b7c8d4f37304279"
+    sha256 big_sur:  "da5200ac2ce8e5cd13f7203f5749198c58d688c034d9957532ea218317c74131"
+    sha256 catalina: "9fd0f5adf6d3917e37738345432f6ce3747a45aa1d65ac410742d95f2f338b4b"
   end
 
   depends_on "cmake"      => :build
@@ -51,6 +52,8 @@ class Qmmp < Formula
   depends_on "wildmidi"
 
   uses_from_macos "curl"
+
+  fails_with gcc: "5" # ffmpeg is compiled with GCC
 
   resource "qmmp-plugin-pack" do
     url "https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.0/qmmp-plugin-pack-2.0.1.tar.bz2"

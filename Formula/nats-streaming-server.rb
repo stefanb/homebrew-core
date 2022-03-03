@@ -1,18 +1,18 @@
 class NatsStreamingServer < Formula
   desc "Lightweight cloud messaging system"
   homepage "https://nats.io"
-  url "https://github.com/nats-io/nats-streaming-server/archive/refs/tags/v0.24.0.tar.gz"
-  sha256 "3feab6c0d3cf997cc39fc5d0ae5de5eecd70de0d4fe7ded6af120fe721cffd15"
+  url "https://github.com/nats-io/nats-streaming-server/archive/refs/tags/v0.24.2.tar.gz"
+  sha256 "7622fb7d5a6f23b66dbbcf4296ce7ba8d98835514d3d55689a1982ae92b041af"
   license "Apache-2.0"
   head "https://github.com/nats-io/nats-streaming-server.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "77cd9d608b8296a90b666d2896f2409224e9bb7d9c0be2b00f692ed005d882e6"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6102b6debc48eafa8d0cfc15df8167de2342340cd9a19f89c648379e31f53ba9"
-    sha256 cellar: :any_skip_relocation, monterey:       "dcbf8f81ba3747877b966679f341bbbad29a2b1bb403c5259fa86e6903510e68"
-    sha256 cellar: :any_skip_relocation, big_sur:        "2852988f88b7907955a4bdbb85a285c21ba181a88f99755d852c01dd1d55325a"
-    sha256 cellar: :any_skip_relocation, catalina:       "e8b0544916116cb52febe0d6ae0664b025584a85c553737acdb3e60c889392c4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "54b3fe69e1f1161fd2169a084f50f070e1f0429ec43a6a2dcf4442bd2b27cecd"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "a1b35c722c8976e92b4eaf9ef9dbc2a158d073fdc0092b0d071fcbe1b233bab2"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "99dec3ce3bfc946cf73686971ace44f8a893f340809c3ed311e6144108b5a320"
+    sha256 cellar: :any_skip_relocation, monterey:       "1435ba292fb77b3e9b0fff755dbe3d822831af9efce42f64845a4f24ffefd2f4"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e7134bc9ed278cc73c664a4a350e8beac7755d5b212a4273ff06ce69a923bee9"
+    sha256 cellar: :any_skip_relocation, catalina:       "db44e6635bf0ca57ffda7fcda6d84ffbf5b12df4134a3a8ca0bb3fd7ffdcb325"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "60b1022dac06d92b1aae432f7ff2773ca45817ae6eb485ee8589c57d0b8cae22"
   end
 
   depends_on "go" => :build

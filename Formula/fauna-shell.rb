@@ -3,17 +3,17 @@ require "language/node"
 class FaunaShell < Formula
   desc "Interactive shell for FaunaDB"
   homepage "https://fauna.com/"
-  url "https://registry.npmjs.org/fauna-shell/-/fauna-shell-0.13.0.tgz"
-  sha256 "a6dc40319b61efd1a3e3804e670d02d85a2424c251cb9288bc9a422f0995d8c6"
+  url "https://registry.npmjs.org/fauna-shell/-/fauna-shell-0.14.0.tgz"
+  sha256 "8aff6b0549f9c3713695582c0b8ab36d2e37d441d1d7fd0fd413ea769e8aaa39"
   license "MPL-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b448922ce290174421373c5cd61dc66c4a7402f0e91f04ebe546628c01a3c66e"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b448922ce290174421373c5cd61dc66c4a7402f0e91f04ebe546628c01a3c66e"
-    sha256 cellar: :any_skip_relocation, monterey:       "e262bbd89eefe223ed454cda7d6401c3f21e86fcd14e677d2b6853242b49952a"
-    sha256 cellar: :any_skip_relocation, big_sur:        "e262bbd89eefe223ed454cda7d6401c3f21e86fcd14e677d2b6853242b49952a"
-    sha256 cellar: :any_skip_relocation, catalina:       "e262bbd89eefe223ed454cda7d6401c3f21e86fcd14e677d2b6853242b49952a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b448922ce290174421373c5cd61dc66c4a7402f0e91f04ebe546628c01a3c66e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "332185f41f747f74c967569beeba9c4d6b7ed80a940b9b777137eb31be52da47"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "332185f41f747f74c967569beeba9c4d6b7ed80a940b9b777137eb31be52da47"
+    sha256 cellar: :any_skip_relocation, monterey:       "0b4a663a9fb83b5688f642abaa6df423d2c3b080d8025a2f8c80eeb298f330f8"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0b4a663a9fb83b5688f642abaa6df423d2c3b080d8025a2f8c80eeb298f330f8"
+    sha256 cellar: :any_skip_relocation, catalina:       "0b4a663a9fb83b5688f642abaa6df423d2c3b080d8025a2f8c80eeb298f330f8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "332185f41f747f74c967569beeba9c4d6b7ed80a940b9b777137eb31be52da47"
   end
 
   depends_on "node"

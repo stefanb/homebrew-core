@@ -1,10 +1,9 @@
 class Libgcrypt < Formula
   desc "Cryptographic library based on the code from GnuPG"
   homepage "https://gnupg.org/related_software/libgcrypt/"
-  url "https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.9.4.tar.bz2"
-  sha256 "ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7"
+  url "https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.0.tar.bz2"
+  sha256 "6a00f5c05caa4c4acc120c46b63857da0d4ff61dc4b4b03933fa8d46013fae81"
   license "GPL-2.0-only"
-  revision 1
 
   livecheck do
     url "https://gnupg.org/ftp/gcrypt/libgcrypt/"
@@ -12,35 +11,15 @@ class Libgcrypt < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "db8ca3ac372b23c25be44950acae40a4bb8faa4312df72023a28959a09cd8ea7"
-    sha256 cellar: :any,                 arm64_big_sur:  "ebe24d93edccd91ac094387b74b0c42aeebd44a6bb5f583816c8d1690690cf57"
-    sha256 cellar: :any,                 monterey:       "b8b834ecc967d71931b73f4102ef74be06812358def29cf37700ae1d57494c80"
-    sha256 cellar: :any,                 big_sur:        "19f11700630c036864c3acaf39d6b26b8d7f46a96b7eab4cab5d118ce5a0c28a"
-    sha256 cellar: :any,                 catalina:       "22b69fca91210d5598644b6164980ea3d53ccbb9a66124314ae3836b9100a4bf"
-    sha256 cellar: :any,                 mojave:         "d40e101e9605d7ba2b56fa6c441565192a85b3bb67302ab4feeac4d38a56d261"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c199805c55e5f11d84e19554b3583d78a2e681a0ba549508927c2528d07372cd"
+    sha256 cellar: :any,                 arm64_monterey: "814ad8451d7a20b03590289dcea6232d17412ffb910886fc8ae8b903de4c38b3"
+    sha256 cellar: :any,                 arm64_big_sur:  "9421cc3b2166199f598f523123048e28001d20fe549e15be4f8ff68672ca34c2"
+    sha256 cellar: :any,                 monterey:       "a85e017efead8890447ef3dd82a0d5abdcb4ac1d55c67ac11ec4fc8b955258a8"
+    sha256 cellar: :any,                 big_sur:        "f41a416b42273557a1747c89b936160147bba984edf90d05dcdd90977255c4b2"
+    sha256 cellar: :any,                 catalina:       "744c2e13d08b46aceba533ff905cf61eebf84030e81146db3eb708a226709227"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "938afdcee08b2d6e0cd1b5c4b125c1ff693848e0adc621283b4f3486ad2b54a4"
   end
 
   depends_on "libgpg-error"
-
-  # libgcrypt's libtool.m4 doesn't properly support macOS >= 11.x (see
-  # libtool.rb formula). This causes the library to be linked with a flat
-  # namespace which might cause issues when dynamically loading the library with
-  # dlopen under some modes, see:
-  #
-  #  https://lists.gnupg.org/pipermail/gcrypt-devel/2021-September/005176.html
-  #
-  # We patch `configure` directly so we don't need additional build dependencies
-  # (e.g. autoconf, automake, libtool)
-  #
-  # This patch has been applied upstream so it can be removed in the next
-  # release.
-  #
-  # https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commit;h=c9cebf3d1824d6ec90fd864a744bb81c97ac7d31
-  patch do
-    url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-pre-0.4.2.418-big_sur.diff"
-    sha256 "83af02f2aa2b746bb7225872cab29a253264be49db0ecebb12f841562d9a2923"
-  end
 
   def install
     system "./configure", "--disable-dependency-tracking",

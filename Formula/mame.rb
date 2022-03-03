@@ -1,9 +1,9 @@
 class Mame < Formula
   desc "Multiple Arcade Machine Emulator"
   homepage "https://mamedev.org/"
-  url "https://github.com/mamedev/mame/archive/mame0239.tar.gz"
-  version "0.239"
-  sha256 "120b4d679283ab2c7102b40fefc5165bfd9b8242fbbd5f9977d381cb65051d87"
+  url "https://github.com/mamedev/mame/archive/mame0241.tar.gz"
+  version "0.241"
+  sha256 "008b8b9fd0cfbea63bc589ab4e9e5af6d63f865c6edf6e6378352e4dbfcb47ff"
   license "GPL-2.0-or-later"
   head "https://github.com/mamedev/mame.git", branch: "master"
 
@@ -18,12 +18,12 @@ class Mame < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "8d6306c58e922575adf09b7aec5220155e87634e0f9c296c07814ffa2507f85c"
-    sha256 cellar: :any,                 arm64_big_sur:  "be2ea15b34e32598b38e12c7a1607c3604dd7922e85a90ca618c1cd18a037d62"
-    sha256 cellar: :any,                 monterey:       "98c5a68dc91c104ea00a531eeb23d77e8baf3559556d83663c04bbc6b01f13fd"
-    sha256 cellar: :any,                 big_sur:        "48f6f0e25dcf8c8522533275e428ad9f90bc0648ab178b104a68b2b419e92985"
-    sha256 cellar: :any,                 catalina:       "63d9270ad6442024d1a73710e1c64ddc57ced526c67af5b90104e10afcf6e34a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cd3466f20608941a21c6a22de690ccc69e847ca0329b377be7a21c85d407867b"
+    sha256 cellar: :any,                 arm64_monterey: "99a75723ee5258e113a6a968bad58d60e59a1c547f2a681a7fea2fe3fd7cd333"
+    sha256 cellar: :any,                 arm64_big_sur:  "2b98738cb09ca919c9a5c813a44c55e1a3b3ce3e20fb8abb8a20608845cebb58"
+    sha256 cellar: :any,                 monterey:       "1c208717e6463364c960e76d81b3acb4124f7f6683607abf15fc9c37c1337789"
+    sha256 cellar: :any,                 big_sur:        "9c8ff2039590b465bd1dd0d9b81b71ef30b1c933f7888ce336c762ec1676643f"
+    sha256 cellar: :any,                 catalina:       "44d0a7bdee8cbaa9d5b9dcec00e912aed18a3dd0cacecc01a95a4bb107900ed0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8e21bc16018f5671de8173d768e31ae29213995d36da1d08d1cc06e1816372f6"
   end
 
   depends_on "glm" => :build

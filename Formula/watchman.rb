@@ -1,18 +1,18 @@
 class Watchman < Formula
   desc "Watch files and take action when they change"
   homepage "https://github.com/facebook/watchman"
-  url "https://github.com/facebook/watchman/archive/v2022.01.31.00.tar.gz"
-  sha256 "5a253c289141d19b8c6fb05e4d12a75343c62d236f98dbbf6af4a50dc0550d90"
+  url "https://github.com/facebook/watchman/archive/v2022.02.28.00.tar.gz"
+  sha256 "123692c191eca9b1e1e2d0ee4be32247af1f0ee4403302b56fa77e104a645b9f"
   license "MIT"
   head "https://github.com/facebook/watchman.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "60d2cea5bf3e35085d0013eb8ddbd20572ee69f47d141f384a933405ba7cee02"
-    sha256 cellar: :any, arm64_big_sur:  "0de846533c15bc85215188bd4239dc522db78746d7ca3c9adc1d2ec930697cca"
-    sha256 cellar: :any, monterey:       "cd18f3782d034306d70a087d720ecfbf8a9afc157c3e97fed9b4d41d0b9b626f"
-    sha256 cellar: :any, big_sur:        "e379fc1a8cc4fed528a3a5edba85220b2fa7c28c8774adc72a83b8c6e48c8268"
-    sha256 cellar: :any, catalina:       "6e72f8d50cc290853e80f35af1bced6a60a175932ecc2b3d54abad29e8ca9ceb"
-    sha256               x86_64_linux:   "3791c145303dc08bdfcb19add31a49f16f8c5bfbcc5d6cc899753e3eb256fa37"
+    sha256 cellar: :any, arm64_monterey: "cf56cdc6e0e38f4d3866e1336ddacb25ad56a7db4ff316ce0041a7ec26fdf9fc"
+    sha256 cellar: :any, arm64_big_sur:  "77a83427ef139a4207feb3a08795395487b5c0966c131a083963ee0c0075cc4d"
+    sha256 cellar: :any, monterey:       "7a0a4b295db7e326279ab63a54fa7be4daceebd4997ebf6ba3b5716a31ca4c70"
+    sha256 cellar: :any, big_sur:        "4b4cffde28adb1bcf5853aa3189af2a5b2bede22f3d72ae1389b8f27662f80ac"
+    sha256 cellar: :any, catalina:       "fc5ef9d64fba16033d17b095e16f9b2424476039abc5333eb1ff070fb4cfb6f2"
+    sha256               x86_64_linux:   "bf117f88c6cf285c07940d0e3835f846cabc26f5781722ef413017239f327ee5"
   end
 
   # https://github.com/facebook/watchman/issues/963
@@ -32,6 +32,12 @@ class Watchman < Formula
   depends_on "pcre"
   depends_on "python@3.10"
 
+  # Dependencies for Eden support. Enabling Eden support fails to build on Linux.
+  on_macos do
+    depends_on "cpptoml" => :build
+    depends_on "fb303"
+  end
+
   on_linux do
     depends_on "gcc"
   end
@@ -41,11 +47,15 @@ class Watchman < Formula
   def install
     # Fix build failure on Linux. Borrowed from Fedora:
     # https://src.fedoraproject.org/rpms/watchman/blob/rawhide/f/watchman.spec#_70
-    inreplace "CMakeLists.txt", /^t_test/, "# t_test" if OS.linux?
+    inreplace "CMakeLists.txt", /^t_test/, "#t_test" if OS.linux?
 
+    # NOTE: Setting `BUILD_SHARED_LIBS=ON` will generate DSOs for Eden libraries.
+    #       These libraries are not part of any install targets and have the wrong
+    #       RPATHs configured, so will need to be installed and relocated manually
+    #       if they are built as shared libraries. They're not used by any other
+    #       formulae, so let's link them statically instead. This is done by default.
     system "cmake", "-S", ".", "-B", "build",
-                    "-DBUILD_SHARED_LIBS=ON",
-                    "-DENABLE_EDEN_SUPPORT=OFF",
+                    "-DENABLE_EDEN_SUPPORT=#{OS.mac?}",
                     "-DWATCHMAN_VERSION_OVERRIDE=#{version}",
                     "-DWATCHMAN_BUILDINFO_OVERRIDE=#{tap.user}",
                     "-DWATCHMAN_STATE_DIR=#{var}/run/watchman",

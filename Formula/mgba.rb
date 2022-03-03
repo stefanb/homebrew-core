@@ -4,6 +4,7 @@ class Mgba < Formula
   url "https://github.com/mgba-emu/mgba/archive/0.9.3.tar.gz"
   sha256 "692ff0ac50e18380df0ff3ee83071f9926715200d0dceedd9d16a028a59537a0"
   license "MPL-2.0"
+  revision 1
   head "https://github.com/mgba-emu/mgba.git", branch: "master"
 
   livecheck do
@@ -12,20 +13,22 @@ class Mgba < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "b43e9bc82af3fad71b480d17382d77f230f3cdaefa51ff2414a554d6669e4c2d"
-    sha256 cellar: :any, arm64_big_sur:  "2dfa4c952ae73dc9d4bcd06b633b42b3845ffe57961d454fd8ad31262b9deae6"
-    sha256 cellar: :any, big_sur:        "1dce1e0a22091d6286bf1fc130808d4b9a15e0fb1929aceda6882cdd7f88f672"
-    sha256 cellar: :any, catalina:       "462850dbac48418582caa81bde7c007ed0d1f07635496de1ee3def21317ac0b9"
+    sha256 cellar: :any, arm64_monterey: "34235cb6f1aaeca67d11e4b060bfd2d7adf462b61b115beb029fd81ec0adc563"
+    sha256 cellar: :any, arm64_big_sur:  "0dc3200fa947b5872c48500c3c7b4841668edfc2143d2977226e850fa53db2dd"
+    sha256 cellar: :any, big_sur:        "575163b96818d53848c6b4a536fbccea185cce14487394974519b1655c3cb03f"
+    sha256 cellar: :any, catalina:       "fe54e4803c93036beb054b6e649f722e21f1ae08fa4efb4c2808d9b5b875fd8f"
   end
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
-  depends_on "ffmpeg"
+  depends_on "ffmpeg@4"
   depends_on "libepoxy"
   depends_on "libpng"
   depends_on "libzip"
   depends_on "qt@5"
   depends_on "sdl2"
+
+  fails_with gcc: "5" # ffmpeg is compiled with GCC
 
   def install
     # Install .app bundle into prefix, not prefix/Applications

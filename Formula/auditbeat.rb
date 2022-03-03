@@ -2,18 +2,18 @@ class Auditbeat < Formula
   desc "Lightweight Shipper for Audit Data"
   homepage "https://www.elastic.co/products/beats/auditbeat"
   url "https://github.com/elastic/beats.git",
-      tag:      "v7.16.3",
-      revision: "d420ccdaf201e32a524632b5da729522e50257ae"
+      tag:      "v8.0.0",
+      revision: "2ab3a7334016f570e0bfc7e9a577a35a22e02df5"
   license "Apache-2.0"
-  head "https://github.com/elastic/beats.git", branch: "master"
+  head "https://github.com/elastic/beats.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "218886009bc8e10cac897e5501aeeb979a4ec78d31de95ba5e3577ac77ddc267"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "99adac1f8aa07568bcfdd375a36b6f3da6fa31cf6cfc75211a5a04cd28e9da45"
-    sha256 cellar: :any_skip_relocation, monterey:       "e026c27e62144e9d83ee9fdb2231433a23442421e42a6528edd323ce1780d3f6"
-    sha256 cellar: :any_skip_relocation, big_sur:        "978d847f53f8ccce51368699c5c5950e092e3320da20db54e662665c01a385d6"
-    sha256 cellar: :any_skip_relocation, catalina:       "3738910402d76b41ffd7dd6f9f06a5333a1469031b30bd8d0f8516fd3e937873"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "dc503dd11785e09002aff468bb6537c54e04d23d0faa57f01851a77f817dd08a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "23d0e93cfd2858fcf1ead2665e70442f3cbdbdf3ca4305ab542699b94279896c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "7439dd323da8d5bf1c15287d6ccdc0154a39f09150668f7b3b722769e9dca4e9"
+    sha256 cellar: :any_skip_relocation, monterey:       "c3c84c0adcbc100c22012e76ec28cee8ea8604aa329aab099dd4148bc98ca81b"
+    sha256 cellar: :any_skip_relocation, big_sur:        "25205460fa0a128c9b753367cdf726c5d9ead9a74bfbbf285c9555aaadecf305"
+    sha256 cellar: :any_skip_relocation, catalina:       "dfd55e5e35f16dde39d6978cc6560272df3e9ae93aa3aa99696b171591cb4a17"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a53edf4f977361fb895994680ef644710b8c70895746aa2b59a22ec60eb32a01"
   end
 
   depends_on "go" => :build
@@ -76,10 +76,12 @@ class Auditbeat < Formula
     end
     sleep 5
     touch testpath/"files/touch"
+
     sleep 30
-    s = File.readlines(testpath/"auditbeat/auditbeat").last(1)[0]
-    assert_match(/"action":\["(initial_scan|created)"\]/, s)
-    realdirpath = File.realdirpath(testpath)
-    assert_match "\"path\":\"#{realdirpath}/files/touch\"", s
+
+    assert_predicate testpath/"data/beat.db", :exist?
+
+    output = JSON.parse((testpath/"data/meta.json").read)
+    assert_includes output, "first_start"
   end
 end

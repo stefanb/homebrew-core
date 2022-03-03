@@ -2,11 +2,10 @@ class X8664ElfGdb < Formula
   desc "GNU debugger for x86_64-elf cross development"
   homepage "https://www.gnu.org/software/gdb/"
   # Please add to synced_versions_formulae.json once version synced with gdb
-  url "https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.xz"
-  mirror "https://ftpmirror.gnu.org/gdb/gdb-10.2.tar.xz"
-  sha256 "aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29"
+  url "https://ftp.gnu.org/gnu/gdb/gdb-11.2.tar.xz"
+  mirror "https://ftpmirror.gnu.org/gdb/gdb-11.2.tar.xz"
+  sha256 "1497c36a71881b8671a9a84a0ee40faab788ca30d7ba19d8463c3cc787152e32"
   license "GPL-3.0-or-later"
-  revision 2
   head "https://sourceware.org/git/binutils-gdb.git", branch: "master"
 
   livecheck do
@@ -14,26 +13,20 @@ class X8664ElfGdb < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "26c14e55930d02fe1fbdae9e291eebe6c61be3024dff60aca750e9b0b02a2934"
-    sha256 arm64_big_sur:  "58cb24351d365c96711bf75dc289f8f9de3604d3b8b422f4a15d2ee1ae083985"
-    sha256 monterey:       "869cf4bac78d9633651b179ad0100b1608a95622442b732edc936d71a1abfb35"
-    sha256 big_sur:        "76e99b179908710c660b9d54a5de1fa69e5349664ae080f49775206d90a8b626"
-    sha256 catalina:       "275e715114dfed54f12e6bfc94ba2aadb6bd7e71d9bbd3cd56a84b27b031bc59"
+    sha256 arm64_monterey: "d081898aa072d34c2f85aba2c8c503a6800b5c4969158082ff4baa2ecd59c35d"
+    sha256 arm64_big_sur:  "e50a7058eaf366351945bac53ab80ddd65aa442a070a7d6e03f643dc29d4fafb"
+    sha256 monterey:       "488cccc9ca21e3a00578a0be4d391883f77f5ec3a438cad4102bac1c894cbd9f"
+    sha256 big_sur:        "2abc758f2d837187ed5a8e74a1de4280a9911096d5af62d02eb7f3c8c33a2b1d"
+    sha256 catalina:       "552b184fb25e04d6ec7496b0677cf68d40733ac4c839b64fb46128a8907e5505"
+    sha256 x86_64_linux:   "759522a7eac37bde17932a7ae8112deab7aeca42763cc5323f81cabd92b5f068"
   end
 
   depends_on "x86_64-elf-gcc" => :test
+  depends_on "gmp"
   depends_on "python@3.10"
   depends_on "xz"
 
   uses_from_macos "zlib"
-
-  # Fix for https://sourceware.org/bugzilla/show_bug.cgi?id=26949#c8
-  # Remove when upstream includes this commit
-  # https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=b413232211bf
-  patch do
-    url "https://raw.githubusercontent.com/Homebrew/formula-patches/242630de4b54d6c57721e12ce88988a0f4e41202/gdb/gdb-10.2.patch"
-    sha256 "36652e9d97037266650a3b31f9f39539c4b376d31016fa4fc325dc0aa7930acc"
-  end
 
   def install
     target = "x86_64-elf"
@@ -54,8 +47,8 @@ class X8664ElfGdb < Formula
 
     mkdir "build" do
       system "../configure", *args
+      ENV.deparallelize # Error: common/version.c-stamp.tmp: No such file or directory
       system "make"
-
       system "make", "install-gdb"
     end
   end

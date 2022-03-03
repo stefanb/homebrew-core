@@ -1,17 +1,17 @@
 class Mongocli < Formula
   desc "MongoDB CLI enables you to manage your MongoDB in the Cloud"
   homepage "https://github.com/mongodb/mongocli"
-  url "https://github.com/mongodb/mongocli/archive/refs/tags/v1.21.0.tar.gz"
-  sha256 "768c6e272a08860a8b70ea9a5ea5a70da3c0c2e8af2b214d100de5e9d1ce745b"
+  url "https://github.com/mongodb/mongocli/archive/refs/tags/mongocli/v1.23.0.tar.gz"
+  sha256 "7b52bf6626cf991b771fc7a62ca7c0ec6deb7012fd5a4c5ef8794b711ee69010"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b93efcb225f876e4fbea80d88422c916099a42615b09124cfe895d078fcc9713"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "943771007be64d3c94631013617222e6044f3c39d57e8b4b90910f2cf9aaf3fb"
-    sha256 cellar: :any_skip_relocation, monterey:       "210c7ea61b37ffbfc03860d27542eaea2eda28024f6c0d1403c880efd9dad732"
-    sha256 cellar: :any_skip_relocation, big_sur:        "2290b9dc16bd44d9bc95f3f45c7281f9c500a49ae83a63e4600f01fe9e92b409"
-    sha256 cellar: :any_skip_relocation, catalina:       "948aaf6949544bd847793b4c2c91060ce4661e602c3f1af1645a240929fd62eb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "120d157027f8fed21e5c709eb70376596a988ccf456159a40bae8dd81c5367c2"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4cffad70e7ad2a0f5027f4816dfd4d13cf76b69f229804210d6bb03eda081b0c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "fec4a7fa93ca1a887e58c5247b626ec41ab330b787883356fe26e435768fbd99"
+    sha256 cellar: :any_skip_relocation, monterey:       "cccbe19cf818d76e7bbf89b0c05cfbdd7bc0b2410f2bbda13a982892b9c6c6d8"
+    sha256 cellar: :any_skip_relocation, big_sur:        "3a78a2ce8add4da1ff999127c8284933624eb4c42e6107cccd8dc79756a60e53"
+    sha256 cellar: :any_skip_relocation, catalina:       "9e18ac628f71801cafc7180415326fc1ef5c0414e26506a181e40e3503bfc011"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fddaec563628cf740aaf703fb7574355c2ec50e92213109e513ec184ad2b1c2d"
   end
 
   depends_on "go" => :build

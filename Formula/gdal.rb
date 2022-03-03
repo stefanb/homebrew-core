@@ -4,7 +4,7 @@ class Gdal < Formula
   url "https://download.osgeo.org/gdal/3.4.1/gdal-3.4.1.tar.xz"
   sha256 "332f053516ca45101ef0f7fa96309b64242688a8024780a5d93be0230e42173d"
   license "MIT"
-  revision 1
+  revision 2
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -12,11 +12,12 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "3e0605bfd13304fca41e3d2218abe035985194f1a7700ed6e9e3230b5dee1f30"
-    sha256 arm64_big_sur:  "e699a2d2099e03d7607032282c95c7dc356741ca0314a56be6d5a354fa86af49"
-    sha256 big_sur:        "5e7de5faae3dec4aa610bcbb299499c2f64aa226b6471a2e5c55f753bc3b2bac"
-    sha256 catalina:       "bd2f49ebad61505017daa2c0cbd88f88af7da58cf323787222fadb509f68d42b"
-    sha256 x86_64_linux:   "97f3fad9261e5fda2bb44b28c68026c08040ebc277179382e95ad52ed7125ac3"
+    rebuild 1
+    sha256 arm64_monterey: "414e6078d9cc3e3528013cd85c0e0fd35719c8f731bdff2d3c6d8cacd7537ead"
+    sha256 arm64_big_sur:  "f717eb2b3f6a926ff9f7865bd531f4c9cb73e55f8647304b85cde5c8e42692d4"
+    sha256 big_sur:        "16002a30dfffb39dc2fd9b7cfa9aeb4eafe1bf5daef280a1d666a3dab5ddb689"
+    sha256 catalina:       "5e84cca5805b6425f99b35e6f8d11ba4624f9989635879db5c39d2e13708b316"
+    sha256 x86_64_linux:   "eba1555f2387567dfd57b944a2576152a3e81beff00fa4b1f263f6707bf29e35"
   end
 
   head do
@@ -48,11 +49,11 @@ class Gdal < Formula
   depends_on "poppler-qt5"
   depends_on "proj@7"
   depends_on "python@3.9"
-  depends_on "sqlite" # To ensure compatibility with SpatiaLite
-  depends_on "unixodbc" # macOS version is not complete enough
+  depends_on "sqlite"
+  depends_on "unixodbc"
   depends_on "webp"
   depends_on "xerces-c"
-  depends_on "xz" # get liblzma compression algorithm library from XZutils
+  depends_on "xz"
   depends_on "zstd"
 
   uses_from_macos "curl"
@@ -66,6 +67,12 @@ class Gdal < Formula
   conflicts_with "cpl", because: "both install cpl_error.h"
 
   fails_with gcc: "5"
+
+  # Support hdf5 1.13, remove in next release
+  patch :p2 do
+    url "https://github.com/OSGeo/gdal/commit/2ad92c8d1afe8e36c5f075034c0938da4eff94f0.patch?full_index=1"
+    sha256 "9adf69784da0b5d0fdc6c418f61690f8f017a6fe5d01337b4cc68a8047e93e16"
+  end
 
   def install
     args = [
@@ -157,6 +164,7 @@ class Gdal < Formula
       ENV.append "CFLAGS", "-I#{buildpath}/gnm"
     end
 
+    ENV.append "CXXFLAGS", "-std=c++17" # poppler-qt5 uses std::optional
     system "./configure", *args
     system "make"
     system "make", "install"

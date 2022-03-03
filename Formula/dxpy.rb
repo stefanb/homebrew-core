@@ -3,17 +3,17 @@ class Dxpy < Formula
 
   desc "DNAnexus toolkit utilities and platform API bindings for Python"
   homepage "https://github.com/dnanexus/dx-toolkit"
-  url "https://files.pythonhosted.org/packages/5a/27/09f7818fd174dee1ab18f773b58fb1ae78622d9c694586570694e01e6619/dxpy-0.319.2.tar.gz"
-  sha256 "8267ec6fce0fff71d017324281f62fa43b078d60c2a3cde5fbb88ef9731acf14"
+  url "https://files.pythonhosted.org/packages/ff/bc/c0920b68a96bec1e321e5d6673cd7df712fa228190a08992575a1c91b48e/dxpy-0.321.0.tar.gz"
+  sha256 "90f5ebb77213a65295c26d5c6c4ad81b4135f05f7d3e40558d7db52214fcfb0c"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "a5df49b29f831615f00bcb026fc589a559ca48edc6135dd6121f9d3f47f59b38"
-    sha256 cellar: :any,                 arm64_big_sur:  "51d344f98c8b2782765a65712da85b637a029997689522af8827064f31d0ae22"
-    sha256 cellar: :any,                 monterey:       "7f02954e4a0b9019ba8c1fe0e7413625a41d14be13da94f1e2d32c57176a1363"
-    sha256 cellar: :any,                 big_sur:        "957d9cef38587f8be5a031402a885af3a77428b4bd4f633aa1346ed6cbe73015"
-    sha256 cellar: :any,                 catalina:       "667d123936232f8ea4cfbb1665fd5708ddcaa09cb3988eef3c90a63b82b98c9c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "083637f8ff4975ca5dca475fa1b5d7309d5f262ca490739c7d6a833e17b1288d"
+    sha256 cellar: :any,                 arm64_monterey: "8116799cd3a464026f687c1d01f637f9bb7672c74280bf9ba8c9615a8f526235"
+    sha256 cellar: :any,                 arm64_big_sur:  "245a81f7ee8ce3ea74c615842bb94a7719634dc338d3feeb230abfeb91e76ade"
+    sha256 cellar: :any,                 monterey:       "69c0316d1fc9f241fca9eca5d93e6c7200882ab58b3eb5bde116d2d1daca6a17"
+    sha256 cellar: :any,                 big_sur:        "ffedc74c720ef1656d1431aa41470c5e10dc503f225d502a110513bdbc22b6aa"
+    sha256 cellar: :any,                 catalina:       "464208a804bea1bbc1ca0aca4b5e2309df5171d308014bbd5ab0459af28962a0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c210c0dee9879677c1cd23d804b3663ed35b8d0e401d5152cfae256e0f4ecdbe"
   end
 
   depends_on "rust" => :build # for cryptography
@@ -45,13 +45,13 @@ class Dxpy < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/48/44/76b179e0d1afe6e6a91fd5661c284f60238987f3b42b676d141d01cd5b97/charset-normalizer-2.0.10.tar.gz"
-    sha256 "876d180e9d7432c5d1dfd4c5d26b72f099d503e8fcc0feb7532c9289be60fcbd"
+    url "https://files.pythonhosted.org/packages/56/31/7bcaf657fafb3c6db8c787a865434290b726653c912085fbd371e9b92e1c/charset-normalizer-2.0.12.tar.gz"
+    sha256 "2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/10/91/90b8d4cd611ac2aa526290ae4b4285aa5ea57ee191c63c2f3d04170d7683/cryptography-35.0.0.tar.gz"
-    sha256 "9933f28f70d0517686bd7de36166dda42094eac49415459d9bdf5e7df3e0086d"
+    url "https://files.pythonhosted.org/packages/f9/4b/1cf8e281f7ae4046a59e5e39dd7471d46db9f61bb564fddbff9084c4334f/cryptography-36.0.1.tar.gz"
+    sha256 "53e5c1dc3d7a953de055d77bef2ff607ceef7a2aac0353b5d630ab67f7423638"
   end
 
   resource "idna" do

@@ -4,22 +4,25 @@ class Pc6001vx < Formula
   url "https://eighttails.up.seesaa.net/bin/PC6001VX_3.8.2_src.tar.gz"
   sha256 "7abe9b10aa6f683eda279794bc03ee05e1b0b2239e38718860333d35f91b4858"
   license "LGPL-2.1-or-later"
+  revision 1
   head "https://github.com/eighttails/PC6001VX.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "55bf29338e12edcaf2b43c9f289c414d8cca936cf1ca1daacdc4a3562a5e0e03"
-    sha256 cellar: :any, arm64_big_sur:  "55bf29338e12edcaf2b43c9f289c414d8cca936cf1ca1daacdc4a3562a5e0e03"
-    sha256 cellar: :any, big_sur:        "fa166cd082a50ee4ebfab086ca8f7bc23b83c56fed4ebce0d3c9ff6ff1ff5666"
-    sha256 cellar: :any, catalina:       "624cb1e3e387f1f86e275cf9e014b504a67a6672e21d014426c1ac4121605a31"
+    sha256 cellar: :any, arm64_monterey: "73d707de08c1ce389e5403c7f1d664ae75d87493ee8bc0fc0b3830f978219c6d"
+    sha256 cellar: :any, arm64_big_sur:  "73d707de08c1ce389e5403c7f1d664ae75d87493ee8bc0fc0b3830f978219c6d"
+    sha256 cellar: :any, big_sur:        "58bca7fa9e3ae2225da6a740640f62272a5242b2f8438a8584071a4bc280b0cd"
+    sha256 cellar: :any, catalina:       "a7c28f9c58413ddb04a1da6dade0116deebbeb77332ab4e49f471c912ea369b3"
   end
 
   depends_on "pkg-config" => :build
-  depends_on "ffmpeg"
+  depends_on "ffmpeg@4"
   depends_on "qt@5"
+
+  fails_with gcc: "5" # ffmpeg is compiled with GCC
 
   def install
     # Need to explicitly set up include directories
-    ENV.append_to_cflags "-I#{Formula["ffmpeg"].opt_include}"
+    ENV.append_to_cflags "-I#{Formula["ffmpeg@4"].opt_include}"
 
     mkdir "build" do
       qt5 = Formula["qt@5"].opt_prefix

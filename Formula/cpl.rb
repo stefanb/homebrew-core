@@ -1,10 +1,9 @@
 class Cpl < Formula
   desc "ISO-C libraries for developing astronomical data-reduction tasks"
   homepage "https://www.eso.org/sci/software/cpl/"
-  url "ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-7.1.4.tar.gz"
-  sha256 "cb43adba7ab15e315fbfcba4e2d8b88fa56d29a5a16036a7f082621b8416bd6c"
+  url "ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-7.2.1.tar.gz"
+  sha256 "8bd6c4e14614408ee46f6c08192f2d53aa2d2e24129dda4fb7d826be65832199"
   license "GPL-2.0-or-later"
-  revision 1
 
   livecheck do
     url "https://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/"
@@ -12,12 +11,12 @@ class Cpl < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "906865be993916e5eed530c831b72372f9f3fab84b950b198ca99429b194d330"
-    sha256 cellar: :any,                 arm64_big_sur:  "ee121d537a5003eaa6a457bd738933fe2e52bed5a0e3125d3025d86bd745e440"
-    sha256 cellar: :any,                 monterey:       "57bd81f75db262bab79a0c3db612dd03bccb75866394aae3b863e21f923d9c5a"
-    sha256 cellar: :any,                 big_sur:        "51b815488f0c70955a9e09bf3b2064f1e07775cfb8d0b938019c1d1effdec27b"
-    sha256 cellar: :any,                 catalina:       "aaacddaecbfda7479572eba563454cb77b7fcb736f35f40c682133520e2d736a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f28e4c6dae7a12243188c36bec922937d7ab4be84d1e9010cdc5df3b974e55eb"
+    sha256 cellar: :any,                 arm64_monterey: "770ce25aba6f82238706ab78b6617bb507d7cf44c5fffaa10c9d281d3506d2c8"
+    sha256 cellar: :any,                 arm64_big_sur:  "c6a5baeaeff3827d016354015a9efa9b2f2bc07e5ad9430972c100cdc0813f28"
+    sha256 cellar: :any,                 monterey:       "6f0df169b9bf66c8fb4f759c27c5958596ea8ba7a089792bab8a944bb3015255"
+    sha256 cellar: :any,                 big_sur:        "f1851a3f70f96604153373c751985797df4adf8e42c84ae131b7a8d663459f86"
+    sha256 cellar: :any,                 catalina:       "765071ab6932cd4952d2237330a31f829c5ed71884d7468a530e2a0d13a67378"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "93dde958ec8052039fb4ef6ea0f600d2b3ddb9fc69cfbf3b83918296d8f644ad"
   end
 
   depends_on "cfitsio"

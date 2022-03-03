@@ -3,21 +3,22 @@ class Awscli < Formula
 
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
-  url "https://github.com/aws/aws-cli/archive/2.4.15.tar.gz"
-  sha256 "5dec2f8c9c47ed71b7d6b8e873f5eb1b2805e4f5f84f71d5e3a587f64dfb12b9"
+  url "https://github.com/aws/aws-cli/archive/2.4.22.tar.gz"
+  sha256 "28d9d9a0e6fe00453bb20259f01428a5bf8789d81e5da263c3ddeb8026a22cbb"
   license "Apache-2.0"
   head "https://github.com/aws/aws-cli.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "488408a9f74c266b39c26ef733a77a0c1c390119774e2e88e88c56104780de1b"
-    sha256 cellar: :any,                 arm64_big_sur:  "a85af6d79afc944e362b83e5e1ffc6a4de85329446f680a8043128eda749da49"
-    sha256 cellar: :any,                 monterey:       "476037108e064d32aca245b27c91eb23c8af45a8414be5bbc475523c75e8ab8e"
-    sha256 cellar: :any,                 big_sur:        "4e30ae79e6d75cc2dd6c46d55d66ea3910ac2f94b0abeba82ab5e0000f138651"
-    sha256 cellar: :any,                 catalina:       "f0fe88e60a1b747f03d2a453f991c872d19e91dcbcd649f91c0893fd3243e263"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3ef497cc49a3ed39a5eb29969e994dc77da7903bd4b46e1d1798d2077d0f0679"
+    sha256 cellar: :any,                 arm64_monterey: "65bd59d3cfca9e35aedca5607e7e3ec8a0d337406a103765254590ce4643a945"
+    sha256 cellar: :any,                 arm64_big_sur:  "0d2a74c97f2522cf2ad9adeb4b74b3a01cac788841bb5a0d10869a2a5e69e6e4"
+    sha256 cellar: :any,                 monterey:       "5565d2780c0dc68fe8877b93e61b6653e614c2d8d54b121fc1a495510057a1c1"
+    sha256 cellar: :any,                 big_sur:        "2995f2b97a9306e5ef78d818e2406051d70c49a214f069784388475ece8e262e"
+    sha256 cellar: :any,                 catalina:       "5b3e940faba9e7baa5d63c166373e6f35749347dc02c09c3f45467869404d8a0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2f27b3cb53adbb4664d30d8e7d2baacde822cb18a8b57a66e2870194a9d68a31"
   end
 
   depends_on "cmake" => :build
+  depends_on "rust" => :build # for cryptography
   depends_on "python@3.9"
   depends_on "six"
 
@@ -44,8 +45,8 @@ class Awscli < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/d4/85/38715448253404186029c575d559879912eb8a1c5d16ad9f25d35f7c4f4c/cryptography-3.3.2.tar.gz"
-    sha256 "5a60d3780149e13b7a6ff7ad6526b38846354d11a15e21068e57073e29e19bed"
+    url "https://files.pythonhosted.org/packages/f9/4b/1cf8e281f7ae4046a59e5e39dd7471d46db9f61bb564fddbff9084c4334f/cryptography-36.0.1.tar.gz"
+    sha256 "53e5c1dc3d7a953de055d77bef2ff607ceef7a2aac0353b5d630ab67f7423638"
   end
 
   resource "distro" do
@@ -64,8 +65,8 @@ class Awscli < Formula
   end
 
   resource "prompt-toolkit" do
-    url "https://files.pythonhosted.org/packages/0c/37/7ad3bf3c6dbe96facf9927ddf066fdafa0f86766237cff32c3c7355d3b7c/prompt_toolkit-2.0.10.tar.gz"
-    sha256 "f15af68f66e664eaa559d4ac8a928111eebd5feda0c11738b5998045224829db"
+    url "https://files.pythonhosted.org/packages/37/34/c34c376882305c5051ed7f086daf07e68563d284015839bfb74d6e61d402/prompt_toolkit-3.0.28.tar.gz"
+    sha256 "9f1cd16b1e86c2968f2519d7fb31dd9d669916f515612c269d14e9ed52b51650"
   end
 
   resource "pycparser" do

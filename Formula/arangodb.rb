@@ -1,27 +1,35 @@
 class Arangodb < Formula
   desc "Multi-Model NoSQL Database"
   homepage "https://www.arangodb.com/"
-  url "https://download.arangodb.com/Source/ArangoDB-3.8.5.tar.bz2"
-  sha256 "445c1406ed5f2afd83611c96bc9ca6b02b8fc0d30fc408cfac7e68fb853200ab"
+  url "https://download.arangodb.com/Source/ArangoDB-3.9.0.tar.bz2"
+  sha256 "a6fb06bdfcaa8884d8a060e4aa1164d94db12bf2df332a2e44b2de2283204bca"
   license "Apache-2.0"
   head "https://github.com/arangodb/arangodb.git", branch: "devel"
 
   livecheck do
     url "https://www.arangodb.com/download-major/source/"
-    regex(/href=.*?ArangoDB[._-]v?(\d+(?:\.\d+)+)\.t/i)
+    regex(/href=.*?ArangoDB[._-]v?(\d+(?:\.\d+)+)(-\d+)?\.t/i)
   end
 
   bottle do
-    sha256 big_sur:  "c78984aa7df0d0ac63a21abb09b35e7a7bbedf71470ed18763d6d37456d5d42c"
-    sha256 catalina: "dcb1a9fa421a2acb7187e52903494af17399405d5b6dcb6df207174a89aea538"
+    sha256 monterey:     "3e642fea46662626f97b4d4f40dc1bc0b7e3684f5904659f20340a32ea21e510"
+    sha256 big_sur:      "5e18ae6110ed7cd419acba77be9e722c21bb70a4cfc3dc1a5d1052e5debe7615"
+    sha256 catalina:     "e2eb992537c33e30ca4294b03060f11e86dafb70563e0cc2aa9ab761e389e180"
+    sha256 x86_64_linux: "02c8b6c395f786324e6f262382eb1d95d52a161af93ede1a79f62ac27eb77714"
   end
 
   depends_on "ccache" => :build
   depends_on "cmake" => :build
-  depends_on "go@1.13" => :build
+  depends_on "go@1.16" => :build
   depends_on "python@3.9" => :build
   depends_on macos: :mojave
   depends_on "openssl@1.1"
+
+  on_linux do
+    depends_on "gcc"
+  end
+
+  fails_with gcc: "5"
 
   # the ArangoStarter is in a separate github repository;
   # it is used to easily start single server and clusters
@@ -38,7 +46,6 @@ class Arangodb < Formula
     resource("starter").stage do
       ENV["GO111MODULE"] = "on"
       ENV["DOCKERCLI"] = ""
-      system "make", "deps"
       ldflags = %W[
         -s -w
         -X main.projectVersion=#{resource("starter").version}

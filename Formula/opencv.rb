@@ -1,10 +1,9 @@
 class Opencv < Formula
   desc "Open source computer vision library"
   homepage "https://opencv.org/"
-  url "https://github.com/opencv/opencv/archive/4.5.4.tar.gz"
-  sha256 "c20bb83dd790fc69df9f105477e24267706715a9d3c705ca1e7f613c7b3bad3d"
+  url "https://github.com/opencv/opencv/archive/4.5.5.tar.gz"
+  sha256 "a1cfdcf6619387ca9e232687504da996aaa9f7b5689986b8331ec02cb61d28ad"
   license "Apache-2.0"
-  revision 3
 
   livecheck do
     url :stable
@@ -12,19 +11,18 @@ class Opencv < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "44199cf7982c6990e206d002b22da98481e42d4db371f25371d60dadad9f2106"
-    sha256 arm64_big_sur:  "70ae341c8129b66476214670c5cc35e7042bb274cffb8febf400f2fd8a7369c1"
-    sha256 monterey:       "e22779842a84948276f01d9fadb1c3e817b32b30fce65a459a17d0d8798003b7"
-    sha256 big_sur:        "9bce33f073613ded8b9dfc6bb6fc72286db7a876d7e382735a2343ccc6be3b76"
-    sha256 catalina:       "a7e1e90c460f850c8b45d27d2e9cd87eb047fbd563d03372cf4be7895edabe25"
-    sha256 x86_64_linux:   "b948e0b3a22205e5ca5a48a241daec908edc22a34df259653cfcf7667d961342"
+    sha256                               arm64_monterey: "c30513f997a7b463842be5723dc3524b403ae2e8851c4d6572c3554a9f2ac0b9"
+    sha256                               arm64_big_sur:  "3340b75c1daa8c1fc969d40b68b39437b4061d36f54db11c8f566e420e890328"
+    sha256                               big_sur:        "5ab8654c831a1ad5225dabed141ee4a0f6d945c70a0cec677e4ab320d33f0fa1"
+    sha256                               catalina:       "2df7d2874b1669736a0b89fabdc35b3bea0a0572e1cb3eee5fe7cd8a95459ad8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b0dbcd7860f347972dcedcd46ed2f3d40568aa10b94bffe90c31abc4a50064b2"
   end
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "ceres-solver"
   depends_on "eigen"
-  depends_on "ffmpeg"
+  depends_on "ffmpeg@4"
   depends_on "glog"
   depends_on "harfbuzz"
   depends_on "jpeg"
@@ -41,9 +39,11 @@ class Opencv < Formula
 
   uses_from_macos "zlib"
 
+  fails_with gcc: "5" # ffmpeg is compiled with GCC
+
   resource "contrib" do
-    url "https://github.com/opencv/opencv_contrib/archive/4.5.4.tar.gz"
-    sha256 "ad74b440b4539619dc9b587995a16b691246023d45e34097c73e259f72de9f81"
+    url "https://github.com/opencv/opencv_contrib/archive/4.5.5.tar.gz"
+    sha256 "a97c2eaecf7a23c6dbd119a609c6d7fae903e5f9ff5f1fe678933e01c67a6c11"
   end
 
   def install

@@ -4,21 +4,21 @@ class Netcdf < Formula
   url "https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.8.1.tar.gz"
   sha256 "bc018cc30d5da402622bf76462480664c6668b55eb16ba205a0dfb8647161dd0"
   license "BSD-3-Clause"
+  revision 1
   head "https://github.com/Unidata/netcdf-c.git", branch: "main"
 
   livecheck do
-    url "https://www.unidata.ucar.edu/downloads/netcdf/"
-    regex(/href=.*?netcdf-c[._-]v?(\d+(?:\.\d+)+)\.t/i)
+    url "https://downloads.unidata.ucar.edu/netcdf-c/release_info.json"
+    regex(/["']version["']:\s*["']v?(\d+(?:\.\d+)+)["']/i)
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "8c6ca44dcb0e5facd13480985ac6a52fa62ac5a768c9481e741da3f5b5251e54"
-    sha256 cellar: :any,                 arm64_big_sur:  "ceef5e39659e5ff4588c56106bda44a5a323146667494d2ffc3774157e59fcaa"
-    sha256 cellar: :any,                 monterey:       "586356169c5558dd2565dc6961afb059153f9f673c6dddfb568b64fab2ee2e56"
-    sha256 cellar: :any,                 big_sur:        "2eb8a909218b74d6912cab5fa71da9e5be96e63c4429ddbd3ad6e4db137f12f8"
-    sha256 cellar: :any,                 catalina:       "2a6b950057dd40e4dee39245943c92ea7bc5d8141b1f70a8946d240a348cbf9e"
-    sha256 cellar: :any,                 mojave:         "c5e18d95f19286dc7d7dd3e44f1c040a64cb1741fd50978bc3a1a6048ac70c66"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "13c5137aecff35c67461d420ff046cdaa49f27a2458e338a5c405448251ec7d0"
+    sha256 cellar: :any,                 arm64_monterey: "48a0b88ba2c9b17ff0ccc8b150ab7356e0befc6b874968e577cad3efd6a04e17"
+    sha256 cellar: :any,                 arm64_big_sur:  "c098a4536142e6eebb632b14731ae49f2dfc6f7913c23902f402203a6731fe33"
+    sha256 cellar: :any,                 monterey:       "48d45572f723ed14ca65a1e6e63b581201f81faf8f921b8ab90a91a07a70d2a8"
+    sha256 cellar: :any,                 big_sur:        "1774e5aa6d01edafd976ba2084f21609754df1e339c489759c9567789368d330"
+    sha256 cellar: :any,                 catalina:       "0697223ace4776760a8fa4c7872c43d12b527f3c318d6d3ea43b963d2c9777ee"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8310ece5972c468417efad2300e283aff6830d0202c3a19057fb93409156a476"
   end
 
   depends_on "cmake" => :build
@@ -28,7 +28,7 @@ class Netcdf < Formula
   uses_from_macos "curl"
 
   resource "cxx" do
-    url "https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx4-4.3.1.tar.gz"
+    url "https://downloads.unidata.ucar.edu/netcdf-cxx/4.3.1/netcdf-cxx4-4.3.1.tar.gz"
     mirror "https://www.gfd-dennou.org/arch/netcdf/unidata-mirror/netcdf-cxx4-4.3.1.tar.gz"
     sha256 "6a1189a181eed043b5859e15d5c080c30d0e107406fbb212c8fb9814e90f3445"
   end

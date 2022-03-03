@@ -3,18 +3,18 @@ class LuaLanguageServer < Formula
   homepage "https://github.com/sumneko/lua-language-server"
   # pull from git tag to get submodules
   url "https://github.com/sumneko/lua-language-server.git",
-      tag:      "2.6.3",
-      revision: "e9c319ac7c512b3563101c87d73d959931e1554a"
+      tag:      "2.6.6",
+      revision: "d57c21e585e7285583b7379e9e955da3b1345508"
   license "MIT"
   head "https://github.com/sumneko/lua-language-server.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "7e471128b38239c94dad3950f4dcb9eae3a48c1088834cd07e52b3beada06b68"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e8ba0c7e083aec35f7b3265d450b44e5756309bab9fa34a19995aa9314a35f2c"
-    sha256 cellar: :any_skip_relocation, monterey:       "14efaa99c228ca8e30cbfd51e21550ff5e1d61bb8f29c2cb91f4deaadb288d3d"
-    sha256 cellar: :any_skip_relocation, big_sur:        "058c7989c140c3b8660dcdf6110b6a77bc84d6a1850f9443aa1a4a9d7b8c5c48"
-    sha256 cellar: :any_skip_relocation, catalina:       "3655847d9dbc42a88b5b730f572113b677b80f629e1d129dbf467ee8a9bc28c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b9b494992c7f64684bbac6bd41f39dd79510bbb7a597565bed41390a6782d706"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b4322f065a6e94aee07fbeb4eda36b4bf0f34db0c5db130353de3ea5ae662a78"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2f26b28572b9a03ee7aac6707c24515a6f773a81e407599e2fd2e3f17aaf5172"
+    sha256 cellar: :any_skip_relocation, monterey:       "429b217b3eed222f2db896f6aa282d822d502feebea0da51247cdee3dc45049c"
+    sha256 cellar: :any_skip_relocation, big_sur:        "331f0eef7e1c03ec7e2769dbb8df062b4a41c0c2e9b7f63ae1a2043f8dddf58c"
+    sha256 cellar: :any_skip_relocation, catalina:       "bd917346454b3a360fadbad62b86179e9316b6e96d1dd2b752cdea2ab8ab029d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5360d0ad0f8de5478952a8b6290eb5206df879a16ba7a5a59d63694538d69765"
   end
 
   depends_on "ninja" => :build

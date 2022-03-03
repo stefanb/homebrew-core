@@ -1,17 +1,18 @@
 class Citus < Formula
   desc "PostgreSQL-based distributed RDBMS"
   homepage "https://www.citusdata.com"
-  url "https://github.com/citusdata/citus/archive/v10.2.3.tar.gz"
-  sha256 "45231c50d15b5d863e8f683d9e8277656e012ca4ba11cf42722d01741c9243bb"
+  url "https://github.com/citusdata/citus/archive/v10.2.4.tar.gz"
+  sha256 "bfe62893ad8b571737b38e9b6bca35650fdf8f89ce9da3996d6634090c97db7e"
   license "AGPL-3.0-only"
   head "https://github.com/citusdata/citus.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "5f6430e06badacfd9c70e898ac854b5926af1c56231ac2999de5629c6caad611"
-    sha256 cellar: :any, arm64_big_sur:  "e5fa12d8b0b3c07ce08f1cbbf8d6b1d986b8e82f86e19210d17a4323dfc2f2fe"
-    sha256 cellar: :any, monterey:       "e54159991712803e281906b82e2c180e5113820b17eb6a5cd6f8bb87ba98922a"
-    sha256 cellar: :any, big_sur:        "ddf037c6fc8ad951ba360aa9e8f105967d293a498f6c76361ef4ba1938a50fac"
-    sha256 cellar: :any, catalina:       "e152e154ba4a75aaba4465b17470b1737a2d604b040f383089c6baf18ea6de4f"
+    sha256 cellar: :any,                 arm64_monterey: "a473d61c192253889ece25d8805963fc0a06eed2a2f6ab2415a94d17c4036b01"
+    sha256 cellar: :any,                 arm64_big_sur:  "8d9ff24d6d01e1a89056327cbc75aa13b983b4938894c568f784aaa612390b19"
+    sha256 cellar: :any,                 monterey:       "e08b487cae176a7e2adf08a6c94a279aeaab5cf52908cc1fd6d23973fd3e5489"
+    sha256 cellar: :any,                 big_sur:        "edabf4e6e3658330fa31a0bc13ee47a3bac5c87dd4713d0aaa49806ae66991d7"
+    sha256 cellar: :any,                 catalina:       "93271095bc9abb5650f50da895b245978259483ef27194dab87022a9897d4211"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a7102491ef3cc87fe4e9dacc5582b74a08a70ccecf2e24a9f1636266c6b79fd1"
   end
 
   depends_on "lz4"
@@ -19,12 +20,14 @@ class Citus < Formula
   depends_on "readline"
   depends_on "zstd"
 
+  uses_from_macos "curl"
+
   def install
     ENV["PG_CONFIG"] = Formula["postgresql"].opt_bin/"pg_config"
 
     system "./configure"
 
-    # workaround for https://github.com/Homebrew/homebrew/issues/49948
+    # workaround for https://github.com/Homebrew/legacy-homebrew/issues/49948
     system "make", "libpq=-L#{Formula["postgresql"].opt_lib} -lpq"
 
     # Use stage directory to prevent installing to pg_config-defined dirs,
@@ -32,9 +35,9 @@ class Citus < Formula
     mkdir "stage"
     system "make", "install", "DESTDIR=#{buildpath}/stage"
 
-    bin.install Dir["stage/**/bin/*"]
-    lib.install Dir["stage/**/lib/*"]
-    include.install Dir["stage/**/include/*"]
-    (share/"postgresql/extension").install Dir["stage/**/share/postgresql/extension/*"]
+    path = File.join("stage", HOMEBREW_PREFIX)
+    lib.install (buildpath/path/"lib").children
+    include.install (buildpath/path/"include").children
+    (share/"postgresql/extension").install (buildpath/path/"share/postgresql/extension").children
   end
 end

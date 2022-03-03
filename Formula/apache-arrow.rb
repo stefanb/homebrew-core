@@ -1,20 +1,20 @@
 class ApacheArrow < Formula
   desc "Columnar in-memory analytics layer designed to accelerate big data"
   homepage "https://arrow.apache.org/"
-  url "https://www.apache.org/dyn/closer.lua?path=arrow/arrow-6.0.1/apache-arrow-6.0.1.tar.gz"
-  mirror "https://archive.apache.org/dist/arrow/arrow-6.0.1/apache-arrow-6.0.1.tar.gz"
-  sha256 "3786b3d2df954d078b3e68f98d2e5aecbaa3fa2accf075d7a3a13c187b9c5294"
+  url "https://www.apache.org/dyn/closer.lua?path=arrow/arrow-7.0.0/apache-arrow-7.0.0.tar.gz"
+  mirror "https://archive.apache.org/dist/arrow/arrow-7.0.0/apache-arrow-7.0.0.tar.gz"
+  sha256 "e8f49b149a15ecef4e40fcfab1b87c113c6b1ee186005c169e5cdf95d31a99de"
   license "Apache-2.0"
-  revision 4
+  revision 3
   head "https://github.com/apache/arrow.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "d9ab25957149237308840f27485cc537dba7fd5410af077859dad8f0818a0251"
-    sha256 cellar: :any,                 arm64_big_sur:  "1a8121013971685d36f998a801984782a779b58e630773b89cf12130a7bfca14"
-    sha256 cellar: :any,                 monterey:       "46f35038849533309ccf1c66302f504082ac90d6cf78463f623d2d8c5e8466a4"
-    sha256 cellar: :any,                 big_sur:        "315f0de7456659208b61e4a2b5a2ba6c4536e332fabe6592129325b745e4b97b"
-    sha256 cellar: :any,                 catalina:       "5ab4c2618283afed2cf95557431250d571ecb031099f52404c6d9876e80106f3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1cd2ee89560b65fcde5e8fd0d2cb4c6028b3dfca943972aaac1247d42710daa5"
+    sha256 cellar: :any,                 arm64_monterey: "0950c6b79f6f7267b75153c23dcc65a8e4a21e4b86cda96abe47d922edfcd031"
+    sha256 cellar: :any,                 arm64_big_sur:  "aca040291b5f967e1b3cc3d9fdcbbddfc3607d5bebb309ee69d377d3f971592f"
+    sha256 cellar: :any,                 monterey:       "341aa2016177f45fa41f408a6cde71f1eb579e0ee4dc126cae5c6f0b25a86003"
+    sha256 cellar: :any,                 big_sur:        "758c087aa09c6a7b89a14ee6a89b360ddecb8b6c8effe23bc7c14c182a75a721"
+    sha256 cellar: :any,                 catalina:       "27f817b21119560e954c960e58ea3f4d029cd024de8490f0dfe1333e50d9b534"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ad458dec29530961c6ebb3922aa774cae1c4139e7003716599f473649f1fc082"
   end
 
   depends_on "boost" => :build
@@ -45,6 +45,10 @@ class ApacheArrow < Formula
   def install
     # https://github.com/Homebrew/homebrew-core/issues/76537
     ENV.runtime_cpu_detection if Hardware::CPU.intel?
+
+    # https://github.com/Homebrew/homebrew-core/issues/94724
+    # https://issues.apache.org/jira/browse/ARROW-15664
+    ENV["HOMEBREW_OPTIMIZATION_LEVEL"] = "O2"
 
     # link against system libc++ instead of llvm provided libc++
     ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib

@@ -2,28 +2,21 @@ class Istioctl < Formula
   desc "Istio configuration command-line utility"
   homepage "https://istio.io/"
   url "https://github.com/istio/istio.git",
-      tag:      "1.12.2",
-      revision: "af0d66fd0aa363e9a7b0164f3a94ba36252fe60f"
+      tag:      "1.13.0",
+      revision: "75ee7514615d3a642a7eabaa0ad7c22cea1a1ed0"
   license "Apache-2.0"
   head "https://github.com/istio/istio.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "ef1bb48ebfe4f758920564545a41de5fc75ef4cc86cc0d1e1c9620e56fe4e536"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ef1bb48ebfe4f758920564545a41de5fc75ef4cc86cc0d1e1c9620e56fe4e536"
-    sha256 cellar: :any_skip_relocation, monterey:       "c288cd0a2e944ef46e44e2b68479baf163cad3c689938c7fe3c373eeed8ea40e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "c288cd0a2e944ef46e44e2b68479baf163cad3c689938c7fe3c373eeed8ea40e"
-    sha256 cellar: :any_skip_relocation, catalina:       "c288cd0a2e944ef46e44e2b68479baf163cad3c689938c7fe3c373eeed8ea40e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "23da51cba08028aaf897df6b631e45efa191255d305a8e883d3aa6d17786fd3c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "23da51cba08028aaf897df6b631e45efa191255d305a8e883d3aa6d17786fd3c"
+    sha256 cellar: :any_skip_relocation, monterey:       "8e510da31bddf611c0a6cfcbae233aa9fe055a927de60b98073c41ee88c4c689"
+    sha256 cellar: :any_skip_relocation, big_sur:        "8e510da31bddf611c0a6cfcbae233aa9fe055a927de60b98073c41ee88c4c689"
+    sha256 cellar: :any_skip_relocation, catalina:       "8e510da31bddf611c0a6cfcbae233aa9fe055a927de60b98073c41ee88c4c689"
   end
 
   depends_on "go" => :build
   depends_on "go-bindata" => :build
-
-  # Fix https://github.com/istio/istio/issues/35831
-  # remove in next release
-  patch do
-    url "https://github.com/istio/istio/commit/6d9c69f10431bca2ee2beefcfdeaad5e5f62071b.patch?full_index=1"
-    sha256 "47e175fc0ac5e34496c6c0858eefbc31e45073dad9683164f7a21c74dbaa6055"
-  end
 
   def install
     ENV["VERSION"] = version.to_s

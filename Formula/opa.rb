@@ -1,18 +1,18 @@
 class Opa < Formula
   desc "Open source, general-purpose policy engine"
   homepage "https://www.openpolicyagent.org"
-  url "https://github.com/open-policy-agent/opa/archive/v0.36.1.tar.gz"
-  sha256 "cb6d1be6341d2cb7094228a95fc6036883dddec98bfa77d8498685e8e7e7becb"
+  url "https://github.com/open-policy-agent/opa/archive/v0.37.2.tar.gz"
+  sha256 "a885d219b53b3ed0a04a6b3bd09050ee1a13ba50189e0b6779c7768b74b6f137"
   license "Apache-2.0"
   head "https://github.com/open-policy-agent/opa.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "a7fe9ce6f21aabd0071578b0f8dd0ea882dc44414b05158fc26406b89e55a440"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "042dc4ec152218944d198e83de31a58aa24e6ef8856d6c0db6fcf24e85daf777"
-    sha256 cellar: :any_skip_relocation, monterey:       "21adb7d007f39400e0859d7a828e629e294a20439adbe0841d87f2dbbf0c18ba"
-    sha256 cellar: :any_skip_relocation, big_sur:        "ed8017417d750f428baf620d87df4ce278927c05965d1b6e7554d439e806b1c3"
-    sha256 cellar: :any_skip_relocation, catalina:       "f62632126360eaad947698c2f367fe2b5edacf766d9c662276d0672d64cce691"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bf6b32eff4cf53808854f0f949a94cb3d4b9e8d417446491db89c4bef0bbb265"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "d126b69a392eb55ee686263018bde088a2e0b890c1e8a5aa6f6c7088045e602e"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8f9f0d7c5315e0ab4a242877a312570fae3e808efaeca6e89b1925ea61c55226"
+    sha256 cellar: :any_skip_relocation, monterey:       "b761296a05723f9c047477df4267037b913273efcfadb6a8bbc809f9fc5f7cd5"
+    sha256 cellar: :any_skip_relocation, big_sur:        "47012b445fec2f643290723904ee241218c10d5d56d7630d123fcd1b2dfea9d4"
+    sha256 cellar: :any_skip_relocation, catalina:       "74184a0f777dd4bebe97f58a1f8d91a1804ed793786c851acdab6baaa5d47a37"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fc06df2d2e3ac5ff53ccc78aaf912be1b60d77c7e2c458359c6e879d03c44b77"
   end
 
   depends_on "go" => :build

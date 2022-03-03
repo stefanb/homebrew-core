@@ -1,17 +1,17 @@
 class ReFlex < Formula
   desc "Regex-centric, fast and flexible scanner generator for C++"
   homepage "https://www.genivia.com/doc/reflex/html"
-  url "https://github.com/Genivia/RE-flex/archive/v3.1.0.tar.gz"
-  sha256 "7f069c2b4dcf1c05313bd0460af5dcc40cb3153ff8715c179797c70559e5d870"
+  url "https://github.com/Genivia/RE-flex/archive/v3.2.1.tar.gz"
+  sha256 "ab333395c5f2a15b13d6c1c56c7b74bf6545ed6d7cb9cc9b7c764b963b23fb7b"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "d91b9f946d12dd2274e676154c1033e4b4c8855419d7bf233b8436341014a10e"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "addf73dd159e2c0c8d490893385f23dd572aea8abc94ef946723565a7a156a30"
-    sha256 cellar: :any_skip_relocation, monterey:       "852b752cb05e14cd32050e48751c674a655bde897b3238cc475b667b7273654c"
-    sha256 cellar: :any_skip_relocation, big_sur:        "35d6aec90cbc22229ba6efeba70ab652ff530a6bb6460af4dcbdc0dbe3e2627b"
-    sha256 cellar: :any_skip_relocation, catalina:       "7bef7a829eeddcbd5afa7baccf99e7affe9958ad4e5116dfa93d03bb83558cf1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5a8be6d04b84e609c05e0c98ac19a844fe71b6971da8c16eb8c3112a2f77fdd3"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "59f185711c675ba6ed50a34db38abfe931e0ddaa8f1bc2810c5a829e614865be"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "08f97cc6cff99245810e22cc31df9257114b8146b35a6c2fbdd7b1cdf3929cab"
+    sha256 cellar: :any_skip_relocation, monterey:       "36a4a489ad56bdd6f0d6ca9ed88ae19eda16f3365a9ccebde05f83996eb5828e"
+    sha256 cellar: :any_skip_relocation, big_sur:        "80c654ed98ca1908b09c12ece0437238a4f1754932221d2350d3412d1e62f31d"
+    sha256 cellar: :any_skip_relocation, catalina:       "f7fa7e31fc58eec35ba8e698a918028bb570907e027a92c06a915de476051bb7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "24e2ac0b56a179c28fbc030b18f7aada1a6ac4d952560c5cd72d7fedfe6ee6f2"
   end
 
   depends_on "pcre2"

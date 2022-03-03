@@ -4,15 +4,16 @@ class Vtk < Formula
   url "https://www.vtk.org/files/release/9.1/VTK-9.1.0.tar.gz"
   sha256 "8fed42f4f8f1eb8083107b68eaa9ad71da07110161a3116ad807f43e5ca5ce96"
   license "BSD-3-Clause"
-  revision 1
+  revision 3
   head "https://github.com/Kitware/VTK.git", branch: "master"
 
   bottle do
-    sha256                               arm64_monterey: "a2ad11a39d276494e011de69cc26910fe87d86bff9fe0151fdb88dc9609a1e22"
-    sha256                               arm64_big_sur:  "20b0335af2031a2f80f75d3cefbc8356e5100a4d62c7ff9996566571dffbaec1"
-    sha256                               big_sur:        "3fb6007395e9e0ce09b03bb14b81e2f8511eff74e71b8d660b9e78acf6d1f368"
-    sha256                               catalina:       "2aa0c85c665572b92fecc642d6cf00d7392547f42cd021ec5712a0400e298eaf"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5806db1b35587147c06e87764c1c58b8af36d2c305929a24cc2b02635757ae7a"
+    rebuild 1
+    sha256                               arm64_monterey: "db69b8415e3e2c71e72324a2f345d2bc203b1be420ffef34103581616e875c1b"
+    sha256                               arm64_big_sur:  "6cf53d599728a6e8d0b718e42ded3e7e53a669b2f8ac50b0d74aedf12fbebf63"
+    sha256                               big_sur:        "d00fb169c11c9609dc895c1678f6641b60b7aad9fac5433c78d5da860ff2d5a2"
+    sha256                               catalina:       "1e656d21849e1e191e61c8ffe1b917765e8ba7e0b122538b2c1bbcf2a06d3b11"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9947d6db68fe92e18f2c728e1c0cb3d2243e8c1c7699c246850482b1dcdafd10"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -58,6 +59,7 @@ class Vtk < Formula
       -DBUILD_TESTING:BOOL=OFF
       -DCMAKE_INSTALL_NAME_DIR:STRING=#{opt_lib}
       -DCMAKE_INSTALL_RPATH:STRING=#{rpath}
+      -DCMAKE_DISABLE_FIND_PACKAGE_ICU:BOOL=ON
       -DVTK_WRAP_PYTHON:BOOL=ON
       -DVTK_PYTHON_VERSION:STRING=3
       -DVTK_LEGACY_REMOVE:BOOL=ON
@@ -86,6 +88,7 @@ class Vtk < Formula
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib:BOOL=ON
       -DPython3_EXECUTABLE:FILEPATH=#{Formula["python@3.9"].opt_bin}/python3
       -DVTK_GROUP_ENABLE_Qt:STRING=YES
+      -DVTK_QT_VERSION:STRING=5
     ]
 
     # https://github.com/Homebrew/linuxbrew-core/pull/21654#issuecomment-738549701

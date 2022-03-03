@@ -1,8 +1,8 @@
 class PostgresqlAT10 < Formula
   desc "Object-relational database system"
   homepage "https://www.postgresql.org/"
-  url "https://ftp.postgresql.org/pub/source/v10.19/postgresql-10.19.tar.bz2"
-  sha256 "6eb830b428b60e84ae87e20436bce679c4d9d0202be7aec0e41b0c67d9134239"
+  url "https://ftp.postgresql.org/pub/source/v10.20/postgresql-10.20.tar.bz2"
+  sha256 "87de16d59bcfe42fa605c312c59be5e294e8a3e6acb655dd7ad47cbb930a659f"
   license "PostgreSQL"
   revision 1
 
@@ -12,11 +12,12 @@ class PostgresqlAT10 < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "d03b4afd640f4c3b00f9f00ab4713271f73dfef8264a8c9d0b0914b7f1bccd2e"
-    sha256 arm64_big_sur:  "a412b46666e8faece8064ba341a8798b4d9930885639b10a9a7c9bb20a548942"
-    sha256 monterey:       "995e4ac807dfc85963522ba63f10f9ab4d760d23744bb4c9d6ebb660e52c99c5"
-    sha256 big_sur:        "d7cbefbbcf76cb78b19d208ae131ec30cd67644410ca1838ff2f5e5226722fdc"
-    sha256 catalina:       "635a8c72855cab2239e763b2523fab9c40f5982cc616630f72b4b00486ddfcfa"
+    sha256 arm64_monterey: "9857a431ab601cc842585d70154ec9492296a7b77255222331d7b0b2cab602c0"
+    sha256 arm64_big_sur:  "ef3caeb6a3a16a766fd3c784e5a4aa186a11857af47209da5286a5eba488167b"
+    sha256 monterey:       "26485f4f70e02ab15ab6ec1f5b38e5e8c40a3931c6a303b9f4730389d007a332"
+    sha256 big_sur:        "328cd1aab730e2ed7a6a505924f2d7e8d2a8bb0430452622f2f1e073b51e6952"
+    sha256 catalina:       "e85947e5d7ffd45eb0c4b6e8da3bded1db0562d6e678e3e31010bacfef52d5f6"
+    sha256 x86_64_linux:   "78604c72383b2555bdf7ad07d6d31ff3ef0ead185e918f0bb59a240a38925b9a"
   end
 
   keg_only :versioned_formula

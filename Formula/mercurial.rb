@@ -3,8 +3,8 @@
 class Mercurial < Formula
   desc "Scalable distributed version control system"
   homepage "https://mercurial-scm.org/"
-  url "https://www.mercurial-scm.org/release/mercurial-6.0.1.tar.gz"
-  sha256 "05fd0b480389c96547f5a6c769e90ee00f1d13f7ac0d465e40a381c6cf3a56e2"
+  url "https://www.mercurial-scm.org/release/mercurial-6.1.tar.gz"
+  sha256 "86f98645e4565a9256991dcde22b77b8e7d22ca6fbb60c1f4cdbd8469a38cc1f"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -13,18 +13,26 @@ class Mercurial < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "9b729e24f606d7de61f824d16e5b9c83bad97cab4bb2202619ddb922b2a02110"
-    sha256 arm64_big_sur:  "15d56b6215edf56fada3dce41d6403f1ce52ced10ee0d4b28d312a897d2780ca"
-    sha256 monterey:       "d03179e44f80b5ebc04634cf39a4b11a3f30ec73ed2688246853c57316ee281a"
-    sha256 big_sur:        "459ad969cafefa1d4f2b12b06771ab031bc98d033bac58f8000b3ea187f611ff"
-    sha256 catalina:       "d95d6ed1f4d4fffff85da10dbaeb7102ea3cce4db6ec13edc6c86411b0d86ec4"
-    sha256 x86_64_linux:   "fc73709c8fbb7b801e4c243d05a9cc6a279e6d2f043e18b49ecf9039a6b99fca"
+    sha256 arm64_monterey: "5e51a0d69393e675bc945a4dbaf94986d0bf699f9305af0779d3c79e011291b4"
+    sha256 arm64_big_sur:  "227c1ed84490c3ffc480729acdfbfb956286577e8aad582b7456cd4a8a538649"
+    sha256 monterey:       "24d16d7071fc552dbffa7f43a5ed6f09abce0616ba33ca61fdb1e8c560ef6b5e"
+    sha256 big_sur:        "b9005e9a4c7a45d0f8cd20d957d988c3e3814c5a62c6dbdf6ddcae5f99050e6e"
+    sha256 catalina:       "8728f55a40244173cbc538b6df6a449da55e166803db1f15d3438eee74d6532a"
+    sha256 x86_64_linux:   "d3118f170ca153846bf4aecfe57f8b8109b7a0c7802217ae08ba6e6766309ece"
   end
 
   depends_on "python@3.10"
 
   def install
     ENV["HGPYTHON3"] = "1"
+
+    # FIXME: python@3.10 formula's "prefix scheme" patch tries to install into
+    # HOMEBREW_PREFIX/{lib,bin}, which fails due to sandbox. As workaround,
+    # manually set the installation paths to behave like prior python versions.
+    site_packages = prefix/Language::Python.site_packages("python3")
+    inreplace "Makefile",
+              "--prefix=\"$(PREFIX)\"",
+              "\\0 --install-lib=\"#{site_packages}\" --install-scripts=\"#{prefix}/bin\""
 
     system "make", "PREFIX=#{prefix}",
                    "PYTHON=#{which("python3")}",

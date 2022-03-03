@@ -1,18 +1,18 @@
 class NatsServer < Formula
   desc "Lightweight cloud messaging system"
   homepage "https://nats.io"
-  url "https://github.com/nats-io/nats-server/archive/refs/tags/v2.7.1.tar.gz"
-  sha256 "53acfcf144817a77d4b1a6900a817aed2c0d779a943adba804b2dc78b63793bf"
+  url "https://github.com/nats-io/nats-server/archive/refs/tags/v2.7.3.tar.gz"
+  sha256 "06dc1c178f220c20122e73f84824fe29146fbe79ec189f65632c19ddad9e8fcd"
   license "Apache-2.0"
   head "https://github.com/nats-io/nats-server.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "49791c90dff27361eb8b89da7b7d716c0366e33dfea8b8d112bac4d8110a3d50"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4d81400b750e95bceb71b6299fbfce4e1ca92767133cf9bfe5580708afa3ce11"
-    sha256 cellar: :any_skip_relocation, monterey:       "9e49262c40b63338346ac7373c38e45bb81f2cd7107dcf2a42519f6321378824"
-    sha256 cellar: :any_skip_relocation, big_sur:        "21324f23b80c51cf444caae7872536bb74dc0947c31c85e9db016a95aeeb25ac"
-    sha256 cellar: :any_skip_relocation, catalina:       "76ab697fd4920d519cd60c4049f36c9c4ea4b05d5ab116ba069c6da78835079e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c4bf1085b0cc536598c873830e16e47e5c3096dd357e1cb2989d57fa26014700"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "fbd04df771c8513f28596127cb75cb765fb7c8b0e265e58a2ed28f35ac82bdfb"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "61c0551c0aa1317357c3e5e55088e05435f0a05114852734f5386b12d9609090"
+    sha256 cellar: :any_skip_relocation, monterey:       "1a0886c24a4db6ab4abf19d5b07070d557efa6cddd385ea0b0aa79aab316eb72"
+    sha256 cellar: :any_skip_relocation, big_sur:        "fd00bc0830bb84d708d94ba70d2dfac5325324b6932e5a514cf5566167d17aea"
+    sha256 cellar: :any_skip_relocation, catalina:       "a1a2311ee63fefcf3a8cf0da7057991a653b77558f8cfab99fe6e57deb1eaf4d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7564c906d9bb01e944b74e11841126483ac8e786bea175f0069b741c7f0c0514"
   end
 
   depends_on "go" => :build

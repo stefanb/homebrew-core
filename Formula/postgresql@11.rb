@@ -1,8 +1,8 @@
 class PostgresqlAT11 < Formula
   desc "Object-relational database system"
   homepage "https://www.postgresql.org/"
-  url "https://ftp.postgresql.org/pub/source/v11.14/postgresql-11.14.tar.bz2"
-  sha256 "965c7f4be96fb64f9581852c58c4f05c3812d4ad823c0f3e2bdfe777c162f999"
+  url "https://ftp.postgresql.org/pub/source/v11.15/postgresql-11.15.tar.bz2"
+  sha256 "c8f58e8ebd4f4567f4f9ba1032eb3e99e0251d87cbe3e564b485590e37a879e3"
   license "PostgreSQL"
   revision 1
 
@@ -12,12 +12,12 @@ class PostgresqlAT11 < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "f25b99cfd35c4acef61f280d7ef6131d256d20f91c078e39d4f4c163f9ac74f2"
-    sha256 arm64_big_sur:  "e1d203c7c934386eba75e7155f270421d89d2332479ea0a4687e74aaf94099f7"
-    sha256 monterey:       "dd15bcd71343eaa00478023cbd95ed9607c33e554f279d4e4888a8ce39bc070a"
-    sha256 big_sur:        "f5c368ef4663d8da89014adf3d1533a9281523563734d98044eb0cd726039440"
-    sha256 catalina:       "8bdacf41dc01ae753a1a8842637e189fd75b9d86f877111d546b9676df6a63ce"
-    sha256 x86_64_linux:   "d01f0b212c75dbe97fe7147b283ae85ccf2974e4c027952b0ea2d92e1c12503e"
+    sha256 arm64_monterey: "5fc9dae22bb78a21d8e2199a35543e0b5b4f10a6617025c1aa6c2663c5605667"
+    sha256 arm64_big_sur:  "427147ef984a2ae822a2fd904e7f6ad53d1fca9302133d0896d247daf4c2dc3f"
+    sha256 monterey:       "3bc7eb6d497526c1317103e777b4a486628c56a1771d6be54ecbff0a28fc757e"
+    sha256 big_sur:        "7caa62a7a704da8c0d19166cc9a1c9269f9a7eaf8ac3c4a3f6e2c5ab9e596213"
+    sha256 catalina:       "13defcf9b2c85d59f7d9e7f0571bfcb37ca94528a50675653cb798f6b76238ab"
+    sha256 x86_64_linux:   "b4a3e5f9592b591e1b1723ab2b34f3a325d578d2ef293d9b2c5c14cd4d3fc776"
   end
 
   keg_only :versioned_formula

@@ -2,8 +2,8 @@ class Devspace < Formula
   desc "CLI helps develop/deploy/debug apps with Docker and k8s"
   homepage "https://devspace.sh/"
   url "https://github.com/loft-sh/devspace.git",
-      tag:      "v5.18.2",
-      revision: "cbe147f38b8c857d72d0d4851523bc7a9727471e"
+      tag:      "v5.18.4",
+      revision: "8b5f107ef4b45c08918b52ac00e586bd0972db5f"
   license "Apache-2.0"
   head "https://github.com/loft-sh/devspace.git", branch: "master"
 
@@ -13,12 +13,12 @@ class Devspace < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "c2a36ae902fd05c87429e292741b04102fbc2421cd7083ac3f245d7981e106d4"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8febcc5eda39924293bdba59322b6e42caae8e4edebafd80061b4578739f9a99"
-    sha256 cellar: :any_skip_relocation, monterey:       "8f3a2b6c1260a62c9776842f203d78b15fd9b8d0280afa58b6798cc338656c87"
-    sha256 cellar: :any_skip_relocation, big_sur:        "2f9b2b7ab54f2b38c1038d366cb6d7f44be6cf4e71b8575f33a83c7b599ed8b4"
-    sha256 cellar: :any_skip_relocation, catalina:       "590c7c09f4739c7bcc8779ffe329e2214acf89912613a97ebf70183a8b896972"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7b58d06dd303829233d183823ca609c1c6ca9b4ace6ddb1db1dcca19579d5a3b"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4f41a80a6ddf4518be8daaaa833e389d5ca11c56f138849aaa1b462a283ccc0f"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "164eca4c8beca77c064da2de9e1a37c96b997daa05ad78a0ad28ffe63dc05424"
+    sha256 cellar: :any_skip_relocation, monterey:       "b05f88a7b686af8aa26658eb2738b270d76b9bde9522427b4a4d80841bb66039"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0c0f7d917ba87d622c5068ace19ade6a96761430400df2acd7cdd3b9bffaf8fe"
+    sha256 cellar: :any_skip_relocation, catalina:       "b094c13f05db4aea653f6e480156b687ad227cefb9c66c5b5d21aac5e9c16638"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fd3faf453f3ef1742bf8af349e74542b679c583a1001e66e74e65d5e3ab4b724"
   end
 
   depends_on "go" => :build

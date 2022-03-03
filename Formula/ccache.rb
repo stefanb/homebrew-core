@@ -1,18 +1,18 @@
 class Ccache < Formula
   desc "Object-file caching compiler wrapper"
   homepage "https://ccache.dev/"
-  url "https://github.com/ccache/ccache/releases/download/v4.5.1/ccache-4.5.1.tar.xz"
-  sha256 "51186ebe0326365f4e6131e1caa8911de7da4aa6718efc00680322d63a759517"
+  url "https://github.com/ccache/ccache/releases/download/v4.6/ccache-4.6.tar.xz"
+  sha256 "3d2bb860f4359169e640f60cf7cc11da5fab5fb9aed55230d78141e49c3945e9"
   license "GPL-3.0-or-later"
   head "https://github.com/ccache/ccache.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "400d5e7df0557fcd5da23b09eb2ad2a3349db05c6fd2cbed77fa9b5cb1e5842c"
-    sha256 cellar: :any,                 arm64_big_sur:  "1d03e8a6728d908b222ec0d929c848209edb0e76720959212e35205cf64e0c87"
-    sha256 cellar: :any,                 monterey:       "1cb93db06abd2a421e853a47ab40cbf57c6cf27eb51433dd1e2e51b921670585"
-    sha256 cellar: :any,                 big_sur:        "44638dde6b3c03920200fa2385456915461ce7338ac604e87ac0b234f0b72917"
-    sha256 cellar: :any,                 catalina:       "5aa9f5e03470cbc2af290f34dfdec800defc00af41ee6dc1e4348d171dcfd8f4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "84f24419115c4fa4d9b6631d49ccf957968a5defce895606fdf31ce954cfc64b"
+    sha256 cellar: :any,                 arm64_monterey: "a6c2f84141f941f468a3a5ad894494303dd2e5bb7e10dd6c2f299af096560185"
+    sha256 cellar: :any,                 arm64_big_sur:  "0d4ea837de83f77233704f1b73d7a993318f73491ef84daba69dfdd56f7719b8"
+    sha256 cellar: :any,                 monterey:       "fc91ed794d820ed244ab6401cd6b5d4153c2dcc928032fdd9effbd7bbe5fc483"
+    sha256 cellar: :any,                 big_sur:        "55e3ed0d7a2628730bcc60eefb43a36f3226c3cf2b0256fa56cc36f57647ce95"
+    sha256 cellar: :any,                 catalina:       "de15068d015ee2698bbddb9588741b0f15f9cbf44fc5d235a4821bfd064fb90e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1a35232f5d08f3d0d508ce1671d232e22d0d6f7bff532da9cbeff24d675dab7c"
   end
 
   depends_on "asciidoctor" => :build

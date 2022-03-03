@@ -1,12 +1,12 @@
 class VulkanHeaders < Formula
   desc "Vulkan Header files and API registry"
   homepage "https://github.com/KhronosGroup/Vulkan-Headers"
-  url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.3.204.tar.gz"
-  sha256 "2cde2c90975a8f36d00cf8eb6308cb00323aafbc0b7374f4b346f1140f760b3d"
+  url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.3.206.tar.gz"
+  sha256 "0cd46249eabb7cd8eab6ffc1b16d30a3a14e6e1e01d3d735b22dad33ee3efcf7"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "eab5f886659cfa995c2e2a09b2c22a48e7d09e2d876efa8733bf3eb78b15f92f"
+    sha256 cellar: :any_skip_relocation, all: "c738c968ac86a79d8c8759e318378244598dd8f7ca1da24cc6a5ba97efb278ef"
   end
 
   depends_on "cmake" => :build

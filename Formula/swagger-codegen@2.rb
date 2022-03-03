@@ -1,8 +1,8 @@
 class SwaggerCodegenAT2 < Formula
   desc "Generate clients, server stubs, and docs from an OpenAPI spec"
   homepage "https://swagger.io/swagger-codegen/"
-  url "https://github.com/swagger-api/swagger-codegen/archive/v2.4.25.tar.gz"
-  sha256 "bec77e14811ebc38c0f65eafd62681b2475c55cef62c900a25aef16f4a339a92"
+  url "https://github.com/swagger-api/swagger-codegen/archive/v2.4.26.tar.gz"
+  sha256 "5bae383a96b8c97f4fa8def76d29da6d87c934bdd28792a0611da07f6c36b578"
   license "Apache-2.0"
 
   livecheck do
@@ -11,9 +11,10 @@ class SwaggerCodegenAT2 < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, big_sur:      "ba8af6666496ff2515d1a1a46c7ccb74d31e528662a1064ca6dfd638d1d0315d"
-    sha256 cellar: :any_skip_relocation, catalina:     "0ad4cab793435a3d660eb368ee75166972198155ac5bd3cc42ee7a3cd8da4c84"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "89b49d9c3f64b42d5a35d05fa388709fa55f7e55413d7f93184250496e350783"
+    sha256 cellar: :any_skip_relocation, monterey:     "97d1889ca51c52d07c3d8679890ac6739aaebfa4905456f8170a2e566da23abc"
+    sha256 cellar: :any_skip_relocation, big_sur:      "f06ba71dd69f2a184532fbea9aec9b5202173a27478d5de92eeb77d7bc914761"
+    sha256 cellar: :any_skip_relocation, catalina:     "867a1e7b48e4a16729af63b317f4a88a9ddf0999a6958cd76a4de11bde5e63c3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "5cb9dea216f8d682a9725208f210ac2a4994766d9ef73facbcb923c17caf4ca1"
   end
 
   keg_only :versioned_formula

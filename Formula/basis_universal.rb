@@ -1,19 +1,17 @@
 class BasisUniversal < Formula
   desc "Basis Universal GPU texture codec command-line compression tool"
   homepage "https://github.com/BinomialLLC/basis_universal"
-  url "https://github.com/BinomialLLC/basis_universal/archive/refs/tags/v1.15_rel2.tar.gz"
-  version "1.15"
-  sha256 "c7ada78211517176ac5d38850337500d132813e2c0af3bf338e66cac71ee5153"
+  url "https://github.com/BinomialLLC/basis_universal/archive/refs/tags/1.16.3.tar.gz"
+  sha256 "b89563aa5879eed20f56b9cfa03b52848e759531fd5a1d51a8f63c846f96c2ac"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "7982400af9801d4ed2d81455d90eef83b3ad47390af70f644d9fbbd664f860c7"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "f49c79e20a8cba9eec7772c3c16d91d9f4f6950f60f08e514017765ca35dd009"
-    sha256 cellar: :any_skip_relocation, monterey:       "1dff0fd6ab85ae31905a9771048440b77fb8104be739a010dd2b9ef2bd47e65b"
-    sha256 cellar: :any_skip_relocation, big_sur:        "a3564f412c01518c7fa8489cfff76e4c72f96972055741651383dcbc1f621d44"
-    sha256 cellar: :any_skip_relocation, catalina:       "20c4d1f426658cdde46b4d535d91254796ac5f5ca51ae7c741630bb06ff9545c"
-    sha256 cellar: :any_skip_relocation, mojave:         "fa893b4498d244cb26f6a35db9059dacc84ef0fc6c60558c51cd60faa6ca222e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2a571eefca9a99ff9dc3faa67e12f1292cd207d57fb2dcfb90ea31144b8201c5"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "48a4db14f02cbd5adc8c944f79cd22c46b6d4b3f8600a3f3dc1cf091dd932afb"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8985ba21dd83aafd2ab4f37687ab88f1276a6c2f1697365200d578586cf06707"
+    sha256 cellar: :any_skip_relocation, monterey:       "b1715f18cf7b1567a23ae47d399995ca2b090116ee1682cd74873a2628603172"
+    sha256 cellar: :any_skip_relocation, big_sur:        "591d88c0a3342d6350e6164d880040cf4e56a60e4ad78d97f4c570fffaa2b883"
+    sha256 cellar: :any_skip_relocation, catalina:       "8f4c2f9c4d85a80d2e0541a2a52638b11809247bb3989e71801c26b5d70a019e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "668ee321961b9840c64fbce0be72641ec4f5c12b95f18bc93a279a2db621a745"
   end
 
   depends_on "cmake" => :build

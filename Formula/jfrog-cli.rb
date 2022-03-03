@@ -1,30 +1,45 @@
 class JfrogCli < Formula
   desc "Command-line interface for JFrog products"
   homepage "https://www.jfrog.com/confluence/display/CLI/JFrog+CLI"
-  url "https://github.com/jfrog/jfrog-cli/archive/v2.11.1.tar.gz"
-  sha256 "23cc54bf12b2137b187105cd12150f047ecd3a81db81c2326d6dec691267900f"
+  url "https://github.com/jfrog/jfrog-cli/archive/v2.13.0.tar.gz"
+  sha256 "1284879a4ec256b752d226dccea20929f042a8d816d21f630a36b3492c5e9df1"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "93278c5b45621dac3b4ac40895d2bf50eac5940fb6990d550352882c7e773a9b"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ba258ee7164324232480621e85a237981c1ac927090048e5f88f99bcd6b23f71"
-    sha256 cellar: :any_skip_relocation, monterey:       "a9f16468e5b1579c7a3134ac379f0197e5252b124f3605a397d1f347a8cd397c"
-    sha256 cellar: :any_skip_relocation, big_sur:        "33e3471c66a29f072cc30c51489ec51d7f4bd6d3187c670a7a42720078c6222c"
-    sha256 cellar: :any_skip_relocation, catalina:       "e4f2508a7c5f09c944644b0525de8262e6962a5a47907a75a6b843fe1ee60e42"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f9358934789f7d2dacbe19f9ae1689eac711c5544372a643ffc3765fa654d825"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b8f69a91122c3aa6989ab04f45f0c0a3193e0fa083d1cba785e27b40310ae4f5"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "22f5e5f259555d533f3615f71976605eff048725c9694cac2d7771e416ef9fdb"
+    sha256 cellar: :any_skip_relocation, monterey:       "badbf3822554e818698c289ad7d80e35523cdd4b54ae8a71631a3bb2c3ba4a4b"
+    sha256 cellar: :any_skip_relocation, big_sur:        "d88c96c482bb85366499261f74b0c6ab68ffae32da3910b02dc0de42167fbb3a"
+    sha256 cellar: :any_skip_relocation, catalina:       "2b3bf0d34baa6f90716e4d33d201168121710edb7c29e4bceb425f6f2a3f884c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "23e3523fdd88dbcc5a6d8af2be1160092c3a4ce428567c43a5d8793828ea1873"
   end
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", "-ldflags", "-s -w -extldflags '-static'", "-trimpath", "-o", bin/"jfrog"
-    prefix.install_metafiles
-    system "go", "generate", "./completion/shells/..."
-    bash_completion.install "completion/shells/bash/jfrog"
-    zsh_completion.install "completion/shells/zsh/jfrog" => "_jfrog"
+    system "go", "build", *std_go_args(ldflags: "-s -w -extldflags '-static'", output: bin/"jf")
+    bin.install_symlink "jf" => "jfrog"
+
+    # Install bash completion
+    output = Utils.safe_popen_read(bin/"jf", "completion", "bash")
+    (bash_completion/"jf").write output
+
+    # Install zsh completion
+    output = Utils.safe_popen_read(bin/"jf", "completion", "zsh")
+    (zsh_completion/"_jf").write output
+
+    # Install fish completion
+    output = Utils.safe_popen_read(bin/"jf", "completion", "fish")
+    (fish_completion/"jf.fish").write output
   end
 
   test do
+    assert_match version.to_s, shell_output("#{bin}/jf -v")
     assert_match version.to_s, shell_output("#{bin}/jfrog -v")
+    with_env(JFROG_CLI_REPORT_USAGE: "false", CI: "true") do
+      assert_match "build name must be provided in order to generate build-info",
+        shell_output("#{bin}/jf rt bp --dry-run --url=http://127.0.0.1 2>&1", 1)
+    end
   end
 end

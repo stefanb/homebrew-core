@@ -1,22 +1,23 @@
 class Gedit < Formula
   desc "GNOME text editor"
   homepage "https://wiki.gnome.org/Apps/Gedit"
-  url "https://download.gnome.org/sources/gedit/40/gedit-40.1.tar.xz"
-  sha256 "55e394a82cb65678b1ab49526cf5bd43f00d8fba21476a4849051a8e137d3691"
+  url "https://download.gnome.org/sources/gedit/41/gedit-41.0.tar.xz"
+  sha256 "7a9b18b158808d1892989165f3706c4f1a282979079ab7458a79d3c24ad4deb5"
   license "GPL-2.0-or-later"
 
   bottle do
-    sha256 arm64_big_sur: "944db5b9131011efb9ac1ca370342b21895bc8c2220138c90fd137cc883ccc1e"
-    sha256 big_sur:       "7cee9c8a408d1f8bfc28f05475babd0e9d0236cfb2411042c56112c97d6ccbd7"
-    sha256 catalina:      "f36d6723b16e6271e0c5327b6d7723ed501c51bd1ab07a4c3c125ed877ff4e99"
-    sha256 mojave:        "5a842c19e3ff549f23d6854265423064666686548356d0c188df63b741d49d77"
-    sha256 x86_64_linux:  "43fd433db4952cba82e79d384f06abc89d5dbd46d8ed6b37fca84a002ebadff4"
+    sha256 arm64_monterey: "742ecff3107cae13ab538fba653fbdb4e8290325269d5b105731a161513f4430"
+    sha256 arm64_big_sur:  "1ea1042d4a49639ac76fe90382af0a1d8c5ec660ed4d4355b7c6b0d379fb3d28"
+    sha256 monterey:       "5ff599ceb42be1e20f92783f6508aca717f7a6267386c8c17e9bcef21889b438"
+    sha256 big_sur:        "c744068a0ba46c7a8fd85f4b3678b358625383cfcf4df058665f92de5c2c84d4"
+    sha256 catalina:       "f08082b19703213a84e42a5d7e70bfcd61305c03d4a276fb35095044c5f839d5"
+    sha256 x86_64_linux:   "1c9d10dcef030f49dad3dc5f23579b99d809a1258a93861f9cec445dbb0f0fbc"
   end
 
   depends_on "itstool" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkg-config" => [:build, :test]
   depends_on "vala" => :build
   depends_on "adwaita-icon-theme"
   depends_on "atk"
@@ -33,7 +34,23 @@ class Gedit < Formula
   depends_on "libsoup"
   depends_on "libxml2"
   depends_on "pango"
-  depends_on "tepl"
+
+  # Fix build error due to missing function 'gedit_dirs_get_user_cache_dir'
+  # ../gedit/gedit-app.c:675:14: error: implicit declaration of function 'gedit_dirs_get_user_cache_dir'
+  # TODO: Remove in the next release
+  patch do
+    url "https://gitlab.gnome.org/GNOME/gedit/-/commit/741be1b11b977abd529aa2f633e50c2e80864afc.diff"
+    sha256 "e5ffa72b430abe60b357286c7079e8da9da1a05c31c023cb0f6885ed9c69e4cf"
+  end
+
+  # Fix build error due to missing file 'gedit-recent-osx.c'
+  # ../gedit/meson.build:182:0: ERROR: File gedit-recent-osx.c does not exist.
+  # PR ref: https://gitlab.gnome.org/GNOME/gedit/-/merge_requests/128
+  # TODO: Remove when PR is merged and available in release
+  patch do
+    url "https://gitlab.gnome.org/GNOME/gedit/-/commit/b075623f0d21f9d960999aa6dfc2a1072b7f12aa.diff"
+    sha256 "e82c3b38c17887313b9d6d88254427cba3fbbca259571bfa318fcaf917b13143"
+  end
 
   def install
     ENV["DESTDIR"] = "/"
@@ -63,81 +80,8 @@ class Gedit < Formula
         return 0;
       }
     EOS
-    ENV.libxml2
-    atk = Formula["atk"]
-    cairo = Formula["cairo"]
-    fontconfig = Formula["fontconfig"]
-    freetype = Formula["freetype"]
-    gdk_pixbuf = Formula["gdk-pixbuf"]
-    gettext = Formula["gettext"]
-    glib = Formula["glib"]
-    gobject_introspection = Formula["gobject-introspection"]
-    gtkx3 = Formula["gtk+3"]
-    gtksourceview4 = Formula["gtksourceview4"]
-    harfbuzz = Formula["harfbuzz"]
-    libepoxy = Formula["libepoxy"]
-    libffi = Formula["libffi"]
-    libpeas = Formula["libpeas"]
-    libpng = Formula["libpng"]
-    pango = Formula["pango"]
-    pixman = Formula["pixman"]
-    flags = %W[
-      -I#{atk.opt_include}/atk-1.0
-      -I#{cairo.opt_include}/cairo
-      -I#{fontconfig.opt_include}
-      -I#{freetype.opt_include}/freetype2
-      -I#{gdk_pixbuf.opt_include}/gdk-pixbuf-2.0
-      -I#{gettext.opt_include}
-      -I#{glib.opt_include}/gio-unix-2.0/
-      -I#{glib.opt_include}/glib-2.0
-      -I#{glib.opt_lib}/glib-2.0/include
-      -I#{gobject_introspection.opt_include}/gobject-introspection-1.0
-      -I#{gtksourceview4.opt_include}/gtksourceview-4
-      -I#{gtkx3.opt_include}/gtk-3.0
-      -I#{harfbuzz.opt_include}/harfbuzz
-      -I#{include}/gedit-40.0
-      -I#{libepoxy.opt_include}
-      -I#{libffi.opt_lib}/libffi-3.0.13/include
-      -I#{libpeas.opt_include}/libpeas-1.0
-      -I#{libpng.opt_include}/libpng16
-      -I#{pango.opt_include}/pango-1.0
-      -I#{pixman.opt_include}/pixman-1
-      -D_REENTRANT
-      -L#{atk.opt_lib}
-      -L#{cairo.opt_lib}
-      -L#{gdk_pixbuf.opt_lib}
-      -L#{lib}/gedit
-      -L#{gettext.opt_lib}
-      -L#{glib.opt_lib}
-      -L#{gobject_introspection.opt_lib}
-      -L#{gtksourceview4.opt_lib}
-      -L#{gtkx3.opt_lib}
-      -L#{libpeas.opt_lib}
-      -L#{lib}
-      -L#{pango.opt_lib}
-      -latk-1.0
-      -lcairo
-      -lcairo-gobject
-      -lgdk-3
-      -lgdk_pixbuf-2.0
-      -lgedit-40.0
-      -lgio-2.0
-      -lgirepository-1.0
-      -lglib-2.0
-      -lgmodule-2.0
-      -lgobject-2.0
-      -lgtk-3
-      -lgtksourceview-4
-      -lpango-1.0
-      -lpangocairo-1.0
-      -lpeas-1.0
-      -lpeas-gtk-1.0
-    ]
-    flags << if OS.mac?
-      "-lintl"
-    else
-      "-Wl,-rpath,#{lib}/gedit"
-    end
+    flags = shell_output("pkg-config --cflags --libs gedit").chomp.split
+    flags << "-Wl,-rpath,#{lib}/gedit" if OS.linux?
     system ENV.cc, "test.c", "-o", "test", *flags
     system "./test"
   end

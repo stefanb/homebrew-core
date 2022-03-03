@@ -1,18 +1,18 @@
 class Grafana < Formula
   desc "Gorgeous metric visualizations and dashboards for timeseries databases"
   homepage "https://grafana.com"
-  url "https://github.com/grafana/grafana/archive/v8.3.4.tar.gz"
-  sha256 "5cbbb7dd8a7a7717e8d4aa2b3a9a3ed27825e8a11d68f00da0eb36ab8002ff09"
+  url "https://github.com/grafana/grafana/archive/v8.4.2.tar.gz"
+  sha256 "51c29c3f44229057c343c2164c941500aa0185a5356969775330fe7e1ac56f7b"
   license "AGPL-3.0-only"
   head "https://github.com/grafana/grafana.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "714f8b948fd98b01264304287b90b3cd1f0b6930debc0ea025a1c69d1c3eba08"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6a2c395ea63685a7f22fcd5e781ac43c8bc2a9c7178647c79ebce1411a4483a7"
-    sha256 cellar: :any_skip_relocation, monterey:       "5bc850531bca43178b31bc28284ce1b400b4ae10a4c4375d9f8421a18bead986"
-    sha256 cellar: :any_skip_relocation, big_sur:        "b79a2571ff6aa78d5cece16489f3dd95416750ef65edb067d8217d9f55d166dc"
-    sha256 cellar: :any_skip_relocation, catalina:       "c65dea8f526db0befff0f15a0ded433060ad3996c5feaa72d029db418dc45850"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e1c555a72c7e19f8c4859b469ab6350cf11ed1b7699944df5d766fa8e2e78d36"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b92298ba526686b207deb50519236bc6064e696a35e16625eee1be9e8f316de7"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9007f030bb0de240c6c0ef89cc2657b8aa4c772ceff0ca7dfcb4b8356d9c31f1"
+    sha256 cellar: :any_skip_relocation, monterey:       "2c2eb3993b2c1bbd926780fc6484062e1840c7e03a3f5f48f26fc78a7936a9d2"
+    sha256 cellar: :any_skip_relocation, big_sur:        "21fabf5236b9cf56c04603404aa22edcd2e18d875e7241e93893fd52eaddc10d"
+    sha256 cellar: :any_skip_relocation, catalina:       "8295317206f2e0005e810dbac3a097beed4546f5a470f92e3b8b30eac3ae4a91"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a18e8f413b647e8dee9bfee878b0b1d9452d0c43fa1e16c5ce1ae0cbd475eac9"
   end
 
   depends_on "go" => :build
@@ -27,12 +27,11 @@ class Grafana < Formula
   end
 
   def install
-    ENV["NODE_OPTIONS"] = "--max-old-space-size=4096"
+    ENV["NODE_OPTIONS"] = "--max-old-space-size=8000"
     system "make", "gen-go"
     system "go", "run", "build.go", "build"
 
     system "yarn", "install"
-
     system "yarn", "build"
 
     if OS.mac?

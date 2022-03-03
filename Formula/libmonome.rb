@@ -1,20 +1,23 @@
 class Libmonome < Formula
-  desc "Interact with monome devices via C, Python, or FFI"
+  include Language::Python::Shebang
+
+  desc "Library for easy interaction with monome devices"
   homepage "https://monome.org/"
-  url "https://github.com/monome/libmonome/archive/v1.4.4.tar.gz"
-  sha256 "466acc432b023e6c0bfa8dfb46d79abb1fb8c870f16279ffca7cf5286a63a823"
+  url "https://github.com/monome/libmonome/archive/v1.4.5.tar.gz"
+  sha256 "c7109014f47f451f7b86340c40a1a05ea5c48e8c97493b1d4c0102b9ee375cd4"
   license "ISC"
   head "https://github.com/monome/libmonome.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "415d02f115ed624be7e04e5f71dc56b57b313b8c0b35090fc8f73da367f8f5f9"
-    sha256 cellar: :any, arm64_big_sur:  "745e10cf5a29c44c9837fa7b822407eca0993ea00c414d99b7ad2a98fe7f059c"
-    sha256 cellar: :any, monterey:       "9ee2066771e830a82840baea3bbeb7001195592a1d98c5dac3878e9674d200d5"
-    sha256 cellar: :any, big_sur:        "ba70b11a69fab981f80172fcdf8cd78cb88b64386f0d86cfcdf0089d54916dbe"
-    sha256 cellar: :any, catalina:       "7aacc1a7d070958460b380f182ccdb7cc073ccef592eb018a69d61d30c07e0f6"
-    sha256 cellar: :any, mojave:         "a75784a9297378f3c477ee251f9e729f3e98230113908af03078a92cd4c7d076"
+    sha256 cellar: :any,                 arm64_monterey: "bda08cc1624e2e73d7689d6c0e67ee1db9710ca9b07e6b30f68ee597e7c9e381"
+    sha256 cellar: :any,                 arm64_big_sur:  "a7ad0fdf9885518b8924fefcfc865eeab54a41baa72f26aa6bb5708dea1a3e08"
+    sha256 cellar: :any,                 monterey:       "32a37f45e31690d3fc2f1b5458c54e06e4f99f56f498fa8d800d47e0b08f5d53"
+    sha256 cellar: :any,                 big_sur:        "1b101119d4a04e2bf678cc84f1ea69f1bd073b04f85f92d0ec7ba6d7e60d2bb8"
+    sha256 cellar: :any,                 catalina:       "5d0c42d1a5796e00a46433dae63e4647ae17367e54b7be7e0cd5dbe5fbba86a8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6f89d4a6067bcf5980280cea1ea3b9cceccccefc4c043a23f27c79a78aea1aca"
   end
 
+  depends_on "python@3.10" => :build
   depends_on "liblo"
 
   def install
@@ -23,8 +26,16 @@ class Libmonome < Formula
     inreplace "wscript", /conf.env.append_unique.*-mmacosx-version-min=10.5.*/,
                          "pass"
 
+    rewrite_shebang detected_python_shebang, *Dir.glob("**/{waf,wscript}")
+
     system "./waf", "configure", "--prefix=#{prefix}"
     system "./waf", "build"
     system "./waf", "install"
+
+    pkgshare.install Dir["examples/*.c"]
+  end
+
+  test do
+    assert_match "failed to open", shell_output("#{bin}/monomeserial", 1)
   end
 end

@@ -1,8 +1,8 @@
 class HtmlXmlUtils < Formula
   desc "Tools for manipulating HTML and XML files"
   homepage "https://www.w3.org/Tools/HTML-XML-utils/"
-  url "https://www.w3.org/Tools/HTML-XML-utils/html-xml-utils-8.1.tar.gz"
-  sha256 "db7482350a68d2e74f6c2a6e17d871ba06c94101ece1e74a357ea7821bb419eb"
+  url "https://www.w3.org/Tools/HTML-XML-utils/html-xml-utils-8.3.tar.gz"
+  sha256 "a50c4d16dad660ad6792ef53bc77efa9d5729797623771a3fce52d8e23d3d08c"
   license "W3C"
 
   livecheck do
@@ -11,12 +11,12 @@ class HtmlXmlUtils < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "86e561c8418a190e9f0077b272772ac10d5989e6f8c9347bfd89a67bdf0f0b15"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b2e8b48180f2522ba7ad4ab2f2ce902b9128effefc3af13553c60f033ed56583"
-    sha256 cellar: :any_skip_relocation, monterey:       "7b7263df94ebb71949f8333cc4c00e86403f1a56272c50c321e9e54ea7e02a9e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "088d099b3a98f165598ca6e25994be506ad6c977eb55914dfb9632870f3486ab"
-    sha256 cellar: :any_skip_relocation, catalina:       "4aa66ce8cb77c75ce4e204721994f8717c8572d3d74c14ae2952d4a67b1e02dd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "05e5f5d2d80aa8dbb6d51db3fe6a3814528a9483902436082acf09cbd84179fe"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "dc4a5306db037a3dd8f808b00e3c254ff0784dc2c592c73e7b3c086f8ebf9000"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9d53dc65d8418c37f057a326c7d18d256ac008996f1d497fb5b4810f63ff24d8"
+    sha256 cellar: :any_skip_relocation, monterey:       "d0b8f48ef3abd66ba812f29ef6e95ea2debf3e2e2e954e07f01b89343abc8f3d"
+    sha256 cellar: :any_skip_relocation, big_sur:        "fc8533ee17932face08e77e99f96778caaad3e83d7883d7b4056d372b92bc582"
+    sha256 cellar: :any_skip_relocation, catalina:       "1cc7d7092a7ed4fa8c5967632c38cedf5555f73a7972d43a5185b506283319d7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e17a30dec5413978d0fe1d6fdae36da0b7eb781daee3e3ade08f628b5c74076d"
   end
 
   def install

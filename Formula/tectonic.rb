@@ -1,9 +1,10 @@
 class Tectonic < Formula
   desc "Modernized, complete, self-contained TeX/LaTeX engine"
   homepage "https://tectonic-typesetting.github.io/"
-  url "https://github.com/tectonic-typesetting/tectonic/archive/tectonic@0.8.0.tar.gz"
-  sha256 "794cf34aee017b8a4288ed509a4e9d550a36aadc2bc0d35b1727d1135dac8e02"
+  url "https://github.com/tectonic-typesetting/tectonic/archive/tectonic@0.8.2.tar.gz"
+  sha256 "1f92a5ff25725a9a4c0eefd4ea306da1e63f57c40d4ceb0972c7e5bb73297b4f"
   license "MIT"
+  revision 1
 
   # As of writing, only the tags starting with `tectonic@` are release versions.
   # NOTE: The `GithubLatest` strategy cannot be used here because the "latest"
@@ -14,13 +15,12 @@ class Tectonic < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "a34035a82dd65543d9b9151a961a381838ea51c30f1838d3bd8e2274441d5d78"
-    sha256 cellar: :any,                 arm64_big_sur:  "c251b3e996a3a9bb92b4a3e01967a39a173d15953b24952b045a4bce12f5f5dd"
-    sha256 cellar: :any,                 monterey:       "ca8640102fb480c90bd92652282d4865fea512c5a8e42c1a4dba9ef24f7aceac"
-    sha256 cellar: :any,                 big_sur:        "f877391f52526e989cee32b8a6424a2c570c51c65f332134fb7fb94d11ede5f4"
-    sha256 cellar: :any,                 catalina:       "90f93c343215ba86c8950e75309dbc241fe88ea25b3679c9c9c810bbc40ed198"
-    sha256 cellar: :any,                 mojave:         "9efcd42f9b38b1d25f4144846ec107b6554be85dad65caf631da2923320be298"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9ce6c644f17c8135cfcd0b83b7ba1d5320aca6d6a3acf1f3c558730c9abdd4c5"
+    sha256 cellar: :any,                 arm64_monterey: "be507de3cd9b77fa2ab5c7677189d9687b5b3392a9bf916be6eeed8bb35bb7e1"
+    sha256 cellar: :any,                 arm64_big_sur:  "dc5cfda9a86fea4223ac45436d11cf2b2adee281070d7cf99c04defeec92ffc5"
+    sha256 cellar: :any,                 monterey:       "68665b117fdd0961964057692c9eeb47acb272f9cc7a7198ff890208752bb41f"
+    sha256 cellar: :any,                 big_sur:        "d932309d51b4e1322746a81d5d4d0dab1efc4c856dc494a1791cb7711461a030"
+    sha256 cellar: :any,                 catalina:       "afb3e78a43a2d9d044845bba81ec50f2b66d04b3847de9c028db48af805f0ed5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5ddf29581458963094ee3f25b53a13bccd6a82e3f48f3a7e94fd95cab664fc96"
   end
 
   depends_on "pkg-config" => :build

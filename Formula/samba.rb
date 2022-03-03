@@ -4,9 +4,10 @@ class Samba < Formula
   # option. The shared folder appears in the guest as "\\10.0.2.4\qemu".
   desc "SMB/CIFS file, print, and login server for UNIX"
   homepage "https://www.samba.org/"
-  url "https://download.samba.org/pub/samba/stable/samba-4.15.1.tar.gz"
-  sha256 "a1811fbb4110d64969f6c108f8d161e2c3e20ddf475529a3d32bd94bb7459f00"
+  url "https://download.samba.org/pub/samba/stable/samba-4.15.5.tar.gz"
+  sha256 "69115e33831937ba5151be0247943147765aece658ba743f44741672ad68d17f"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url "https://www.samba.org/samba/download/"
@@ -14,12 +15,12 @@ class Samba < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "17434feb17ca177a92cdf10508e863b5d0aacb1b8c52a0f471297e44f979d4e0"
-    sha256 arm64_big_sur:  "9d1b32eebf99e2c12a12dbc6a11513fac36e69262b411e14b9d8e6040708e5a7"
-    sha256 monterey:       "8a4599395fdbaaf1078e0ed13eaadbab1ca807ecde4ef616c4b52a3ef2f0d41a"
-    sha256 big_sur:        "bbf66e96a0145ac03c02e1b30068fb19ec8a4465f86833b77a04baa23405e026"
-    sha256 catalina:       "acc9dfd13a20001d04178e2e7210ccd653c2725db871dde2f2b9ec8355a1d07e"
-    sha256 x86_64_linux:   "883d31ccf3ffceb9e8a8ad7896adc8ac4dcb823791b547a33f95988e98c9ca68"
+    sha256 arm64_monterey: "d0e4f39f3735d7c604be5226085be74efcd0e4a7d8799150b4e0c4c749380dce"
+    sha256 arm64_big_sur:  "ea73604ad9de7fb21ba00ba9cf9b508a9f04ae56ffed1ac056066e8247c9b733"
+    sha256 monterey:       "c1a0b21ce6f68f5a94264f2c2c16dbc0bddd24945bbc20cccaccec39cb795532"
+    sha256 big_sur:        "a1b0f75c5b9828ff32f61345e8f1e49b6662db05f07934bc8acae915c80cb85f"
+    sha256 catalina:       "7ff8e6e103d569dc6d0d12bfda4dd5cd649219bd51224e97ae2d42958715d096"
+    sha256 x86_64_linux:   "e41ca8efab7004d35260963ffe102b6ec9c889cd3ef01034b103352027eca5d1"
   end
 
   # configure requires python3 binary to be present, even when --disable-python is set.
@@ -33,6 +34,14 @@ class Samba < Formula
   resource "Parse::Yapp" do
     url "https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz"
     sha256 "3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5"
+  end
+
+  # [PATCH] smbd: Safeguards for getpwuid
+  # Fix `Regression: Samba 4.15.2 on macOS segfaults intermittently during strcpy in tdbsam_getsampwnam`
+  # https://bugzilla.samba.org/show_bug.cgi?id=14900
+  patch do
+    url "https://attachments.samba.org/attachment.cgi?id=17147"
+    sha256 "ca414d668d4c669e9d1886ccfc81bf5215f002ae7a2ca9491ac99548dd88bf9b"
   end
 
   def install

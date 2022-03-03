@@ -3,18 +3,18 @@ class Bandit < Formula
 
   desc "Security-oriented static analyser for Python code"
   homepage "https://github.com/PyCQA/bandit"
-  url "https://files.pythonhosted.org/packages/67/f3/99409392d1eb5e3d65efacf2d30e94b2d2c4e24e0849fab2e84f35748a3b/bandit-1.7.2.tar.gz"
-  sha256 "6d11adea0214a43813887bfe71a377b5a9955e4c826c8ffd341b494e3ab25260"
+  url "https://files.pythonhosted.org/packages/e6/0a/1fe31d6b386e46483ba66d1fc95b2b8f20ceb10ade3a76a36e0b4b128b49/bandit-1.7.3.tar.gz"
+  sha256 "58772ca951bf1129dda8a280d351547de832720bf7b5c29fac3103927980b8a6"
   license "Apache-2.0"
-  head "https://github.com/PyCQA/bandit.git", branch: "master"
+  head "https://github.com/PyCQA/bandit.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3d1a5802305f29b27b9a403e54a32c4c0316b79d0b79e1a415b3cce8cae1e910"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "7f91baf3503810146e950f12d897d03bc2c0fdf3e5f44892f96b0d5aba6f3843"
-    sha256 cellar: :any_skip_relocation, monterey:       "51b6170fbe37b80315dc1067e614d16e4fb390b2e7f3b722cef8e68edf9cc6e3"
-    sha256 cellar: :any_skip_relocation, big_sur:        "f5452777d0f0ecbd8fe96799b736f1b63175fb48cefe9ccf187effc26eb34e70"
-    sha256 cellar: :any_skip_relocation, catalina:       "633dc271efc90548597e0bc31f44beb2bfff68cf1db6d350c45fb1fffc92b857"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fc6ccb6cd9f2e7fb173cd5e5fca651ac254744c10c5f66bfc40242e4710cec86"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9d8532abd517b674d528c333373969ccd6118e6bef6dd0c5210d6260a8991d76"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "373a43062554a5284caf88e1f3c7fce6d6a2b4cf5169bb8a5d5c44726a006ff8"
+    sha256 cellar: :any_skip_relocation, monterey:       "5be00bd3ff4b6c283d16721a80709b33489d7ede9656c3f5e384735af969f2b0"
+    sha256 cellar: :any_skip_relocation, big_sur:        "92b10a4724517a8501c2836d0f2955d5ab1519dd6e9ebe9c07fca96a68d0c9da"
+    sha256 cellar: :any_skip_relocation, catalina:       "1565a340b4344367b8a72c3e89fcc481274dcf3e619aa6da00d41f61db3358be"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4a36672811a00babc1517f58144a22a618d178dd425c46803a10f5f0f95c1c6a"
   end
 
   depends_on "python@3.10"
@@ -25,13 +25,13 @@ class Bandit < Formula
   end
 
   resource "GitPython" do
-    url "https://files.pythonhosted.org/packages/70/b0/23e3245248f63eac75335828527016c7636c1780e7ad934a341970b47a78/GitPython-3.1.26.tar.gz"
-    sha256 "fc8868f63a2e6d268fb25f481995ba185a85a66fcad126f039323ff6635669ee"
+    url "https://files.pythonhosted.org/packages/d6/39/5b91b6c40570dc1c753359de7492404ba8fe7d71af40b618a780c7ad1fc7/GitPython-3.1.27.tar.gz"
+    sha256 "1c885ce809e8ba2d88a29befeb385fcea06338d3640712b59ca623c220bb5704"
   end
 
   resource "pbr" do
-    url "https://files.pythonhosted.org/packages/f5/0c/3fa7b1f9006e4d454a49b48eac995167cf8617e19375c6963a6b048af0d0/pbr-5.8.0.tar.gz"
-    sha256 "672d8ebee84921862110f23fcec2acea191ef58543d34dfe9ef3d9f13c31cddf"
+    url "https://files.pythonhosted.org/packages/51/da/eb358ed53257a864bf9deafba25bc3d6b8d41b0db46da4e7317500b1c9a5/pbr-5.8.1.tar.gz"
+    sha256 "66bc5a34912f408bb3925bf21231cb6f59206267b7f63f3503ef865c1a292e25"
   end
 
   resource "PyYAML" do

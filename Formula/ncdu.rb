@@ -1,8 +1,8 @@
 class Ncdu < Formula
   desc "NCurses Disk Usage"
   homepage "https://dev.yorhel.nl/ncdu"
-  url "https://dev.yorhel.nl/download/ncdu-2.0.1.tar.gz"
-  sha256 "2f79d50c3eb8301c8bde8b86e1071c31ea9387373077302ffbf387df63477c48"
+  url "https://dev.yorhel.nl/download/ncdu-2.1.tar.gz"
+  sha256 "4ba8d20a64a55cc00af2d2c6138afcc9dc25e40a5ed6a8c544cb9e2285a195fe"
   license "MIT"
   head "https://g.blicky.net/ncdu.git", branch: "zig"
 
@@ -12,17 +12,18 @@ class Ncdu < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "c64a0d0632324546644eeea92b3602c575f03d78deb2683322ee717a3c26d7dc"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "f3701146877931592e1ee5da09419d9b8c1468690c8299e24e00aa1eb6ef11b1"
-    sha256 cellar: :any_skip_relocation, monterey:       "72aa728cdb6c1b026904b7aaba4aba29b50685ad4c34607e06b895b42a8811af"
-    sha256 cellar: :any_skip_relocation, big_sur:        "987d1cb26e3f342d0f812eb14fc325da3db2d18f81695a7b992f643eae4ea6be"
-    sha256 cellar: :any_skip_relocation, catalina:       "37ec98781ed0c2391d5a402a0f8421c9c7d2afd5f9101e390b336ff580f31de8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "826b3f78320617d3b30d7400a768572e1fe315e8b59a60295995a7de7b563941"
+    sha256 cellar: :any,                 arm64_monterey: "fcc450b390fcf8c12105fa31c66962096058076a9342c47385a7720924fe123e"
+    sha256 cellar: :any,                 arm64_big_sur:  "ef4257052ed5d0cfcd125d84cae0adcc9392c7911eb14f80b86a7e92b743b794"
+    sha256 cellar: :any,                 monterey:       "269a12aff37eb757713ef1da816f769c9a5d89a93ae289af6563299e311ab9f2"
+    sha256 cellar: :any,                 big_sur:        "2758cf2d073453d9b2ba00fca59af2d887b5f2759029504fedc3dcf02ba7d85f"
+    sha256 cellar: :any,                 catalina:       "52fecaf89f0d6d491836617736d18f05e28db6a21f1b36c9955cf7888557c2d1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5590f41a5f0b594ca7510f95d409cf53c9859bcbf4ab95938382d69282252d3c"
   end
 
   depends_on "pkg-config" => :build
   depends_on "zig" => :build
-  uses_from_macos "ncurses"
+  # Without this, `ncdu` is unusable when `TERM=tmux-256color`.
+  depends_on "ncurses"
 
   def install
     # Fix illegal instruction errors when using bottles on older CPUs.

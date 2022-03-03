@@ -3,24 +3,25 @@ class Mesa < Formula
 
   desc "Graphics Library"
   homepage "https://www.mesa3d.org/"
-  url "https://mesa.freedesktop.org/archive/mesa-21.3.5.tar.xz"
-  sha256 "d93b2a9d2464ee856d7637a07dff6b7cd950f295ad58518bb959f76882cf4a4c"
+  url "https://mesa.freedesktop.org/archive/mesa-21.3.7.tar.xz"
+  sha256 "b4fa9db7aa61bf209ef0b40bef83080999d86ad98df8b8b4fada7c128a1efc3d"
   license "MIT"
   head "https://gitlab.freedesktop.org/mesa/mesa.git", branch: "main"
 
   bottle do
-    sha256 arm64_monterey: "a67c49c6e01a1d8586066ba0035aab139489911364bf30ca80a8487036660c48"
-    sha256 arm64_big_sur:  "33a7921dc65f878b4db94c63cf28733b138fb2e42ebf470ae697294f4e14a2af"
-    sha256 monterey:       "587989ce4df38e20034740ff1f819afbbaea2d2c03c905717c977b277c18fb8a"
-    sha256 big_sur:        "79d63fdfe1be4e58f54c3fdd98a684011615e37ade056780abda12907492b313"
-    sha256 catalina:       "87a0ec712a685c138a2ff917b91538bef8407cf896e96d1a3790a1070341bdad"
-    sha256 x86_64_linux:   "8f6ef3aacb2b7a0d5ce15e9fe1275d7aed529bebb5d3dc54f348b50a97b95aad"
+    rebuild 1
+    sha256 arm64_monterey: "7e6e817f608e363fff1f7573bfc34b8d76367ce53029ff9ad7e101674317d41a"
+    sha256 arm64_big_sur:  "4d379e05cd77c2a57e0533c8a6694693bb766e0137094b69d3527656655395b1"
+    sha256 monterey:       "cce886abf232d888c14ca70ea52e3784924e29cc6c060a4ee3ceb2bcdf7df94e"
+    sha256 big_sur:        "0bc6d9e1d40a763bca009991b9c6fb0aea935fbe64e37354177ad5183b464bd4"
+    sha256 catalina:       "6022aa23203c66240911ff87926fa5c49be05a5543caa2bbc3835d36e62c0ee5"
+    sha256 x86_64_linux:   "37a1e77b51aeb9b66b13bae7c4b28817c67b530c982b15fd681804a8278abca0"
   end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python@3.9" => :build
+  depends_on "python@3.10" => :build
   depends_on "expat"
   depends_on "gettext"
   depends_on "libx11"
@@ -69,9 +70,9 @@ class Mesa < Formula
   end
 
   def install
-    ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
+    ENV.prepend_path "PATH", Formula["python@3.10"].opt_libexec/"bin"
 
-    venv_root = libexec/"venv"
+    venv_root = buildpath/"venv"
     venv = virtualenv_create(venv_root, "python3")
     venv.pip_install resource("Mako")
 

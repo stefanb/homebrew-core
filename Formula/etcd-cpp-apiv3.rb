@@ -4,15 +4,15 @@ class EtcdCppApiv3 < Formula
   url "https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3/archive/refs/tags/v0.2.3.tar.gz"
   sha256 "f74607eebffce8391b5355ed7d12d46f6627f2882687cd0f5574c90b275f77fd"
   license "BSD-3-Clause"
-  revision 1
+  revision 3
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "912ed22203f9e40473210c603a0c697dfdca8746300982268eb6aceeb9487d53"
-    sha256 cellar: :any,                 arm64_big_sur:  "96565558e1e7f0a1d0842ec0d9aa7799339ac3f565f8a3369d40af20d6b9dbf9"
-    sha256 cellar: :any,                 monterey:       "39ab054664f7b1422c5ef247d0dc8a853eee5341748cc0f22475ea528e7a9eb0"
-    sha256 cellar: :any,                 big_sur:        "612e1254ac4adbebe0c18078161a2643d3e8be934cb08ccd0f34b91df671d796"
-    sha256 cellar: :any,                 catalina:       "ec8257fd0e9cb81a3bbe109001a06abf438788a1e0b5f4f3078295bdff8e6d56"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d228f518262ecf2ea070da3933049a9857f0302979fd8eedbaa28cf35769562f"
+    sha256 cellar: :any,                 arm64_monterey: "e33c757ad43b507b4763cd8e3d4e6f4c683ee1edc77a32220eb95031daaf6b96"
+    sha256 cellar: :any,                 arm64_big_sur:  "c0060ea9b87f72b1afda96e104e1ee259e0a7b8c43185716cf211c4833e4f31e"
+    sha256 cellar: :any,                 monterey:       "aa7ed19ee501feb7e0d95ef406f3c9193e2f9af35395b0624dd2a4a01c9bfcfe"
+    sha256 cellar: :any,                 big_sur:        "e2c00e0364088bffae4a8c005791a5348f76b8cd2ff495b01041fb64aba29e29"
+    sha256 cellar: :any,                 catalina:       "9e71a2529486ad64920f72e457637b86b6665fdf50e1d9fc35ea68c13856671a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f3e35454bba0e02195e091c60f869e75e87bb8b9503f9a7d336e4dcbd75177a9"
   end
 
   depends_on "cmake" => :build

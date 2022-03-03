@@ -1,8 +1,8 @@
 class Solana < Formula
   desc "Web-Scale Blockchain for decentralized apps and marketplaces"
   homepage "https://solana.com"
-  url "https://github.com/solana-labs/solana/archive/v1.9.4.tar.gz"
-  sha256 "6a01faca50d4507b21c63e7e2ba4351c5be7765796aafc45b02ff32d3ff5d303"
+  url "https://github.com/solana-labs/solana/archive/v1.9.9.tar.gz"
+  sha256 "6ff27089c9c10c66857d15bcfca4abd700d871f400d89c75204da9941c327505"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class Solana < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "c8cc98a9734fd0af66b7305573d08aebbf21ff4cfd157334dd8cf447c80018f5"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "175bfb26ddf2a5854fd06998972dcbf1e96e4ead70d2c931aa65ed722f6c4734"
-    sha256 cellar: :any_skip_relocation, monterey:       "f6ab03696d1cd7ec5b33c1f7340f1ed27ad30875edbb36d31f977fb7776c6594"
-    sha256 cellar: :any_skip_relocation, big_sur:        "2d6ab547741b9b6c4510c01039ef815dab3e26720ccdb7c93798ae1f93f4a553"
-    sha256 cellar: :any_skip_relocation, catalina:       "f5d103d689b988c5e6d51efd1ff58aaf1b82c456b8e0fe0ae22d6b4651b9b9a5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "11f1dfc1e2b6ad7e2a1b9ddcf22ccfcb1d1532396c9e9bb74b4bc99dd407b01a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "25c20ee4fda0a73ccdf2360ab0612a306d655bd555e2f7aed16c952eeb953686"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9c74e3415b03ed02fb6fddd6532013bf576d796be3537270fc61be803a72e4fe"
+    sha256 cellar: :any_skip_relocation, monterey:       "b99b111d918ebc53ea2dd66e6d7618f4fde0aed8d4b1099320b608627c0832dd"
+    sha256 cellar: :any_skip_relocation, big_sur:        "1ee48b599e238bec50792b0ea8eda9fd6c7fb8bce0c0bd6711b1c804be18e063"
+    sha256 cellar: :any_skip_relocation, catalina:       "4792e2f12cbf9f0b681b88a4534e658cac94ff04b43039048f19c4e5b643ad72"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9aa2437566fd0f65e549db75dacf1aa46aaae299bf879900dbdda59544953931"
   end
 
   depends_on "protobuf" => :build

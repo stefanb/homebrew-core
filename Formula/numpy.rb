@@ -1,18 +1,18 @@
 class Numpy < Formula
   desc "Package for scientific computing with Python"
   homepage "https://www.numpy.org/"
-  url "https://files.pythonhosted.org/packages/0a/c8/a62767a6b374a0dfb02d2a0456e5f56a372cdd1689dbc6ffb6bf1ddedbc0/numpy-1.22.1.zip"
-  sha256 "e348ccf5bc5235fc405ab19d53bec215bb373300e5523c7b476cc0da8a5e9973"
+  url "https://files.pythonhosted.org/packages/e9/6c/c0a8130fe198f27bab92f1b28631e0cc2572295f6b7a31e87efe7448aa1c/numpy-1.22.2.zip"
+  sha256 "076aee5a3763d41da6bef9565fdf3cb987606f567cd8b104aded2b38b7b47abf"
   license "BSD-3-Clause"
   head "https://github.com/numpy/numpy.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "ec687b611e05ca93ddb4dbd2a01dda7c43ea12f01a960a5731572ff10fce725e"
-    sha256 cellar: :any, arm64_big_sur:  "9b17b2232e7e42e71e2714d1ce37ec22f513ed0a5e4f95ced2964824da0f5fa5"
-    sha256 cellar: :any, monterey:       "4d5b0075ca2f4a97486636eec705114b351e7c0340eaa84480a0f948e2e67a4b"
-    sha256 cellar: :any, big_sur:        "c23e04d40a92a4f210d2285dffc5210ec651ed6bba6dc0d4ca1ce2c8967e6bd6"
-    sha256 cellar: :any, catalina:       "654c3c4fc4b66b1d986c31f1ef7dd27c57fa8b23d1fbcfad04b71a2a9ec22881"
-    sha256               x86_64_linux:   "ce36de6c56b8085ce0f9c796eedbe054759a6696f07c384162889e5ba5340d14"
+    sha256 cellar: :any, arm64_monterey: "f6c33f792d8c00665cfe271ec3b9eae946ee5106fa79a2225490653ef810359c"
+    sha256 cellar: :any, arm64_big_sur:  "96abb2b50960b5bb1c5735bfa75e364198edecfbf8394ff09efb385bce9133e9"
+    sha256 cellar: :any, monterey:       "6a8ee1c9062d547a38e56a1625f355cd211b3e35ac8f388f31f21b91b8798ce1"
+    sha256 cellar: :any, big_sur:        "1646cf4cb750986f240fff736000a512d9fc0d8d347a1d7a1622fd3c51829698"
+    sha256 cellar: :any, catalina:       "ce4cbd7a3bf888994c804cf2ac0df6ec43cd52973c6ca32f23dcf3234d63d7e3"
+    sha256               x86_64_linux:   "cfc7ee6231a35c689271532272c30e60dcbf4d86fa8d65e5b7a2dac3e67bdad5"
   end
 
   depends_on "cython" => :build
@@ -21,13 +21,6 @@ class Numpy < Formula
   depends_on "python@3.9"
 
   fails_with gcc: "5"
-
-  # numpy requires setuptools < 60.0
-  # https://github.com/numpy/numpy/issues/20824
-  resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/ef/75/2bc7bef4d668f9caa9c6ed3f3187989922765403198243040d08d2a52725/setuptools-59.8.0.tar.gz"
-    sha256 "09980778aa734c3037a47997f28d6db5ab18bdf2af0e49f719bfc53967fd2e82"
-  end
 
   def install
     openblas = Formula["openblas"].opt_prefix

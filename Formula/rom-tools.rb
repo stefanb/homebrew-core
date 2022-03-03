@@ -1,9 +1,9 @@
 class RomTools < Formula
   desc "Tools for Multiple Arcade Machine Emulator"
   homepage "https://mamedev.org/"
-  url "https://github.com/mamedev/mame/archive/mame0239.tar.gz"
-  version "0.239"
-  sha256 "120b4d679283ab2c7102b40fefc5165bfd9b8242fbbd5f9977d381cb65051d87"
+  url "https://github.com/mamedev/mame/archive/mame0241.tar.gz"
+  version "0.241"
+  sha256 "008b8b9fd0cfbea63bc589ab4e9e5af6d63f865c6edf6e6378352e4dbfcb47ff"
   license "GPL-2.0-or-later"
   head "https://github.com/mamedev/mame.git", branch: "master"
 
@@ -12,12 +12,12 @@ class RomTools < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "525ec680fa992bdb2acbe388837fa79db69f84a76e3cf6108c1e7d1fbf9aa44f"
-    sha256 cellar: :any,                 arm64_big_sur:  "96f6a84aad9f81369c3e8d72d1855d458bc8320040d1f96fa737c68ef371ec97"
-    sha256 cellar: :any,                 monterey:       "b3dabd13f94ad61420c223f0c736a6d90a27abb28be73407eccbcce77e2a6197"
-    sha256 cellar: :any,                 big_sur:        "f721b5a2ec39d4a6eb5d67eb96fbeb06dac065b4eb61c8da26975d1943a9ab9c"
-    sha256 cellar: :any,                 catalina:       "5a0b65f828fc4a6dccc9d50a61f12577c5c8bc9f545b023a1774452515b84458"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "26050cffaadf0cb36e565ea768816fbecb121576f5540e311041d446ad25d8de"
+    sha256 cellar: :any,                 arm64_monterey: "d89018c3ff7aaf1966faed975ae9429b83d0fa92005289209c13ed3dd41caa32"
+    sha256 cellar: :any,                 arm64_big_sur:  "e0c831fdfcefb4f1f94498b88cb7eed6adb99f565527c6325a9c95941f7b39cb"
+    sha256 cellar: :any,                 monterey:       "ad4c3f20d0bf0c4492ad7c887330e85c4f966327c0b5bb2dee723decbe213ae8"
+    sha256 cellar: :any,                 big_sur:        "4b2e56c29bde114a6fb623013b1208d08328f8fb6f046a815e270d401279d4e7"
+    sha256 cellar: :any,                 catalina:       "718147f56938fb896409f4636048eeaf48c70939ea18b39d860218298be794e3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f008b8b7cf38b1dc48991fcfae8ec12004db875c4c386ac5eccfafd0f99f6387"
   end
 
   depends_on "pkg-config" => :build

@@ -6,16 +6,16 @@ class Standardese < Formula
       tag:      "0.5.2",
       revision: "0b23537e235690e01ba7f8362a22d45125e7b675"
   license "MIT"
-  revision 2
+  revision 3
   head "https://github.com/standardese/standardese.git", branch: "master"
 
   bottle do
-    sha256 arm64_monterey: "663a3efb5ce8cc1a65fb8c02367c645f50af660c1ac9ae55f3927bd800df2d24"
-    sha256 arm64_big_sur:  "521548ec3aeb1793584f40be44305171edb186cd5574803f647cc3cb8c52798c"
-    sha256 monterey:       "ddf33e6b5ce26f15659b2e6000f421a003d30cf38479190e3a930d76aa599b7e"
-    sha256 big_sur:        "8a78f106d9698053ba0893682ee1015571a8b045dd0bd67221a85e447096891b"
-    sha256 catalina:       "9bdb9f9b5ad83fd207747ca32fdefc6919decabfd72ca43064b8b4c2d0d0f73b"
-    sha256 mojave:         "5dcbae4f7f53a6cf2a654c04a0cdd407c4af89a0aada89fe69791f150d04c7f5"
+    sha256                               arm64_monterey: "e1fe493b847108a48c5cb4e6e032845c7aed99b3edf48541a49058cd185ac297"
+    sha256                               arm64_big_sur:  "f98cef4f60828772102b69e5ad5a42ed491e41ad34e6dd264504fa717e8ac318"
+    sha256                               monterey:       "2eda251a6f304c9c65f645a0bbdd401d926a6c87bd53557c146880498a858054"
+    sha256                               big_sur:        "c8b5a7fb67afdbc7513a47a6e675119cbbc6b7f8e7e0d8573c05feae3f222e2e"
+    sha256                               catalina:       "2d943cbf611d175de619d386510c1577e1cdef483aa4c5b78f506b07263d82ea"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4deccfc6003f006aaceb6e6ce988e8ca913166049ccc6606ffd80bf1ef0231d7"
   end
 
   depends_on "cmake" => :build
@@ -23,18 +23,19 @@ class Standardese < Formula
   depends_on "cmark-gfm"
   depends_on "llvm" # must be Homebrew LLVM, not system, because of `llvm-config`
 
+  fails_with gcc: "5" # LLVM is built with Homebrew GCC
+
   def install
+    # Don't build shared libraries to avoid having to manually install and relocate
+    # libstandardese, libtiny-process-library, and libcppast. These libraries belong
+    # to no install targets and are not used elsewhere.
     system "cmake", "-S", ".", "-B", "build",
-                    "-DCMAKE_INSTALL_RPATH=#{rpath}",
+                    "-DBUILD_SHARED_LIBS=OFF",
                     "-DCMARK_LIBRARY=#{Formula["cmark-gfm"].opt_lib/shared_library("libcmark-gfm")}",
                     "-DCMARK_INCLUDE_DIR=#{Formula["cmark-gfm"].opt_include}",
                     *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
-
-    lib.install "build/src/#{shared_library("libstandardese")}"
-    lib.install "build/external/cppast/external/tpl/#{shared_library("libtiny-process-library")}"
-    lib.install "build/external/cppast/src/#{shared_library("libcppast")}"
 
     include.install "include/standardese"
     (lib/"cmake/standardese").install "standardese-config.cmake"

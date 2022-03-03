@@ -1,18 +1,18 @@
 class Jd < Formula
   desc "JSON diff and patch"
   homepage "https://github.com/josephburnett/jd"
-  url "https://github.com/josephburnett/jd/archive/v1.4.0.tar.gz"
-  sha256 "9b1547b3c34652c61944a59e1449b8f819f196b86808c006e85ae8816d6c4d06"
+  url "https://github.com/josephburnett/jd/archive/v1.5.1.tar.gz"
+  sha256 "dd2671e517e5dca4fe9d322dcea7cc16ab83b5d705bce13e0e9c82d43a56fb59"
   license "MIT"
+  revision 1
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "cbe7f59b021be2377184ce2bcc066d0d8100bf2c6c1120dbbb4fddb5d580b6c0"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "567d80b08b78a787d813f8b5fc8119c60d082e7bfa2f641b1b807a6f85a69286"
-    sha256 cellar: :any_skip_relocation, monterey:       "b6e9746d8220b7c916d4a3c32ade4deb56b2fac2e358323554070d8a4b792ae7"
-    sha256 cellar: :any_skip_relocation, big_sur:        "043e88ba4881d02947cd922f8be0d26d581afcf1b877d433f8bb2f53e724a245"
-    sha256 cellar: :any_skip_relocation, catalina:       "bf662b680167c6d28e9adf4d28ac35bb13fe6838255b9e6d4cf49be0a05cb920"
-    sha256 cellar: :any_skip_relocation, mojave:         "c9a9b7acbab08f9717cf464bf2b00d970728d014ccb738fcb28af7502e8ef6d3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e13f39befda423ade478d2c2ea55b5e408cd45d841d87af81d597e6c93438a4f"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "0bbcbda67881b2814dcd4a13981d37ef8d0051ba73454a14f4a04494212bd55f"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "d37705ad550374c449e38fae9a8d9eebe70dbe8fe54c934a22c272c5bbf71d89"
+    sha256 cellar: :any_skip_relocation, monterey:       "6787dd2164cbaad39c1af3443af87254738ecbd19a7daa3fec47099a79c5e887"
+    sha256 cellar: :any_skip_relocation, big_sur:        "c454239f003e514cdea3b953ba9b2dd57840b0056ac1efd60b8159717d707918"
+    sha256 cellar: :any_skip_relocation, catalina:       "0c87c0ddc9d208d9017297aa9c317a9f95d472ab3b37fb7b8d55fc8891bc6899"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "11349f2e5ca1738e5aae8a5bdcd2ce9dc6137f2a9c646b43b85ba2a2a13222d1"
   end
 
   depends_on "go" => :build
@@ -24,12 +24,14 @@ class Jd < Formula
   test do
     (testpath/"a.json").write('{"foo":"bar"}')
     (testpath/"b.json").write('{"foo":"baz"}')
+    (testpath/"c.json").write('{"foo":"baz"}')
     expected = <<~EOF
       @ ["foo"]
       - "bar"
       + "baz"
     EOF
-    output = shell_output("#{bin}/jd a.json b.json")
+    output = shell_output("#{bin}/jd a.json b.json", 1)
     assert_equal output, expected
+    assert_empty shell_output("#{bin}/jd b.json c.json")
   end
 end

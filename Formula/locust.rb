@@ -3,17 +3,17 @@ class Locust < Formula
 
   desc "Scalable user load testing tool written in Python"
   homepage "https://locust.io/"
-  url "https://files.pythonhosted.org/packages/6e/ee/8c91551fc6f216f3106786191c8205e6bc05186dd690ffdf15bae06e6f66/locust-2.7.0.tar.gz"
-  sha256 "0dc4a801afab0197e8dcff58f56c372cc31c04c4bb51f4693ca837414aabd144"
+  url "https://files.pythonhosted.org/packages/78/b3/855152dbef43a348a9e271e0458050d0121c0f808e4703262e6602534e5a/locust-2.8.3.tar.gz"
+  sha256 "9c5110bdaf2d6ab72d68091e6685abf20bd138df711fde8dc88d81b8cb012b78"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "4f2462b28fb2812081ead1b90d1d679d2a8b188a39b4193ec011964e03bec4d2"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c3b8375e2a5f07941ec9f9d0221d1b60f1de9548c6308e9fd27fe6e64b779b0b"
-    sha256 cellar: :any_skip_relocation, monterey:       "7a33d0a53fec00a7cf35cc0ad0015f915fa5d7c29c0abad4ca8348b6a6bd751f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "5bb0c84696bfd522b824330b27f2f3b1aa48d7ca293c260a383f1afa09fe911f"
-    sha256 cellar: :any_skip_relocation, catalina:       "2ae939093f040359bed3b76c2514cd1df9e3fbfe37fe06f3c0ecdd1b17c7f9c1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3f3770f5f7332aa6dfe271ce04b94979ff312beb45c5b4b9e9a3c1a1cfe22b1a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "c4b1314a9a6a437523acf7932f438f2fd6a25e2ddf2b6aef153a0f6e84fbcb6f"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "3267598a9cc2d6f6044468940547558477ff7a26c3300b357a5f412ceaac66fd"
+    sha256 cellar: :any_skip_relocation, monterey:       "97ec5afca4c27f453701701937ef510bafa6396bbe2bc98a64734f4b8433c862"
+    sha256 cellar: :any_skip_relocation, big_sur:        "13667001cb8b4ece14acaa3fdf7b8dde217035ddd0a89e58106eda9016b73183"
+    sha256 cellar: :any_skip_relocation, catalina:       "f444d0972f95f144add53733af442e75faba579fd05fbb1502866b1225edce20"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ef47d381bca545671fabdd9779adccfc90bce5469fa37f84823ae536322c4d7a"
   end
 
   depends_on "python@3.10"
@@ -30,13 +30,13 @@ class Locust < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/48/44/76b179e0d1afe6e6a91fd5661c284f60238987f3b42b676d141d01cd5b97/charset-normalizer-2.0.10.tar.gz"
-    sha256 "876d180e9d7432c5d1dfd4c5d26b72f099d503e8fcc0feb7532c9289be60fcbd"
+    url "https://files.pythonhosted.org/packages/56/31/7bcaf657fafb3c6db8c787a865434290b726653c912085fbd371e9b92e1c/charset-normalizer-2.0.12.tar.gz"
+    sha256 "2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/f4/09/ad003f1e3428017d1c3da4ccc9547591703ffea548626f47ec74509c5824/click-8.0.3.tar.gz"
-    sha256 "410e932b050f5eed773c4cda94de75971c89cdb3155a72a0831139a79e5ecb5b"
+    url "https://files.pythonhosted.org/packages/dd/cf/706c1ad49ab26abed0b77a2f867984c1341ed7387b8030a6aa914e2942a0/click-8.0.4.tar.gz"
+    sha256 "8458d7b1287c5fb128c90e23381cf99dcde74beaf6c7ff6384ce84d6fe090adb"
   end
 
   resource "ConfigArgParse" do
@@ -45,8 +45,8 @@ class Locust < Formula
   end
 
   resource "Flask" do
-    url "https://files.pythonhosted.org/packages/95/40/b976286b5e7ba01794a7e7588e7e7fa27fb16c6168fa849234840bf0f61d/Flask-2.0.2.tar.gz"
-    sha256 "7b2fb8e934ddd50731893bdcdb00fc8c0315916f9fcd50d22c7cc1a95ab634e2"
+    url "https://files.pythonhosted.org/packages/84/9d/66347e6b3e2eb78647392d3969c23bdc2d8b2fdc32bd078c817c15cb81ad/Flask-2.0.3.tar.gz"
+    sha256 "e1120c228ca2f553b470df4a5fa927ab66258467526069981b3eb0a91902687d"
   end
 
   resource "Flask-BasicAuth" do
@@ -80,8 +80,8 @@ class Locust < Formula
   end
 
   resource "itsdangerous" do
-    url "https://files.pythonhosted.org/packages/58/66/d6c5859dcac92b442626427a8c7a42322068c5cd5d4a463ce78b93f730b7/itsdangerous-2.0.1.tar.gz"
-    sha256 "9e724d68fc22902a1435351f84c3fb8623f303fffcc566a4cb952df8c572cff0"
+    url "https://files.pythonhosted.org/packages/82/00/89037083314067f1605233f6f30b94fdddc89d18e283b30b0c5be9e7f801/itsdangerous-2.1.0.tar.gz"
+    sha256 "d848fcb8bc7d507c4546b448574e8a44fc4ea2ba84ebf8d783290d53e81992f5"
   end
 
   resource "Jinja2" do
@@ -90,8 +90,8 @@ class Locust < Formula
   end
 
   resource "MarkupSafe" do
-    url "https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/MarkupSafe-2.0.1.tar.gz"
-    sha256 "594c67807fb16238b30c44bdf74f36c02cdf22d1c8cda91ef8a0ed8dabf5620a"
+    url "https://files.pythonhosted.org/packages/62/0f/52c009332fdadd484e898dc8f2acca0663c1031b3517070fd34ad9c1b64e/MarkupSafe-2.1.0.tar.gz"
+    sha256 "80beaf63ddfbc64a0452b841d8036ca0611e049650e20afcb882f5d3c266d65f"
   end
 
   resource "msgpack" do
@@ -120,8 +120,8 @@ class Locust < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/0d/4a/60ba3706797b878016f16edc5fbaf1e222109e38d0fa4d7d9312cb53f8dd/typing_extensions-4.0.1.tar.gz"
-    sha256 "4ca091dea149f945ec56afb48dae714f21e8692ef22a395223bcd328961b6a0e"
+    url "https://files.pythonhosted.org/packages/b1/5a/8b5fbb891ef3f81fc923bf3cb4a578c0abf9471eb50ce0f51c74212182ab/typing_extensions-4.1.1.tar.gz"
+    sha256 "1a9462dcc3347a79b1f1c0271fbe79e844580bb598bafa1ed208b94da3cdcd42"
   end
 
   resource "urllib3" do
@@ -130,8 +130,8 @@ class Locust < Formula
   end
 
   resource "Werkzeug" do
-    url "https://files.pythonhosted.org/packages/83/3c/ecdb36f49ab06defb0d5a466cfeb4ae90a55d02cfef379f781da2801a45d/Werkzeug-2.0.2.tar.gz"
-    sha256 "aa2bb6fc8dee8d6c504c0ac1e7f5f7dc5810a9903e793b6f715a9f015bdadb9a"
+    url "https://files.pythonhosted.org/packages/6c/a8/60514fade2318e277453c9588545d0c335ea3ea6440ce5cdabfca7f73117/Werkzeug-2.0.3.tar.gz"
+    sha256 "b863f8ff057c522164b6067c9e28b041161b4be5ba4d0daceeaa50a163822d3c"
   end
 
   resource "zope.event" do
@@ -163,6 +163,6 @@ class Locust < Formula
     ENV["LOCUST_HOST"] = "http://httpbin.org"
     ENV["LOCUST_USERS"] = "2"
 
-    system "locust", "--headless", "--run-time", "30s"
+    system "locust", "--headless", "--run-time", "10s"
   end
 end
