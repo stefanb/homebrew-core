@@ -22,8 +22,7 @@ class OperatorSdk < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "8102410241e3ef5ff368f5da37cf2f1a200ff891cf2ba060bf54b49c0571e68c"
   end
 
-  # use "go" again when https://github.com/operator-framework/operator-sdk/issues/6644 is resolved and released
-  depends_on "go@1.21"
+  depends_on "go"
 
   def install
     ENV["GOBIN"] = bin
@@ -33,8 +32,6 @@ class OperatorSdk < Formula
   end
 
   test do
-    ENV.prepend_path "PATH", Formula["go@1.21"].bin
-
     if build.stable?
       version_output = shell_output("#{bin}/operator-sdk version")
       assert_match "version: \"v#{version}\"", version_output
